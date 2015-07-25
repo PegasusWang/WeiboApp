@@ -1,0 +1,8 @@
+class WeiboApp:
+    USERNAME = ''
+    PASSWORD = ''
+    APP_KEY = ''
+    APP_SECRET = ''
+    CALLBACK_URL = ''
+    UID =        # number type, not str
+    # CODE = '1776f3b8d868547a2466363b0ff09e67'
