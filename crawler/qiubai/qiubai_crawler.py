@@ -87,6 +87,8 @@ def test_img():
 
 def main():
     test_img()
+    test_hot()
+    test_duanzi()
 
 if __name__ == '__main__':
     main()

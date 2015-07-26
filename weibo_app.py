@@ -10,6 +10,7 @@ import random
 from weibo import Client
 from crawler.qiubai.qiubai_crawler import Spider as QiubaiSpider
 from single_process import single_process
+from misc import leancloud_upload
 
 
 class WeiboApp(object):
@@ -33,6 +34,12 @@ class WeiboApp(object):
 
 
 def post_weibo(weibo_app, cur_type):
+    if cur_type == 'gif':
+        d = leancloud_upload.get_random_file()
+        print d.get('content')
+        weibo_app.post_img(d.get('content'), d.get('pic'))
+
+        return
     if cur_type == 'duanzi':
         url = "http://m.qiushibaike.com/text"
     elif cur_type == 'hot':
@@ -61,6 +68,19 @@ def post_weibo(weibo_app, cur_type):
         weibo_app.post_img(i.get('content'), pic)
 
 
+def test():
+    api_key = config.WeiboApp.APP_KEY
+    api_secret = config.WeiboApp.APP_SECRET
+    callback_url = config.WeiboApp.CALLBACK_URL
+    username = config.WeiboApp.USERNAME
+    password = config.WeiboApp.PASSWORD
+    uid = config.WeiboApp.UID
+
+    weibo_app = WeiboApp(api_key, api_secret, callback_url, username,
+                         password, uid)
+    post_weibo(weibo_app, 'gif')
+
+
 @single_process
 def main():
     api_key = config.WeiboApp.APP_KEY
@@ -73,7 +93,7 @@ def main():
     weibo_app = WeiboApp(api_key, api_secret, callback_url, username,
                          password, uid)
 
-    types = ['duanzi', 'hot', 'img']
+    types = ['duanzi', 'hot', 'img', 'gif', 'gif', 'gif']
     cur_type = random.choice(types)
     post_weibo(weibo_app, cur_type)
 

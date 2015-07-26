@@ -1,0 +1,4 @@
+# -*- coding: utf-8 -*-
+class LeanCloud:
+    WeiboApp_APP_ID = '0pdchyat655tb400i74xx23dptfc62puyrx33b8bi00ohrg2'
+    WeiboApp_APP_MASTER_KEY = '0zafmeeqmqvh06mpys9staike6b9x9h7cwizj2ywgjbrb8i2'
