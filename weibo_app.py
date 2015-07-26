@@ -32,6 +32,35 @@ class WeiboApp(object):
         self._c.post('statuses/upload', status=text, pic=img_ori)
 
 
+def post_weibo(weibo_app, cur_type):
+    if cur_type == 'duanzi':
+        url = "http://m.qiushibaike.com/text"
+    elif cur_type == 'hot':
+        url = "http://m.qiushibaike.com/hot/page"
+    else:
+        url = "http://m.qiushibaike.com/imgrank"
+
+    s = QiubaiSpider(url)
+    html = s.get_html()
+
+    if cur_type == 'duanzi':
+        l = s.get_duanzi(html)
+        i = random.choice(l)
+        print i.get('content')
+        weibo_app.post_text(i.get('content'))
+
+    else:
+        if cur_type == 'hot':
+            l = s.get_hot(html)
+        else:
+            l = s.get_img(html)
+        i = random.choice(l)
+        img_url = i.get('img')
+        print i.get('content'), img_url
+        pic = StringIO.StringIO(requests.get(img_url).content)
+        weibo_app.post_img(i.get('content'), pic)
+
+
 @single_process
 def main():
     api_key = config.WeiboApp.APP_KEY
@@ -43,26 +72,10 @@ def main():
 
     weibo_app = WeiboApp(api_key, api_secret, callback_url, username,
                          password, uid)
-    post_types = ['duanzi', 'hot']
-    cur_type = random.choice(post_types)
 
-    if cur_type == 'duanzi':
-        url = "http://m.qiushibaike.com/text"
-        s = QiubaiSpider(url)
-        html = s.get_html()
-        duanzi_list = s.get_duanzi(html)
-        duanzi = random.choice(duanzi_list)
-        weibo_app.post_text(duanzi.get('content'))
-
-    elif cur_type == 'hot':
-        url = "http://m.qiushibaike.com/hot/page/1"
-        s = QiubaiSpider(url)
-        html = s.get_html()
-        hot_list = s.get_hot(html)
-        hot = random.choice(hot_list)
-        img_url = hot.get('img')
-        pic = StringIO.StringIO(requests.get(img_url).content)
-        weibo_app.post_img(hot.get('content'), pic)
+    types = ['duanzi', 'hot', 'img']
+    cur_type = random.choice(types)
+    post_weibo(weibo_app, cur_type)
 
 
 if __name__ == '__main__':

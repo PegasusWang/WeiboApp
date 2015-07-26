@@ -49,6 +49,8 @@ class Spider(object):
     def get_duanzi(self, html):
         return self.get_hot(html)
 
+    def get_img(self, html):
+        return self.get_hot(html)
 
 def test_duanzi():
     url = "http://m.qiushibaike.com/text"
@@ -72,8 +74,19 @@ def test_hot():
         print each.get('author'), each.get('content'), each.get('img')
 
 
+def test_img():
+    url = "http://m.qiushibaike.com/imgrank"
+    spider = Spider(url)
+    html = spider.get_html()
+    duanzi_list = spider.get_hot(html)
+    print len(duanzi_list)
+    for each in duanzi_list:
+        #print each.get('author'), each.get('content')
+        print each.get('author'), each.get('content'), each.get('img')
+
+
 def main():
-    test_duanzi()
+    test_img()
 
 if __name__ == '__main__':
     main()
