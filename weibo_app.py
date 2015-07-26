@@ -1,9 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
 import _env
 import config
+import StringIO
+import requests
+import random
 from weibo import Client
+from crawler.qiubai.qiubai_crawler import Spider as QiubaiSpider
+from single_process import single_process
 
 
 class WeiboApp(object):
@@ -18,12 +24,15 @@ class WeiboApp(object):
         return self._c.get('users/show', uid=self._uid)
 
     def post_text(self, text):
+        text = text if len(text) <= 139 else text[0:139]
         self._c.post('statuses/update', status=text)
 
-    def post_img(self, img_text, img_ori):
-        self._c.post('statuses/upload', status=img_text, pic=img_ori)
+    def post_img(self, text, img_ori):
+        text = text if len(text) <= 139 else text[0:139]
+        self._c.post('statuses/upload', status=text, pic=img_ori)
 
 
+@single_process
 def main():
     api_key = config.WeiboApp.APP_KEY
     api_secret = config.WeiboApp.APP_SECRET
@@ -34,8 +43,26 @@ def main():
 
     weibo_app = WeiboApp(api_key, api_secret, callback_url, username,
                          password, uid)
-    text = '我同学喜欢上了和他玩得比较好的一女汉子， 有次女汉子去他家玩，之后他就很委婉地表白了说：“我妈挺喜欢你的（意思就是他妈以为她是他带回去的对象）。” 然后，女汉子就仰天长笑说了一句：“哈哈哈哈，还不快叫爸爸！'
-    weibo_app.post_text(text)
+    post_types = ['duanzi', 'hot']
+    cur_type = random.choice(post_types)
+
+    if cur_type == 'duanzi':
+        url = "http://m.qiushibaike.com/text"
+        s = QiubaiSpider(url)
+        html = s.get_html()
+        duanzi_list = s.get_duanzi(html)
+        duanzi = random.choice(duanzi_list)
+        weibo_app.post_text(duanzi.get('content'))
+
+    elif cur_type == 'hot':
+        url = "http://m.qiushibaike.com/hot/page/1"
+        s = QiubaiSpider(url)
+        html = s.get_html()
+        hot_list = s.get_hot(html)
+        hot = random.choice(hot_list)
+        img_url = hot.get('img')
+        pic = StringIO.StringIO(requests.get(img_url).content)
+        weibo_app.post_img(hot.get('content'), pic)
 
 
 if __name__ == '__main__':

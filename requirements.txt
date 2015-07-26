@@ -2,3 +2,4 @@ weibo
 lxml
 requests
 beautifulsoup4
+single_process
