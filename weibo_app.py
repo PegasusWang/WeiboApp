@@ -36,7 +36,7 @@ class WeiboApp(object):
 def post_weibo(weibo_app, cur_type):
     if cur_type == 'gif':
         d = leancloud_upload.get_random_file()
-        print d.get('content')
+        #print d.get('content')
         weibo_app.post_img(d.get('content'), d.get('pic'))
 
         return
@@ -53,7 +53,7 @@ def post_weibo(weibo_app, cur_type):
     if cur_type == 'duanzi':
         l = s.get_duanzi(html)
         i = random.choice(l)
-        print i.get('content')
+        #print i.get('content')
         weibo_app.post_text(i.get('content'))
 
     else:
@@ -63,7 +63,8 @@ def post_weibo(weibo_app, cur_type):
             l = s.get_img(html)
         i = random.choice(l)
         img_url = i.get('img')
-        print i.get('content'), img_url
+        #print i.get('content'), img_url
+        print img_url
         pic = StringIO.StringIO(requests.get(img_url).content)
         weibo_app.post_img(i.get('content'), pic)
 
