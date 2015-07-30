@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 
 import leancloud
+import datetime
 from leancloud import Object, Query, File
 from StringIO import StringIO
 import config
@@ -68,6 +69,30 @@ def get_imgfile_by_ID(file_id):
     return {'pic': pic, 'content': content}
 
 
+def get_imgfile_by_rangeID(beg, end):
+    query = Query(ImgFile)
+    query.less_than_or_equal_to('ID', end)
+    query.greater_than_or_equal_to('ID', beg)
+    file_list = query.find()
+    file_obj = random.choice(file_list)
+    url = file_obj.get('File').url
+    pic = StringIO(requests.get(url).content)
+    content = file_obj.get('filename').split('.')[0]
+    return {'pic': pic, 'content': content}
+
+
+def get_imgfile_by_recent_ID(nums=50):
+    query = Query(ImgFile)
+    query.descending('ID')
+    query.limit(nums)
+    file_list = query.find()
+    file_obj = random.choice(file_list)
+    url = file_obj.get('File').url
+    pic = StringIO(requests.get(url).content)
+    content = file_obj.get('filename').split('.')[0]
+    return {'pic': pic, 'content': content}
+
+
 def exist_file(filename):
     """filename have suffix"""
     query = Query(ImgFile)
@@ -79,17 +104,17 @@ def exist_file(filename):
         return False
 
 
-def upload_all_file(file_dir='/home/wnn/share/gif'):
+def upload_all_file(file_dir='/home/wnn/gif/201507'):
     file_list = get_file_list(file_dir)
     for each_file in file_list:
         filename = os.path.basename(each_file)    # have suffix
         if not exist_file(filename):
             upload_file(each_file)
-            # time.sleep(3)
+            time.sleep(3)
 
 
 def test():
-    d = get_random_file()
+    d = get_imgfile_by_recent_ID()
     print d.get('content')
 
 
