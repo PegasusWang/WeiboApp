@@ -36,7 +36,7 @@ class WeiboApp(object):
 def post_weibo(weibo_app, cur_type):
     if cur_type == 'gif':
         # d = leancloud_upload.get_random_file()
-        d = leancloud_upload.get_imgfile_by_recent_ID()
+        d = leancloud_upload.get_imgfile_by_recent_ID(100)
         #print d.get('content')
         weibo_app.post_img(d.get('content'), d.get('pic'))
 

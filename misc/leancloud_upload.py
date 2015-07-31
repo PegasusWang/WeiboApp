@@ -11,12 +11,20 @@ import mimetypes
 import random
 import time
 import requests
+import jieba
 from single_process import single_process
+
 
 leancloud.init(config.LeanCloud.WeiboApp_APP_ID,
                master_key=config.LeanCloud.WeiboApp_APP_MASTER_KEY)
 
 ImgFile = Object.extend('ImgFile')
+
+
+def get_tag_list(txt):
+    jieba.setLogLevel(60)
+    seg_list = jieba.cut(txt)
+    return [i for i in seg_list if len(i) >= 2]
 
 
 def get_file_list(root_dir):
@@ -104,7 +112,7 @@ def exist_file(filename):
         return False
 
 
-def upload_all_file(file_dir='/home/wnn/gif/201507'):
+def upload_all_file(file_dir='../gif/'):
     file_list = get_file_list(file_dir)
     for each_file in file_list:
         filename = os.path.basename(each_file)    # have suffix
