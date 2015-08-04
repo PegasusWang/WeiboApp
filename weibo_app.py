@@ -8,9 +8,9 @@ import StringIO
 import requests
 import random
 from weibo import Client
-from crawler.qiubai.qiubai_crawler import Spider as QiubaiSpider
+from crawler.qiubai_crawler import QiubaiSpider
 from single_process import single_process
-from misc import leancloud_upload
+from db import leancloud_upload
 
 
 class WeiboApp(object):
