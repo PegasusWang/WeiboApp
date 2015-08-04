@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+UPLOAD_DIR = ''
 class LeanCloud:
     WeiboApp_APP_ID = ''
     WeiboApp_APP_MASTER_KEY = ''
