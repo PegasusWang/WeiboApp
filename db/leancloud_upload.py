@@ -112,7 +112,7 @@ def exist_file(filename):
         return False
 
 
-def upload_all_file(file_dir='../gif/'):
+def upload_all_file(file_dir):
     file_list = get_file_list(file_dir)
     for each_file in file_list:
         filename = os.path.basename(each_file)    # have suffix
@@ -128,7 +128,7 @@ def test():
 
 @single_process
 def main():
-    upload_all_file()
+    upload_all_file(config.UPLOAD_DIR)
 
 
 if __name__ == '__main__':
