@@ -112,8 +112,9 @@ def exist_file(filename):
         return False
 
 
-def is_img_file(suffix):
-    img_types = set(['jpg', 'png', 'gif', 'jpeg'])
+def is_img_file(filename):
+    suffix = filename.split('.')[-1].lower()    # note: remember ingore case
+    img_types = set(['jpg', 'png', 'gif', 'jpeg', 'bmp'])
     return suffix in img_types
 
 
@@ -121,8 +122,7 @@ def upload_all_file(file_dir):
     file_list = get_file_list(file_dir)
     for each_file in file_list:
         filename = os.path.basename(each_file)    # have suffix
-        suffix = each_file.split('.')[-1]
-        if not exist_file(filename) and is_img_file(suffix):
+        if is_img_file(filename) and not exist_file(filename):
             upload_file(each_file)
             time.sleep(3)
 
