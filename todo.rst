@@ -14,10 +14,10 @@ casperjs
 把lencloud接口封装（包括上传和获取接口），直接给出类名就可以操作）
 上传单独写成文件，封装成类，给出类名字和对象的字段就可以上传
 画url表示爬虫-weiboapp-lencloud接口-类型接口之间的关系
+记得更改ctrontab的路径
 
 
 todo：
-修改微博发布为图片url外链的形式，不用down,先实验
 煎蛋爬虫jiandan_wuliao, jiandan_meizi
 douban_meizi爬虫
 duowan tuku图片爬虫
