@@ -10,7 +10,7 @@ import random
 from weibo import Client
 from crawler.qiubai_crawler import QiubaiSpider
 from single_process import single_process
-from db import leancloud_upload
+from db import leancloud_api
 
 
 class WeiboApp(object):
@@ -34,9 +34,9 @@ class WeiboApp(object):
 
 
 def post_weibo(weibo_app, cur_type):
+    upload = leancloud_api.LeanCloudApi('ImgFile')
     if cur_type == 'gif':
-        # d = leancloud_upload.get_random_file()
-        d = leancloud_upload.get_imgfile_by_recent_ID(50)
+        d = upload.get_imgfile_by_recent_ID(50)
         #print d.get('content')
         weibo_app.post_img(d.get('content'), d.get('pic'))
 
