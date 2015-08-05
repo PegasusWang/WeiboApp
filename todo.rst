@@ -7,13 +7,13 @@ scrapy learn# don't use
 casperjs
 用nodejs搭建博客http://witcheryne.iteye.com/blog/1169854
 
+
 重新组织代码：
 写一个weibo_types.py在weibo_app里导入
 爬虫站点分类，+lenncloud, types，app里边只要给出类型和权重就好
-写一个爬虫基类,让以后的爬虫继承
 把lencloud接口封装（包括上传和获取接口），直接给出类名就可以操作）
+上传单独写成文件，封装成类，给出类名字和对象的字段就可以上传
 画url表示爬虫-weiboapp-lencloud接口-类型接口之间的关系
-
 
 
 todo：

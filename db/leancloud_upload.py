@@ -21,7 +21,8 @@ leancloud.init(config.LeanCloud.WeiboApp_APP_ID,
 ImgFile = Object.extend('ImgFile')
 
 
-def get_tag_list(txt):
+def get_tag_list(filename):
+    txt = filename.split('.')[0]
     jieba.setLogLevel(60)
     seg_list = jieba.cut(txt)
     return [i for i in seg_list if len(i) >= 2]
@@ -54,6 +55,8 @@ def upload_file(file_abspath):
         img_file = ImgFile()
         img_file.set('File', upload_file)
         img_file.set('filename', filename)
+        tag_list = get_tag_list(filename)
+        img_file.set('tag_list', tag_list)
         img_file.save()
 
 

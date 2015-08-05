@@ -25,18 +25,18 @@ class WeiboApp(object):
         return self._c.get('users/show', uid=self._uid)
 
     def post_text(self, text):
-        text = text if len(text) <= 139 else text[0:139]
+        text = text if len(text) <= 140 else text[0:140]
         self._c.post('statuses/update', status=text)
 
     def post_img(self, text, img_ori):
-        text = text if len(text) <= 139 else text[0:139]
+        text = text if len(text) <= 140 else text[0:140]
         self._c.post('statuses/upload', status=text, pic=img_ori)
 
 
 def post_weibo(weibo_app, cur_type):
     if cur_type == 'gif':
         # d = leancloud_upload.get_random_file()
-        d = leancloud_upload.get_imgfile_by_recent_ID(100)
+        d = leancloud_upload.get_imgfile_by_recent_ID(50)
         #print d.get('content')
         weibo_app.post_img(d.get('content'), d.get('pic'))
 
