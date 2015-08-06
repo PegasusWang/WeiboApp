@@ -22,6 +22,8 @@ todo：
 douban_meizi爬虫
 duowan tuku图片爬虫
 haha_sougou
+zaker
+android app
 
 
 图片按月分类
