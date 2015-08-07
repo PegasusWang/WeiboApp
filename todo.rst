@@ -11,19 +11,17 @@ casperjs
 重新组织代码：
 写一个weibo_types.py在weibo_app里导入
 爬虫站点分类，+lenncloud, types，app里边只要给出类型和权重就好
-把lencloud接口封装（包括上传和获取接口），直接给出类名就可以操作）
-上传单独写成文件，封装成类，给出类名字和对象的字段就可以上传
-画url表示爬虫-weiboapp-lencloud接口-类型接口之间的关系
-记得更改ctrontab的路径
-
+记得检查更改ctrontab的路径，和执行的sh路径
 
 todo：
+app认证
 煎蛋爬虫jiandan_wuliao, jiandan_meizi
 douban_meizi爬虫
 duowan tuku图片爬虫
 haha_sougou
 zaker
 android app
+用vps抓google＋
 
 
 图片按月分类
