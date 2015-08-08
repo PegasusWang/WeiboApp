@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
+from __future__ import unicode_literals
 import config
 import os
 import mimetypes
@@ -40,23 +41,24 @@ def upload_all_file(class_name, file_dir):
 
 def upload_jiandan_meizi(class_name):
     leancloud_upload = LeanCloudApi(class_name)
-    #for i in range(900, 1501):
-    for i in range(900, 901):
+    for i in range(947, 1501):
+        time.sleep(5)
         url = "http://jandan.net/ooxx/page-%s#comments" % str(i)
         cookies = '757477302=65; 757477302=26; _gat=1; nsfw-click-load=on; bad-click-load=off; _ga=GA1.2.784043191.1438269751; Hm_lvt_fd93b7fb546adcfbcf80c4fc2b54da2c=1438270942,1438270944,1438270947,1438995506; Hm_lpvt_fd93b7fb546adcfbcf80c4fc2b54da2c=1439009218'
         print url
         s = JiandanSpider(url, cookies)
         html = s.get_html()
         img_list = s.get_meizi(html)
-        for each in img_list:
-            filename = url
-            url = each.replace('thumbnail', 'mw1024')
-            if 'static' in url:
+        for each_url in img_list:
+            filename = each_url
+            each_url = each_url.replace('thumbnail', 'mw1024')
+            if 'static' in eahc_url:
                 continue
-            print url
-            if not leancloud_upload.exist_file(filename):
-                leancloud_upload.upload_file_by_url(filename, url)
-                time.sleep(2)
+            print each_url
+            if leancloud_upload.is_img_file(filename) and \
+                not leancloud_upload.exist_file(filename):
+                    leancloud_upload.upload_file_by_url(filename, each_url)
+                    time.sleep(2)
 
 @single_process
 def main():
