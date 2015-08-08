@@ -52,7 +52,7 @@ def upload_jiandan_meizi(class_name):
         for each_url in img_list:
             filename = each_url
             each_url = each_url.replace('thumbnail', 'mw1024')
-            if 'static' in eahc_url:
+            if 'static' in each_url:
                 continue
             print each_url
             if leancloud_upload.is_img_file(filename) and \
