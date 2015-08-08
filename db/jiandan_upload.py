@@ -43,8 +43,9 @@ def upload_jiandan_meizi(class_name):
     #for i in range(900, 1501):
     for i in range(900, 901):
         url = "http://jandan.net/ooxx/page-%s#comments" % str(i)
+        cookies = '757477302=65; 757477302=26; _gat=1; nsfw-click-load=on; bad-click-load=off; _ga=GA1.2.784043191.1438269751; Hm_lvt_fd93b7fb546adcfbcf80c4fc2b54da2c=1438270942,1438270944,1438270947,1438995506; Hm_lpvt_fd93b7fb546adcfbcf80c4fc2b54da2c=1439009218'
         print url
-        s = JiandanSpider(url)
+        s = JiandanSpider(url, cookies)
         html = s.get_html()
         img_list = s.get_meizi(html)
         for each in img_list:
