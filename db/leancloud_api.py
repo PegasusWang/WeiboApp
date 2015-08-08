@@ -9,6 +9,7 @@ import os
 import mimetypes
 import random
 import time
+import traceback
 import requests
 import jieba
 from single_process import single_process
@@ -62,6 +63,19 @@ class LeanCloudApi(object):
             return True
         except:    # not find
             return False
+
+    def upload_file_by_url(self, filename, url):
+        try:
+            data = requests.get(url, timeout=10).content
+        except:
+            print 'fetch failed', url
+            traceback.print_exc
+            return
+        f = File(filename, StringIO(data))
+        img_file = self._class()
+        img_file.set('File', f)
+        img_file.set('filename', filename)
+        img_file.save()
 
     def upload_file(self, file_abspath):
         filename = os.path.basename(file_abspath)    # filename have suffix

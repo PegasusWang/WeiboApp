@@ -1,0 +1,101 @@
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+uploaded /home/wnn/gif/201508/你是不是有什么话想说.gif
+uploaded /home/wnn/gif/201508/您这是什么舞蹈.gif
+uploaded /home/wnn/gif/201508/骑马舞吗这是.gif
+uploaded /home/wnn/gif/201508/打球不用这么认真吧.gif
+uploaded /home/wnn/gif/201508/好痛。。。。.gif
+uploaded /home/wnn/gif/201508/被妹子恶搞了.gif
+uploaded /home/wnn/gif/201508/深夜女性福利-古早味猛男.gif
+uploaded /home/wnn/gif/201508/哦哦哦哦哦哦哦.gif
+uploaded /home/wnn/gif/201508/一堆熊孩子.gif
+uploaded /home/wnn/gif/201508/妹子，我真的什么都没看见.gif
+uploaded /home/wnn/gif/201508/妹子保重。。。.gif
+uploaded /home/wnn/gif/201508/妹子好销魂.gif
+uploaded /home/wnn/gif/201508/这是疯了吗.gif
+uploaded /home/wnn/gif/201508/喵星人占领地球了.jpg
+uploaded /home/wnn/gif/201508/看的想吐了.gif
+uploaded /home/wnn/gif/201508/这是真的喝醉了.gif
+uploaded /home/wnn/gif/201508/妹子，你们又考虑过汪星人的感受吗.jpg
+uploaded /home/wnn/gif/201508/减肥路漫漫.gif
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+uploaded /home/wnn/gif/201508/孩子，你用力过猛了.gif
+Traceback (most recent call last):
+  File "/home/wnn/program/python_test/WeiboApp/db/upload.py", line 47, in <module>
+    main()
+  File "/usr/local/lib/python2.7/dist-packages/single_process.py", line 28, in _
+    return f(*a, **kw)
+  File "/home/wnn/program/python_test/WeiboApp/db/upload.py", line 43, in main
+    upload_all_file('ImgFile', config.UPLOAD_DIR)
+  File "/home/wnn/program/python_test/WeiboApp/db/upload.py", line 37, in upload_all_file
+    leancloud_upload.upload_file(each_file)
+  File "/home/wnn/program/python_test/WeiboApp/db/leancloud_api.py", line 77, in upload_file
+    img_file.save()
+  File "/usr/local/lib/python2.7/dist-packages/leancloud/object_.py", line 164, in save
+    response = client.post('/classes/{0}'.format(self._class_name), data)
+  File "/usr/local/lib/python2.7/dist-packages/leancloud/client.py", line 72, in new_func
+    return func(headers=headers, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/leancloud/client.py", line 83, in new_func
+    response = func(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/leancloud/client.py", line 119, in post
+    response = requests.post(BASE_URL + url, headers=headers, data=json.dumps(params), timeout=TIMEOUT_SECONDS)
+  File "/usr/lib/python2.7/dist-packages/requests/api.py", line 88, in post
+    return request('post', url, data=data, **kwargs)
+  File "/usr/lib/python2.7/dist-packages/requests/api.py", line 44, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python2.7/dist-packages/requests/sessions.py", line 455, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python2.7/dist-packages/requests/sessions.py", line 558, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python2.7/dist-packages/requests/adapters.py", line 387, in send
+    raise Timeout(e)
+requests.exceptions.Timeout: HTTPSConnectionPool(host='api.leancloud.cn', port=443): Read timed out.
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+uploaded /home/wnn/gif/201508/中风的喵星人.gif
+uploaded /home/wnn/gif/201508/摩托车不是这么玩的吧.gif
+uploaded /home/wnn/gif/201508/孩子，你这帮倒忙.gif
+uploaded /home/wnn/gif/201508/还是喵星人比较萌.jpg
+uploaded /home/wnn/gif/201508/你有多少姿势？.gif
+uploaded /home/wnn/gif/201508/送给所有单身狗们.gif
+uploaded /home/wnn/gif/201508/这就是喵星人的破坏力.gif
+uploaded /home/wnn/gif/201508/亚洲笑容四大天王.gif
+uploaded /home/wnn/gif/201508/好紧张，第一次见家长，阿姨温不温柔，叔叔凶不凶啊，好害怕啊好紧张啊，毕竟是.jpg
+uploaded /home/wnn/gif/201508/男友迷上了广场舞还偷穿我衣服.jpg
+uploaded /home/wnn/gif/201508/行为艺术家.jpg
+uploaded /home/wnn/gif/201508/无辜的汪星人.gif
+uploaded /home/wnn/gif/201508/多么悲伤的股数.gif
+uploaded /home/wnn/gif/201508/一群大V.jpg
+uploaded /home/wnn/gif/201508/多么悲伤的故事.gif
+uploaded /home/wnn/gif/201508/以后就这么遛狗了.gif
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+uploaded /home/wnn/gif/201508/吓一跳.gif
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+uploaded /home/wnn/gif/201508/有没有很像人.jpg
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+uploaded /home/wnn/gif/201508/妹子这是在哪阿.gif
+uploaded /home/wnn/gif/201508/二货系列.gif
+uploaded /home/wnn/gif/201508/汪星人们.gif
+uploaded /home/wnn/gif/201508/吃几口，至于这么丧心病狂吗.gif
+uploaded /home/wnn/gif/201508/传说中的裸奔.gif
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+uploaded /home/wnn/gif/201508/见过蜗牛吃东西吗.gif
+uploaded /home/wnn/gif/201508/玩弄你的耳朵.gif
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+uploaded /home/wnn/gif/201508/胖子就不要玩这个了.gif
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+uploaded /home/wnn/gif/201508/有没有考虑过下边妹子的感受.jpg
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
+uploaded /home/wnn/gif/201508/不用这么激动吧.gif
+uploaded /home/wnn/gif/201508/绝对是故意d.gif
+uploaded /home/wnn/gif/201508/喵星人也会.gif
+There is an instance of /home/wnn/program/python_test/WeiboApp/db/upload.py running. Quit
