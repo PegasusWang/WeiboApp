@@ -39,16 +39,27 @@ def upload_all_file(class_name, file_dir):
                 leancloud_upload.upload_file(each_file)
                 time.sleep(3)
 
-def upload_jiandan_meizi(class_name):
+def upload_jiandan(typename, class_name):
     leancloud_upload = LeanCloudApi(class_name)
-    for i in range(1024, 1501):
+    if typename == 'meizi':
+        beg = 900
+        end = 1504
+    else:
+        beg = 4013
+        end = 7079
+    for i in range(beg, end+1):
         time.sleep(5)
-        url = "http://jandan.net/ooxx/page-%s#comments" % str(i)
-        cookies = '757477302=65; 757477302=26; _gat=1; nsfw-click-load=on; bad-click-load=off; _ga=GA1.2.784043191.1438269751; Hm_lvt_fd93b7fb546adcfbcf80c4fc2b54da2c=1438270942,1438270944,1438270947,1438995506; Hm_lpvt_fd93b7fb546adcfbcf80c4fc2b54da2c=1439009218'
+        if typename == 'meizi':
+            url = "http://jandan.net/ooxx/page-%s#comments" % str(i)
+        else:
+            url = "http://jandan.net/pic/page-%s#comments" % str(i)
+        cookies = '757477302=453; bad-click-load=off; nsfw-click-load=off; gif-click-load=off; _gat=1; 757477302=433; _ga=GA1.2.784043191.1438269751; Hm_lvt_fd93b7fb546adcfbcf80c4fc2b54da2c=1438270942,1438270944,1438270947,1438995506; Hm_lpvt_fd93b7fb546adcfbcf80c4fc2b54da2c=1439110556'
         print url
         s = JiandanSpider(url, cookies)
         html = s.get_html()
-        img_list = s.get_meizi(html)
+        func = getattr(s, 'get_' + typename)
+        print func
+        img_list = func(html)
         for each_url in img_list:
             if each_url:
                 filename = each_url
@@ -63,8 +74,8 @@ def upload_jiandan_meizi(class_name):
 
 @single_process
 def main():
-    #upload_all_file('ImgFile', config.UPLOAD_DIR)
-    upload_jiandan_meizi('JiandanMeizi')
+    # upload_all_file('ImgFile', config.UPLOAD_DIR)
+    upload_jiandan('wuliao', 'JiandanWuliao')
 
 
 if __name__ == '__main__':

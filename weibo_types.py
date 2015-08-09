@@ -24,9 +24,9 @@ class WeiboTypes(object):
         }
 
     def choose(self, type_name):
-        type_name = 'get_' + type_name
-        fun = self.map_method.get(type_name)
-        fun()
+        func_name = 'get_' + type_name
+        func = self.map_method.get(func_name)
+        func()
 
     def get_gif_file(self):
         upload = leancloud_api.LeanCloudApi('ImgFile')

@@ -9,6 +9,7 @@ import lxml
 from StringIO import StringIO
 import time
 
+
 class JiandanSpider(Spider):
 
     def get_meizi(self, html):
@@ -20,7 +21,7 @@ class JiandanSpider(Spider):
 
     def get_wuliao(self, html):
         "http://jandan.net/pic/page-%s#comments, from 4000 to 7058"
-        self.get_meizi(self, html)
+        return self.get_meizi(html)
 
 
 def test_meizi():
@@ -44,7 +45,7 @@ def test_wuliao():
         print url
         s = JiandanSpider(url)
         html = s.get_html()
-        img_list = s.get_meizi(html)
+        img_list = s.get_wuliao(html)
         for i in img_list:
             filename = i.rsplit('/')[-1]
             print filename

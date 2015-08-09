@@ -75,7 +75,12 @@ class LeanCloudApi(object):
         img_file = self._class()
         img_file.set('File', f)
         img_file.set('filename', filename)
-        img_file.save()
+        try:
+            img_file.save()
+        except:
+            print 'save file failed', url
+            time.sleep(10)
+            return
 
     def upload_file(self, file_abspath):
         filename = os.path.basename(file_abspath)    # filename have suffix
