@@ -12,16 +12,18 @@ import time
 
 class JiandanSpider(Spider):
 
-    def get_meizi(self, html):
+    def get_meizi(self, url='http://jandan.net/ooxx/page-160000#comments'):
         "http://jandan.net/ooxx/page-%#comments, from 900 to 1496"
+        self.url = url
+        html = self.get_html()
         soup = BeautifulSoup(html, 'lxml')
         img_tag_list = soup.find_all('img')
         img_url_list = [i.get('src') for i in img_tag_list]
         return img_url_list
 
-    def get_wuliao(self, html):
+    def get_wuliao(self, url='http://jandan.net/pic/page-1000000#comments'):
         "http://jandan.net/pic/page-%s#comments, from 4000 to 7058"
-        return self.get_meizi(html)
+        return self.get_meizi(url)
 
 
 def test_meizi():
@@ -53,6 +55,15 @@ def test_wuliao():
                 f.write(requests.get(i).content)
 
 
+def test_all():
+    s = JiandanSpider()
+    meizi_list = s.get_meizi()
+    for each in meizi_list:
+        print each
+    wuliao_list = s.get_wuliao()
+    for each in wuliao_list:
+        print each
+
+
 if __name__ == '__main__':
-    test_meizi()
-    #test_wuliao()
+    test_all()

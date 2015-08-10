@@ -7,7 +7,7 @@ import traceback
 
 class Spider(object):
     """base Spder class."""
-    def __init__(self, url, cookies_str=None):
+    def __init__(self, url=None, cookies_str=None):
         self.url = url
         self.cookies_str = cookies_str
 

@@ -9,7 +9,9 @@ from bs4 import BeautifulSoup
 
 class TumblrForgifsSpider(Spider):
 
-    def get_gif(self, html):
+    def get_gif(self, url='http://tumblr.forgifs.com/'):
+        self.url = url
+        html = self.get_html()
         soup = BeautifulSoup(html, 'lxml')
         media_list = soup.find_all('div', class_='media')
         img_list = [i.find('img') for i in media_list]
@@ -17,19 +19,11 @@ class TumblrForgifsSpider(Spider):
         return url_list
 
 def test_gif():
-    for i in range(1, 2):
-        url = 'http://tumblr.forgifs.com/page/%s' % i
-        print url
-        spider = TumblrForgifsSpider(url)
-        html = spider.get_html()
-        duanzi_list = spider.get_gif(html)
-        """
-        for each in duanzi_list:
-            # print each.get('author'), each.get('content')
-            print len(each.get('content'))
-            print each.get('content')
+    spider = TumblrForgifsSpider()
+    duanzi_list = spider.get_gif()
+    for each in duanzi_list:
+        print each
 
-        """
 
 def main():
     test_gif()

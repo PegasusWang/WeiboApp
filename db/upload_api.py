@@ -26,7 +26,7 @@ class Upload(object):
     def upload(self, **args):
         func_name = 'upload_' + self.upload_type
         func = self.map_method.get(func_name)
-        func()(**args)
+        func(**args)
 
     @staticmethod
     def get_file_list(root_dir):
@@ -73,7 +73,6 @@ class Upload(object):
             spider = JiandanSpider(url, cookies)
             html = spider.get_html()
             func = getattr(spider, 'get_' + typename)
-            print func
             img_list = func(html)
             for each_url in img_list:
                 if each_url:
@@ -90,13 +89,14 @@ class Upload(object):
 
     def upload_tumblr_forgifs(self):
         leancloud_upload = self._upload
-        beg, end = 1, 207
+        beg, end = 207, 207
         for i in range(beg, end+1):
             time.sleep(5)
             url = 'http://tumblr.forgifs.com/page/%s' % i
             cookies = '_ga=GA1.2.467178015.1439029297; __utma=189990958.467178015.1439029297.1439029298.1439111581.2; __utmc=189990958; __utmz=189990958.1439111581.2.2.utmcsr=girlsxxxclip.tumblr.com|utmccn=(referral)|utmcmd=referral|utmcct=/'
             spider = TumblrForgifsSpider(url, cookies)
             html = spider.get_html()
+            print html
             gif_list = spider.get_gif(html)
             for each_url in gif_list:
                 if each_url:

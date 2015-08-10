@@ -4,12 +4,15 @@
 import requests
 import traceback
 from crawler import Spider
+
 from bs4 import BeautifulSoup
 
 
 class QiubaiSpider(Spider):
 
-    def get_hot(self, html):
+    def get_hot(self, url='http://m.qiushibaike.com/hot'):
+        self.url = url
+        html = self.get_html()
         soup = BeautifulSoup(html, 'lxml')
         article_tag_list = soup.find_all('div',
                                          class_='article block untagged mb15')
@@ -34,18 +37,18 @@ class QiubaiSpider(Spider):
 
         return res_list
 
-    def get_duanzi(self, html):
-        return self.get_hot(html)
+    def get_duanzi(self, url='http://m.qiushibaike.com/text'):
+        return self.get_hot(url)
 
-    def get_img(self, html):
-        return self.get_hot(html)
+    def get_img(self, url='http://m.qiushibaike.com/imgrank'):
+        return self.get_hot(url)
 
 
 def test_duanzi():
     url = "http://m.qiushibaike.com/text"
     spider = QiubaiSpider(url)
     html = spider.get_html()
-    duanzi_list = spider.get_hot(html)
+    duanzi_list = spider.get_duanzi(html)
     print len(duanzi_list)
     for each in duanzi_list:
         # print each.get('author'), each.get('content')
@@ -67,17 +70,24 @@ def test_img():
     url = "http://m.qiushibaike.com/imgrank"
     spider = QiubaiSpider(url)
     html = spider.get_html()
-    duanzi_list = spider.get_hot(html)
+    duanzi_list = spider.get_img(html)
     print len(duanzi_list)
     for each in duanzi_list:
         # print each.get('author'), each.get('content')
         print each.get('author'), each.get('content'), each.get('img')
 
+def test_all():
+    spider = QiubaiSpider()
+    img_list = spider.get_duanzi()
+    for each in img_list:
+        # print each.get('author'), each.get('content')
+        print each.get('author'), each.get('content'), each.get('img')
 
-def main():
-    test_img()
-    test_hot()
-    test_duanzi()
+
+
+def test():
+    test_all()
+
 
 if __name__ == '__main__':
-    main()
+    test()
