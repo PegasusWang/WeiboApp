@@ -53,13 +53,12 @@ def upload_jiandan(typename, class_name):
             url = "http://jandan.net/ooxx/page-%s#comments" % str(i)
         else:
             url = "http://jandan.net/pic/page-%s#comments" % str(i)
-        cookies = '757477302=453; bad-click-load=off; nsfw-click-load=off; gif-click-load=off; _gat=1; 757477302=433; _ga=GA1.2.784043191.1438269751; Hm_lvt_fd93b7fb546adcfbcf80c4fc2b54da2c=1438270942,1438270944,1438270947,1438995506; Hm_lpvt_fd93b7fb546adcfbcf80c4fc2b54da2c=1439110556'
+        cookies = '757477302=322; bad-click-load=off; nsfw-click-load=off; gif-click-load=off; 757477302=64; _ga=GA1.2.784043191.1438269751; _gat=1; Hm_lvt_fd93b7fb546adcfbcf80c4fc2b54da2c=1438270942,1438270944,1438270947,1438995506; Hm_lpvt_fd93b7fb546adcfbcf80c4fc2b54da2c=1439223664'
         print url
         s = JiandanSpider(url, cookies)
-        html = s.get_html()
         func = getattr(s, 'get_' + typename)
         print func
-        img_list = func(html)
+        img_list = func(url)
         for each_url in img_list:
             if each_url:
                 filename = each_url

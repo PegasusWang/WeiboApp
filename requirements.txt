@@ -3,5 +3,5 @@ lxml
 requests
 beautifulsoup4
 single_process
-leancloud-sdk
 jieba
+leancloud-sdk
