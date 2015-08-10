@@ -2,3 +2,4 @@
 *.pyc
 *config.py
 *.swp
+*_log

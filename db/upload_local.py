@@ -41,6 +41,7 @@ def upload_all_file(class_name, file_dir):
 @single_process
 def main():
     upload_all_file('ImgFile', config.UPLOAD_DIR)
+    print time.strftime('%Y-%m-%d %A %X %Z',time.localtime(time.time()))
 
 
 if __name__ == '__main__':
