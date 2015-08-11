@@ -31,7 +31,7 @@ def main():
     weibo_app = WeiboApp(api_key, api_secret, callback_url, username,
                          password, uid)
 
-    types = {'qiubai_duanzi': 1, 'qiubai_hot': 1, 'qiubai_img': 1,
+    types = {'qiubai_duanzi': 3, 'qiubai_hot': 1, 'qiubai_img': 3,
              'gif_file': 10}
     type_list = generate_type_list(types)
     cur_type = random.choice(type_list)

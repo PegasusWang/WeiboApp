@@ -33,3 +33,6 @@ next：
 
 域名：
 搜索godaddy优惠券
+
+today:
+更改weibotypes qiubai重复的post代码，使用getattr

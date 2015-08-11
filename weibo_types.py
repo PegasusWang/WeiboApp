@@ -25,6 +25,7 @@ class WeiboTypes(object):
 
     def choose(self, type_name):
         func_name = 'get_' + type_name
+        print func_name
         func = self.map_method.get(func_name)
         func()
 
@@ -36,11 +37,9 @@ class WeiboTypes(object):
     def get_qiubai_hot(self):
         url = "http://m.qiushibaike.com/hot/page"
         s = QiubaiSpider(url)
-        html = s.get_html()
-        l = s.get_hot(html)
+        l = s.get_hot(url)
         i = random.choice(l)
         img_url = i.get('img')
-        #print i.get('content'), img_url
         print img_url
         pic = StringIO.StringIO(requests.get(img_url).content)
         self.weibo_app.post_img(i.get('content'), pic)
@@ -48,11 +47,9 @@ class WeiboTypes(object):
     def get_qiubai_img(self):
         url = "http://m.qiushibaike.com/imgrank"
         s = QiubaiSpider(url)
-        html = s.get_html()
-        l = s.get_img(html)
+        l = s.get_img(url)
         i = random.choice(l)
         img_url = i.get('img')
-        #print i.get('content'), img_url
         print img_url
         pic = StringIO.StringIO(requests.get(img_url).content)
         self.weibo_app.post_img(i.get('content'), pic)
@@ -60,7 +57,6 @@ class WeiboTypes(object):
     def get_qiubai_duanzi(self):
         url = "http://m.qiushibaike.com/text"
         s = QiubaiSpider(url)
-        html = s.get_html()
-        l = s.get_hot(html)
+        l = s.get_duanzi(url)
         i = random.choice(l)
         self.weibo_app.post_text(i.get('content'))

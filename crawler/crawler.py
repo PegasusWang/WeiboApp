@@ -20,7 +20,9 @@ class Spider(object):
             d[k] = v
         return d
 
-    def get_html(self):
+    def get_html(self, url=None):
+        if url:
+            self.url = url
         user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36'
         headers = {'User-Agent': user_agent}
         try:
