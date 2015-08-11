@@ -2,26 +2,24 @@
 leancloud用递归查询方式遍历* 所有*数据,递归注意要排序，否则有可能取到重复数据
 
 to learn:
-scrapy learn# don't use
+scrapy learn
 通过代理
 casperjs
 用nodejs搭建博客http://witcheryne.iteye.com/blog/1169854
 
 
 重新组织代码：
-写一个weibo_types.py在weibo_app里导入
-爬虫站点分类，+lenncloud, types，app里边只要给出类型和权重就好
-记得检查更改ctrontab的路径，和执行的sh路径
+每次文件名修改后记得检查更改ctrontab的路径，和执行的sh路径，先测试crontab
+检查日志
 
 todo：
 app认证
 煎蛋爬虫jiandan_wuliao, jiandan_meizi
-douban_meizi爬虫
 duowan tuku图片爬虫
 haha_sougou
 zaker
 android app
-用vps抓google＋
+用koding, vps抓google＋
 
 
 图片按月分类
@@ -35,8 +33,3 @@ next：
 
 域名：
 搜索godaddy优惠券
-
-
-today:
-url init
-upload class
