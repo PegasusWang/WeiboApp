@@ -10,6 +10,7 @@ from leancloud_api import LeanCloudApi
 from single_process import single_process
 from ..crawler.jiandan_crawler import JiandanSpider
 from ..crawler.tumblr_forgifs_com_crawler import TumblrForgifsSpider
+from ..crawler.gifak_net_tumblr_com_crawler import GifakSpider
 
 
 class Upload(object):
@@ -21,6 +22,7 @@ class Upload(object):
             'upload_local_file': self.upload_local_file,
             'upload_jiandan': self.upload_jiandan,
             'upload_tumblr_forgifs': self.upload_tumblr_forgifs,
+            'upload_tumblr_gifak': self.upload_tumblr_gifak,
         }
 
     def upload(self, **args):
@@ -108,11 +110,29 @@ class Upload(object):
                             time.sleep(2)
 
 
+    def upload_tumblr_gifak(self):
+        leancloud_upload = self._upload
+        beg, end = 1, 268
+        for i in range(beg, end+1):
+            time.sleep(3)
+            url = 'http://gifak-net.tumblr.com/page/%s' % i
+            spider = GifakSpider(url)
+            gif_list = spider.get_gif(url)
+            for each_url in gif_list:
+                if each_url:
+                    print each_url
+                    filename = each_url
+                    if leancloud_upload.is_img_file(filename) and \
+                        not leancloud_upload.exist_file(filename):
+                            leancloud_upload.upload_file_by_url(filename, each_url)
+                            time.sleep(2)
 @single_process
 def main():
     # upload_all_file('ImgFile', config.UPLOAD_DIR)
     # upload_jiandan('wuliao', 'JiandanWuliao')
-    u = Upload('tumblr_forgifs', 'TumblrForgifs')
+    #u = Upload('tumblr_forgifs', 'TumblrForgifs')
+    #u.upload()
+    u = Upload('tumblr_gifak', 'TumblrGifak')
     u.upload()
 
 

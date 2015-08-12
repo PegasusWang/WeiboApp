@@ -16,7 +16,7 @@ python高级用法，类，oop等。
 每晚检查日志，定期更换cookies。
 
 todo：
-tumblr funny 图片
+tumblr funny 图片, gif, meizi
 weibo app认证
 duowan tuku图片爬虫
 haha_sougou
@@ -40,3 +40,4 @@ next：
 today:
 更改weibotypes qiubai重复的post代码，使用getattr
 moidfy upload filename，some thumbnail to url
+tumblr

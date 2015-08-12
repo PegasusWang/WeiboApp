@@ -68,11 +68,11 @@ class Upload(object):
         img_list = func()
         for each_url in img_list:
             if each_url:
-                filename = each_url
                 each_url = each_url.replace('thumbnail', 'mw1024')
                 if 'static' in each_url:
                     continue
                 print each_url
+                filename = each_url
                 if leancloud_upload.is_img_file(filename) and \
                     not leancloud_upload.exist_file(filename):
                         leancloud_upload.upload_file_by_url(filename, each_url)
@@ -107,3 +107,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    print time.strftime('%Y-%m-%d %A %X %Z',time.localtime(time.time()))
