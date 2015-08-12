@@ -107,3 +107,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    print time.strftime('%Y-%m-%d %A %X %Z',time.localtime(time.time()))
