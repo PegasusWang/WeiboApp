@@ -2,23 +2,26 @@
 leancloud用递归查询方式遍历* 所有*数据,递归注意要排序，否则有可能取到重复数据
 
 to learn:
+django 类的写法
+tornado
 scrapy learn
-通过代理
+通过代理(or use vps)
 casperjs
 用nodejs搭建博客http://witcheryne.iteye.com/blog/1169854
+python高级用法，类，oop等。
 
 
 重新组织代码：
 每次文件名修改后记得检查更改ctrontab的路径，和执行的sh路径，先测试crontab
-检查日志
+每晚检查日志，定期更换cookies。
 
 todo：
-app认证
-煎蛋爬虫jiandan_wuliao, jiandan_meizi
+tumblr funny 图片
+weibo app认证
 duowan tuku图片爬虫
 haha_sougou
-zaker
-android app
+zaker funny channel
+android app 百思
 用koding, vps抓google＋
 
 
@@ -36,3 +39,4 @@ next：
 
 today:
 更改weibotypes qiubai重复的post代码，使用getattr
+moidfy upload filename，some thumbnail to url
