@@ -12,7 +12,6 @@ import time
 import traceback
 import requests
 import jieba
-from single_process import single_process
 
 
 class LeanCloudApi(object):
@@ -60,6 +59,7 @@ class LeanCloudApi(object):
         query.equal_to('filename', filename)
         try:    # finded
             obj = query.first()
+            print filename, '----existed----'
             return True
         except:    # not find
             return False
@@ -68,7 +68,7 @@ class LeanCloudApi(object):
         try:
             data = requests.get(url, timeout=10).content
         except:
-            print 'fetch failed', url
+            print url, 'fetch failed'
             traceback.print_exc
             return
         f = File(filename, StringIO(data))
@@ -77,6 +77,7 @@ class LeanCloudApi(object):
         img_file.set('filename', filename)
         try:
             img_file.save()
+            print filename, '----uploaded----'
         except:
             print 'save file failed', url
             time.sleep(10)

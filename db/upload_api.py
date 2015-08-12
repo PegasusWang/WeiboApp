@@ -28,7 +28,9 @@ class Upload(object):
     def upload(self, **args):
         func_name = 'upload_' + self.upload_type
         func = self.map_method.get(func_name)
-        func(**args)
+        print 'func', func
+        if func:
+            func(**args)
 
     @staticmethod
     def get_file_list(root_dir):

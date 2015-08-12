@@ -12,7 +12,7 @@ import time
 
 class JiandanSpider(Spider):
 
-    def get_meizi(self, url='http://jandan.net/ooxx/page-160000#comments'):
+    def get_meizi(self, url='http://jandan.net/ooxx/page-160010#comments'):
         "http://jandan.net/ooxx/page-%#comments, from 900 to 1496"
         self.url = url
         html = self.get_html()
@@ -21,7 +21,7 @@ class JiandanSpider(Spider):
         img_url_list = [i.get('src') for i in img_tag_list]
         return img_url_list
 
-    def get_wuliao(self, url='http://jandan.net/pic/page-1000000#comments'):
+    def get_wuliao(self, url='http://jandan.net/pic/page-100010#comments'):
         "http://jandan.net/pic/page-%s#comments, from 4000 to 7058"
         return self.get_meizi(url)
 
@@ -56,7 +56,8 @@ def test_wuliao():
 
 
 def test_all():
-    s = JiandanSpider()
+    cookies = '757477302=453; bad-click-load=off; nsfw-click-load=off; gif-click-load=off; _gat=1; 757477302=433; _ga=GA1.2.784043191.1438269751; Hm_lvt_fd93b7fb546adcfbcf80c4fc2b54da2c=1438270942,1438270944,1438270947,1438995506; Hm_lpvt_fd93b7fb546adcfbcf80c4fc2b54da2c=1439110556'
+    s = JiandanSpider('', cookies)
     meizi_list = s.get_meizi()
     for each in meizi_list:
         print each

@@ -10,6 +10,7 @@ from leancloud_api import LeanCloudApi
 from single_process import single_process
 from ..crawler.jiandan_crawler import JiandanSpider
 from ..crawler.tumblr_forgifs_com_crawler import TumblrForgifsSpider
+from ..crawler.gifak_net_tumblr_com_crawler import GifakSpider
 
 
 class Upload(object):
@@ -26,8 +27,9 @@ class Upload(object):
     def upload(self, **args):
         func_name = 'upload_' + self.upload_type
         func = self.map_method.get(func_name)
-        print func
-        func(**args)
+        print 'func', func
+        if func:
+            func(**args)
 
     @staticmethod
     def get_file_list(root_dir):
@@ -80,7 +82,7 @@ class Upload(object):
 
     def upload_tumblr_forgifs(self, **kwargs):
         leancloud_upload = self._upload
-        spider = TumblrForgifsSpider()
+        spider = GifakSpider()
         gif_list = spider.get_gif()
         for each_url in gif_list:
             if each_url:
@@ -91,8 +93,23 @@ class Upload(object):
                         leancloud_upload.upload_file_by_url(filename, each_url)
                         time.sleep(2)
 
+    def upload_tumblr_gifak(self, **kwargs):
+        leancloud_upload = self._upload
+        spider = GifakSpider()
+        gif_list = spider.get_gif()
+        for each_url in gif_list:
+            if each_url:
+                print each_url
+                filename = each_url
+                if leancloud_upload.is_img_file(filename) and \
+                    not leancloud_upload.exist_file(filename):
+                        leancloud_upload.upload_file_by_url(filename, each_url)
+                        time.sleep(2)
+
+
 dict_list = [
     dict(upload_type='tumblr_forgifs', class_name='TumblrForgifs'),
+    dict(upload_type='tumblr_gifak', class_name='TumblrGifak'),
     dict(upload_type='jiandan', class_name='JiandanMeizi', typename='meizi'),
     dict(upload_type='jiandan', class_name='JiandanWuliao', typename='wuliao'),
 ]
