@@ -32,7 +32,7 @@ def main():
                          password, uid)
 
     types = {'qiubai_duanzi': 3, 'qiubai_hot': 1, 'qiubai_img': 3,
-             'gif_file': 10}
+             'gif_file': 10, 'tumblr_gifak': 10, 'tumblr_forgifs':10}
     type_list = generate_type_list(types)
     cur_type = random.choice(type_list)
 

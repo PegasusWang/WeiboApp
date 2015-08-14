@@ -46,7 +46,7 @@ class Upload(object):
         return mimetypes.guess_type(file_abspath)[0]
 
     def upload_hotgirlsfc(self, **kwargs):
-        beg, end = 1, 700
+        beg, end = 49, 700
         for i in range(beg, end+1):
             url = 'http://hotgirlsfc.tumblr.com/page/%s' % i
             print url

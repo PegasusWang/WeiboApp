@@ -18,6 +18,8 @@ class WeiboTypes(object):
         self.weibo_app = weibo_app
         self.map_method = {
             'get_gif_file': self.get_gif_file,
+            'get_tumblr_forgifs': self.get_tumblr_forgifs,
+            'get_tumblr_gifak': self.get_tumblr_gifak,
             'get_qiubai_hot': self.get_qiubai_hot,
             'get_qiubai_img': self.get_qiubai_img,
             'get_qiubai_duanzi': self.get_qiubai_duanzi,
@@ -33,6 +35,16 @@ class WeiboTypes(object):
         upload = leancloud_api.LeanCloudApi('ImgFile')
         d = upload.get_imgfile_by_recent_ID()
         self.weibo_app.post_img(d.get('content'), d.get('pic'))
+
+    def get_tumblr_forgifs(self):
+        upload = leancloud_api.LeanCloudApi('TumblrForgifs')
+        d = upload.get_imgfile_by_recent_ID()
+        self.weibo_app.post_img(u'每日gif', d.get('pic'))
+
+    def get_tumblr_gifak(self):
+        upload = leancloud_api.LeanCloudApi('TumblrForgifs')
+        d = upload.get_imgfile_by_recent_ID()
+        self.weibo_app.post_img(u'每日gif', d.get('pic'))
 
     def get_qiubai_hot(self):
         url = "http://m.qiushibaike.com/hot/page"
