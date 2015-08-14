@@ -64,12 +64,19 @@ class LeanCloudApi(object):
         except:    # not find
             return False
 
-    def upload_file_by_url(self, filename, url):
+
+    def upload_file_by_url(self, filename, url, retries=3):
         try:
             data = requests.get(url, timeout=10).content
         except:
-            print url, 'fetch failed'
-            traceback.print_exc
+            if retries > 0:
+                print 'fetch...', retries
+                return self.upload_file_by_url(filename, url, retries-1)
+            else:
+                print 'fetch failed', url
+                data = ''
+                return data
+        if not data:
             return
         f = File(filename, StringIO(data))
         img_file = self._class()

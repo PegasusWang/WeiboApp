@@ -45,7 +45,7 @@ def upload_jiandan(typename, class_name):
         beg = 900
         end = 1504
     else:
-        beg = 5500
+        beg = 6890
         end = 7079
     for i in range(beg, end+1):
         time.sleep(5)

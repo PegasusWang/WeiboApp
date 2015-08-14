@@ -8,9 +8,8 @@ import mimetypes
 import time
 from leancloud_api import LeanCloudApi
 from single_process import single_process
-from ..crawler.jiandan_crawler import JiandanSpider
-from ..crawler.tumblr_forgifs_com_crawler import TumblrForgifsSpider
-from ..crawler.gifak_net_tumblr_com_crawler import GifakSpider
+from ..crawler.funnygif.jiandan_crawler import JiandanSpider
+from ..crawler.funnygif.funnygif_tumblr import TumblrForgifsSpider, GifakSpider
 
 
 class Upload(object):
@@ -22,6 +21,7 @@ class Upload(object):
             'upload_local_file': self.upload_local_file,
             'upload_jiandan': self.upload_jiandan,
             'upload_tumblr_forgifs': self.upload_tumblr_forgifs,
+            'tumblr_gifak': self.upload_tumblr_gifak,
         }
 
     def upload(self, **args):
@@ -82,7 +82,7 @@ class Upload(object):
 
     def upload_tumblr_forgifs(self, **kwargs):
         leancloud_upload = self._upload
-        spider = GifakSpider()
+        spider = TumblrForgifsSpider()
         gif_list = spider.get_gif()
         for each_url in gif_list:
             if each_url:

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from crawler import Spider
+from ..crawler import Spider
 import requests
 from bs4 import BeautifulSoup
 import traceback

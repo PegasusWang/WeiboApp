@@ -20,7 +20,7 @@ class Spider(object):
             d[k] = v
         return d
 
-    def get_html(self, url=None):
+    def get_html(self, url=None, retries=3):
         if url:
             self.url = url
         user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Safari/537.36'
@@ -35,6 +35,11 @@ class Spider(object):
                                     timeout=10).text
 
         except:
-            html = ''
-            traceback.print_exc()
+            if retries > 0:
+                print 'fetching...', retries
+                return self.get_html(url, retries-1)
+            else:
+                print 'get html failed', url
+                html = ''
+                return html
         return html
