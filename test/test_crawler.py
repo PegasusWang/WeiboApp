@@ -4,7 +4,8 @@
 import setup
 from crawler.funnygif.jiandan_crawler import JiandanSpider
 from crawler.girl.girls_tumblr import (
-    HotgirlsfcSpider, MzituSpider,
+    HotgirlsfcSpider, MzituSpider, LovelyasiansSpider,
+    KormodelsSpider,
 )
 from crawler.funnygif.funnygif_tumblr import (
     GifsboomSpider, GifsonSpider,
@@ -16,6 +17,8 @@ map_spider = {
     'GifsboomSpider': GifsboomSpider,
     'GifsonSpider': GifsonSpider,
     'MzituSpider': MzituSpider,
+    'LovelyasiansSpider': LovelyasiansSpider,
+    'KormodelsSpider': KormodelsSpider,
 }
 
 
@@ -42,6 +45,8 @@ spider_list_dict = [
     dict(class_name='GifsboomSpider', method_name='get_gif'),
     dict(class_name='GifsonSpider', method_name='get_gif'),
     dict(class_name='MzituSpider', method_name='get_img'),
+    dict(class_name='LovelyasiansSpider', method_name='get_img'),
+    dict(class_name='KormodelsSpider', method_name='get_img'),
 
 ]
 
@@ -54,7 +59,7 @@ def test_all():
 
 
 def test():
-    s = spider_list_dict[4]
+    s = spider_list_dict[6]
     spider = SpiderTest(**s)
     l = spider.test_spider_method(s['method_name'])
     for i in l:

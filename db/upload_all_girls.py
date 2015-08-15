@@ -8,12 +8,14 @@ import time
 from leancloud_api import LeanCloudApi
 from single_process import single_process
 from ..crawler.girl.girls_tumblr import (
-    HotgirlsfcSpider, MzituSpider,
+    HotgirlsfcSpider, MzituSpider, LovelyasiansSpider, KormodelsSpider,
 )
 
 map_class = {
     'HotgirlsfcSpider': HotgirlsfcSpider,
     'MzituSpider': MzituSpider,
+    'LovelyasiansSpider': LovelyasiansSpider,
+    'KormodelsSpider': KormodelsSpider,
 }
 
 
@@ -26,7 +28,7 @@ class Upload(object):
     def upload_girls(self, **kwargs):
         leancloud_upload = self._upload
         spider = map_class.get(self.spider_name)()
-        print '*************', self.spider_name
+        print '*************', self.spider_name, '**************'
         img_list = spider.get_img()
         for each_url in img_list:
             if each_url:
