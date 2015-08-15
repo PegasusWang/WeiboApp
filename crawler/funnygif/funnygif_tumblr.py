@@ -27,3 +27,21 @@ class TumblrForgifsSpider(Spider):
         img_list = [i.find('img') for i in media_list if i]
         url_list = [i.get('src') for i in img_list if i]
         return url_list
+
+
+class GifsboomSpider(Spider):
+
+    def get_gif(self, url='http://gifsboom.net'):
+        self.url = url
+        html = self.get_html()
+        soup = BeautifulSoup(html, 'lxml')
+        img_tag_list = soup.find_all('img')
+        img_list = [i.get('src') for i in img_tag_list if i]
+        url_list = [i for i in img_list if '.gif' in i]
+        return url_list
+
+
+class GifsonSpider(Spider):
+    def get_gif(self, url='http://gifson.net'):
+        s = GifsboomSpider()
+        return s.get_gif(url)

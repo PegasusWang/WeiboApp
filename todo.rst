@@ -16,6 +16,7 @@ python高级用法，类，oop等。
 注意：：
 每次文件名修改后记得检查更改ctrontab的路径，和执行的sh路径，先测试crontab
 每晚检查日志，定期更换cookies。
+注意每次要给新的类名添加ID子增字段。
 
 todo：
 tumblr funny 图片, gif, meizi

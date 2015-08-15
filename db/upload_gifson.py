@@ -9,7 +9,7 @@ import time
 from leancloud_api import LeanCloudApi
 from single_process import single_process
 from ..crawler.girl.girls_tumblr import HotgirlsfcSpider
-from ..crawler.funnygif.funnygif_tumblr import GifsboomSpider
+from ..crawler.funnygif.funnygif_tumblr import GifsonSpider
 
 
 class Upload(object):
@@ -20,6 +20,7 @@ class Upload(object):
         self.map_method = {
             'upload_hotgirlsfc': self.upload_hotgirlsfc,
             'upload_gifsboom': self.upload_gifsboom,
+            'upload_gifson': self.upload_gifson,
         }
 
     def upload(self, **args):
@@ -81,9 +82,26 @@ class Upload(object):
                             leancloud_upload.upload_file_by_url(filename, each_url)
                             time.sleep(2)
 
+    def upload_gifsson(self, **kwargs):
+        beg, end = 1, 416
+        for i in range(beg, end+1):
+            url = 'http://gifson.net/page/%s' % i
+            print url
+            leancloud_upload = self._upload
+            spider = GifsonSpider()
+            img_list = spider.get_gif(url)
+            for each_url in img_list:
+                if each_url:
+                    print each_url
+                    filename = each_url
+                    if leancloud_upload.is_img_file(filename) and \
+                        not leancloud_upload.exist_file(filename):
+                            leancloud_upload.upload_file_by_url(filename, each_url)
+                            time.sleep(2)
 dict_list = [
     #dict(upload_type='hotgirlsfc', class_name='Hotgirlsfc'),
-    dict(upload_type='gifsboom', class_name='Gifsboom'),
+    #dict(upload_type='gifsboom', class_name='Gifsboom'),
+    dict(upload_type='gifson', class_name='Gifson'),
 ]
 
 

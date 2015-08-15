@@ -9,7 +9,9 @@ import time
 from leancloud_api import LeanCloudApi
 from single_process import single_process
 from ..crawler.funnygif.jiandan_crawler import JiandanSpider
-from ..crawler.funnygif.funnygif_tumblr import TumblrForgifsSpider, GifakSpider
+from ..crawler.funnygif.funnygif_tumblr import (
+    TumblrForgifsSpider, GifakSpider, GifsboomSpider, GifsonSpider,
+)
 
 
 class Upload(object):
@@ -21,7 +23,9 @@ class Upload(object):
             'upload_local_file': self.upload_local_file,
             'upload_jiandan': self.upload_jiandan,
             'upload_tumblr_forgifs': self.upload_tumblr_forgifs,
-            'tumblr_gifak': self.upload_tumblr_gifak,
+            'upload_tumblr_gifak': self.upload_tumblr_gifak,
+            'upload_tumblr_gifsboom': self.upload_tumblr_gifsboom,
+            'upload_tumblr_gifson': self.upload_tumblr_gifson,
         }
 
     def upload(self, **args):
@@ -106,10 +110,37 @@ class Upload(object):
                         leancloud_upload.upload_file_by_url(filename, each_url)
                         time.sleep(2)
 
+    def upload_tumblr_gifsboom(self, **kwargs):
+        leancloud_upload = self._upload
+        spider = GifsboomSpider()
+        gif_list = spider.get_gif()
+        for each_url in gif_list:
+            if each_url:
+                print each_url
+                filename = each_url
+                if leancloud_upload.is_img_file(filename) and \
+                    not leancloud_upload.exist_file(filename):
+                        leancloud_upload.upload_file_by_url(filename, each_url)
+                        time.sleep(2)
+
+    def upload_tumblr_gifson(self, **kwargs):
+        leancloud_upload = self._upload
+        spider = GifsonSpider()
+        gif_list = spider.get_gif()
+        for each_url in gif_list:
+            if each_url:
+                print each_url
+                filename = each_url
+                if leancloud_upload.is_img_file(filename) and \
+                    not leancloud_upload.exist_file(filename):
+                        leancloud_upload.upload_file_by_url(filename, each_url)
+                        time.sleep(2)
 
 dict_list = [
     dict(upload_type='tumblr_forgifs', class_name='TumblrForgifs'),
     dict(upload_type='tumblr_gifak', class_name='TumblrGifak'),
+    dict(upload_type='tumblr_gifsboom', class_name='Gifsboom'),
+    dict(upload_type='tumblr_gifson', class_name='Gifson'),
     dict(upload_type='jiandan', class_name='JiandanMeizi', typename='meizi'),
     dict(upload_type='jiandan', class_name='JiandanWuliao', typename='wuliao'),
 ]

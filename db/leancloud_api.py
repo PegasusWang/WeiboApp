@@ -67,7 +67,7 @@ class LeanCloudApi(object):
 
     def upload_file_by_url(self, filename, url, retries=3):
         try:
-            data = requests.get(url, timeout=10).content
+            data = requests.get(url, timeout=5).content
         except:
             if retries > 0:
                 print 'fetch...', retries

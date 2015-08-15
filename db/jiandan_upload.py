@@ -8,7 +8,7 @@ import mimetypes
 import time
 from leancloud_api import LeanCloudApi
 from single_process import single_process
-from ..crawler.jiandan_crawler import JiandanSpider
+from ..crawler.funnygif.jiandan_crawler import JiandanSpider
 
 
 def get_file_list(root_dir):
@@ -45,7 +45,7 @@ def upload_jiandan(typename, class_name):
         beg = 900
         end = 1504
     else:
-        beg = 6890
+        beg = 7050
         end = 7079
     for i in range(beg, end+1):
         time.sleep(5)
