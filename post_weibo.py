@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 import _env
 import config
 import random
+import time
 from weibo_app import WeiboApp
 from weibo_types import WeiboTypes
 from single_process import single_process
@@ -42,3 +43,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    print time.strftime('%Y-%m-%d %A %X %Z',time.localtime(time.time()))

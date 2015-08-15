@@ -17,6 +17,7 @@ python高级用法，类，oop等。
 每次文件名修改后记得检查更改ctrontab的路径，和执行的sh路径，先测试crontab
 每晚检查日志，定期更换cookies。
 注意每次要给新的类名添加ID子增字段。
+每次添加一个crawler后先loop爬，再添加到upload_all里边
 
 todo：
 tumblr funny 图片, gif, meizi
@@ -48,13 +49,6 @@ PREFIX=$(cd "$(dirname "$0")"; pwd)
 cd $PREFIX
 python post_weibo.py
 
-weiboap add new types two tumblr
-更改weibotypes qiubai重复的post代码，使用getattr
-moidfy upload filename，some thumbnail to url
-tumblr
-增加url失败后重复获取次数
-
 
 today note:
 jiandan同一个ip不能用两个cookies访问
-上传完成后统一修filename

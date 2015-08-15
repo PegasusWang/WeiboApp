@@ -3,51 +3,30 @@
 
 from __future__ import unicode_literals
 import config
-import os
 import mimetypes
 import time
 from leancloud_api import LeanCloudApi
 from single_process import single_process
-from ..crawler.girl.girls_tumblr import HotgirlsfcSpider
+from ..crawler.girl.girls_tumblr import (
+    HotgirlsfcSpider, MzituSpider,
+)
+
+map_class = {
+    'HotgirlsfcSpider': HotgirlsfcSpider,
+    'MzituSpider': MzituSpider,
+}
 
 
 class Upload(object):
     def __init__(self, **kwargs):
-        self.upload_type = kwargs.get('upload_type')
-        self.class_name = kwargs.get('class_name')
+        self.spider_name = kwargs.get('spider_name')
+        self.class_name = kwargs.get('spider_name').replace('Spider', '')
         self._upload = LeanCloudApi(self.class_name)
-        self.map_method = {
-            'upload_hotgirlsfc': self.upload_hotgirlsfc,
-        }
 
-    def upload(self, **args):
-        func_name = 'upload_' + self.upload_type
-        func = self.map_method.get(func_name)
-        print 'func', func
-        if func:
-            func(**args)
-
-    @staticmethod
-    def get_file_list(root_dir):
-        l = []
-        list_dirs = os.walk(root_dir)
-        for root, dirs, files in list_dirs:
-            for f in files:
-                l.append(os.path.join(root, f))
-        return l
-
-    @staticmethod
-    def get_filename(file_abspath):
-        """without suffix"""
-        return file_abspath.rsplit('.', 1)[-2].rsplit('/', 1)[-1]
-
-    @staticmethod
-    def get_file_mimetype(file_abspath):
-        return mimetypes.guess_type(file_abspath)[0]
-
-    def upload_hotgirlsfc(self, **kwargs):
+    def upload_girls(self, **kwargs):
         leancloud_upload = self._upload
-        spider = HotgirlsfcSpider()
+        spider = map_class.get(self.spider_name)()
+        print '*************', self.spider_name
         img_list = spider.get_img()
         for each_url in img_list:
             if each_url:
@@ -58,19 +37,23 @@ class Upload(object):
                         leancloud_upload.upload_file_by_url(filename, each_url)
                         time.sleep(2)
 
+    @staticmethod
+    def get_filename(file_abspath):
+        """without suffix"""
+        return file_abspath.rsplit('.', 1)[-2].rsplit('/', 1)[-1]
 
-dict_list = [
-    dict(upload_type='hotgirlsfc', class_name='Hotgirlsfc'),
-]
+    @staticmethod
+    def get_file_mimetype(file_abspath):
+        return mimetypes.guess_type(file_abspath)[0]
 
 
 @single_process
 def main():
-    for each in dict_list:
-        u = Upload(**each)
-        u.upload(**each)
+    for k, v in map_class.iteritems():
+        u = Upload(spider_name=k)
+        u.upload_girls()
 
 
 if __name__ == '__main__':
     main()
-    print time.strftime('%Y-%m-%d %A %X %Z',time.localtime(time.time()))
+    print time.strftime('%Y-%m-%d %A %X %Z', time.localtime(time.time()))
