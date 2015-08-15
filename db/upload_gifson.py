@@ -82,7 +82,7 @@ class Upload(object):
                             leancloud_upload.upload_file_by_url(filename, each_url)
                             time.sleep(2)
 
-    def upload_gifsson(self, **kwargs):
+    def upload_gifson(self, **kwargs):
         beg, end = 1, 416
         for i in range(beg, end+1):
             url = 'http://gifson.net/page/%s' % i
