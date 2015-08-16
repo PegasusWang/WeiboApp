@@ -28,12 +28,9 @@ def get_media_url_list(url):
     html = fetch_html(url)
     if not html:
         return []
-    print html
     soup = BeautifulSoup(html, 'lxml')
     img_tag_list = soup.find_all('img')
-    print img_tag_list
     url_list = [i.get('src') for i in img_tag_list if i]
-    print 'media', url_list
     return set(url_list)
 
 
@@ -96,6 +93,18 @@ class KormodelsSpider(Spider):
         return set(url_list)
 
 
+class FerchoechoSpider(Spider):
+    def get_img(self, url='http://ferchoecho.tumblr.com'):
+        url_list = list(get_media_url_list(url))
+        return [i for i in url_list if 'media.tumblr' in i]
+
+
+class Girl2chickSpider(Spider):
+    def get_img(self, url='http://girl2chick.tumblr.com/'):
+        url_list = list(get_media_url_list(url))
+        return [i for i in url_list if 'media.tumblr' in i]
+
+
 class KoreangirlshdSpider(Spider):
     def get_img(self, url='http://koreangirlshd.com/'):
         self.url = url
@@ -111,3 +120,5 @@ class KoreangirlshdSpider(Spider):
             url_list.extend(list(get_media_url_list(each)))
 
         return set(url_list)
+
+
