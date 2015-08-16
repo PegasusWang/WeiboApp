@@ -9,6 +9,7 @@ from leancloud_api import LeanCloudApi
 from single_process import single_process
 from ..crawler.girl.girls_tumblr import (
     HotgirlsfcSpider, MzituSpider, LovelyasiansSpider, KormodelsSpider,
+    KoreangirlshdSpider,
 )
 
 map_class = {
@@ -16,6 +17,7 @@ map_class = {
     'MzituSpider': MzituSpider,
     'LovelyasiansSpider': LovelyasiansSpider,
     'KormodelsSpider': KormodelsSpider,
+    'KoreangirlshdSpider': KoreangirlshdSpider,
 }
 
 
