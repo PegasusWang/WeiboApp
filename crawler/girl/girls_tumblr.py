@@ -122,3 +122,8 @@ class KoreangirlshdSpider(Spider):
         return set(url_list)
 
 
+
+class SnsdpicsSpider(Spider):
+    def get_img(self, url='http://snsdpics.com'):    # /page/n
+        s = KoreangirlshdSpider()
+        return s.get_img(url)
