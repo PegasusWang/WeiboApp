@@ -5,14 +5,33 @@ from ..crawler import Spider
 from bs4 import BeautifulSoup
 import lxml
 import requests
+import time
 
 
-def get_img_url_list(url):
-    html = requests.get(url, timeout=5).text
+# for recursive fetch
+def fetch_html(url, retries=5):
+    try:
+        html = requests.get(url, timeout=5).text
+    except:
+        if retries > 0:
+            print 'fetching...', retries, url
+            time.sleep(3)
+            return fetch_html(url, retries-1)
+        else:
+            print 'fetch failed', url
+            return ''
+    return html
+
+
+def get_media_url_list(url):
+    print 'fetch html...', url
+    html = fetch_html(url)
+    if not html:
+        return []
     soup = BeautifulSoup(html, 'lxml')
     img_tag_list = soup.find_all('img')
     url_list = [i.get('src') for i in img_tag_list if i]
-    return url_list
+    return set(url_list)
 
 
 class HotgirlsfcSpider(Spider):
@@ -24,7 +43,7 @@ class HotgirlsfcSpider(Spider):
         media_list = soup.find_all('div', class_='img')
         img_list = [i.find('img') for i in media_list if i]
         url_list = [i.get('src') for i in img_list if i]
-        return url_list
+        return set(url_list)
 
 
 class MzituSpider(Spider):
@@ -35,7 +54,7 @@ class MzituSpider(Spider):
         soup = BeautifulSoup(html, 'lxml')
         img_list = soup.find_all('img', class_='lazy')
         url_list = [i.get('data-original') for i in img_list if i]
-        return url_list
+        return set(url_list)
 
 
 class LovelyasiansSpider(Spider):
@@ -46,13 +65,24 @@ class LovelyasiansSpider(Spider):
         img_list = soup.find_all('img')
         url_list = [i.get('src') for i in img_list if i]
         url_list = [i for i in url_list if 'media.tumblr' in i]
-        return url_list
+        return set(url_list)
 
 
 class KormodelsSpider(Spider):
     def get_img(self, url='http://kormodels.tumblr.com/'):
-        s = LovelyasiansSpider()
-        return s.get_img(url)
+        self.url = url
+        html = self.get_html()
+        soup = BeautifulSoup(html, 'lxml')
+        a_tag_list = soup.find_all('a')
+        href_list = [i.get('href') for i in a_tag_list if i]
+        href_list = [i for i in href_list if 'kormodels.tumblr.com/post' in i]
+        url_list = []
+        for each in href_list:
+            time.sleep(1)
+            img_list = get_media_url_list(each)
+            img_list = [i for i in img_list if 'media.tumblr' in i]
+            url_list.extend(img_list)
+        return set(url_list)
 
 
 class KoreangirlshdSpider(Spider):
@@ -66,6 +96,7 @@ class KoreangirlshdSpider(Spider):
         url_list = [i.get('src') for i in img_tag_list if i]
         href_list = [i.get('href') for i in a_list if i]
         for each in href_list:
-            url_list.extend(get_img_url_list(each))
+            time.sleep(1)
+            url_list.extend(get_media_url_list(each))
 
-        return url_list
+        return set(url_list)
