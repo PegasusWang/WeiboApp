@@ -47,8 +47,7 @@ spider_list_dict = [
     dict(class_name='GifsonSpider', method_name='get_gif'),
     dict(class_name='MzituSpider', method_name='get_img'),
     dict(class_name='LovelyasiansSpider', method_name='get_img'),
-    #dict(class_name='KormodelsSpider', method_name='get_img'),
-    dict(class_name='KormodelsSpider', method_name='get_gif'),
+    dict(class_name='KormodelsSpider', method_name='get_img'),
     dict(class_name='KoreangirlshdSpider', method_name='get_img'),
 
 ]
