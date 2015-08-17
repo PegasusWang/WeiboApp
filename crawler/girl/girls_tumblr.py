@@ -79,7 +79,9 @@ class KormodelsSpider(Spider):
         return set(url_list)
 
     def get_gif(self, url='http://kormodels.tumblr.com/tagged/gifs/'):
-        self.get_img(url)
+        url_list = self.get_img(url)
+        url_list = [i for i in url_list if 'gif' in i]
+        return url_list
 
     def get_img(self, url='http://kormodels.tumblr.com/'):
         self.url = url
