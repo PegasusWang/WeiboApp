@@ -43,11 +43,9 @@ next：
 搜索godaddy优惠券
 
 today:
-blog mac crontab， 技巧
-#!/bin/bash
-PREFIX=$(cd "$(dirname "$0")"; pwd)
-cd $PREFIX
-python post_weibo.py
+搜美国免费代理
+添加一个animal, upload_all_animal
+添加一个boy, upload_all_boy
 
 
 today note:
