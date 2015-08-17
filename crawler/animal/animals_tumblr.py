@@ -63,3 +63,22 @@ class  AlthingscuteSpider(Spider):
     def get_img(self, url='http://althingscute.tumblr.com/'):
         url_list = list(get_media_url_list(url))
         return [i for i in url_list if 'media.tumblr' in i]
+
+
+class JunkuploadSpider(Spider):
+    def get_img(self, url='http://junkupload.tumblr.com/'):
+        url_list = list(get_media_url_list(url))
+        return [i for i in url_list if 'media.tumblr' in i]
+
+
+class CatsdogsblogSpider(Spider):
+    """4247"""
+    def get_img(self, url='http://catsdogsblog.com'):
+        url_list = list(get_media_url_list(url))
+        return [i for i in url_list if 'media.tumblr' in i]
+
+class AnimalspatronusgifsSpider(Spider):
+    def get_img(self, url='http://animalspatronusgifs.tumblr.com'):
+        url_list = list(get_media_url_list(url))
+        return [i for i in url_list if 'media.tumblr' in i]
+
