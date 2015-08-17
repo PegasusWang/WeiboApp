@@ -78,6 +78,9 @@ class KormodelsSpider(Spider):
         url_list = [i.get('content') for i in img_tag_list if i]
         return set(url_list)
 
+    def get_gif(self, url='http://kormodels.tumblr.com/tagged/gifs/'):
+        self.get_img(url)
+
     def get_img(self, url='http://kormodels.tumblr.com/'):
         self.url = url
         html = self.get_html()
@@ -87,7 +90,7 @@ class KormodelsSpider(Spider):
         href_list = [i for i in href_list if 'kormodels.tumblr.com/post' in i]
         url_list = []
         for each in set(href_list):
-            time.sleep(1)
+            time.sleep(2)
             img_list = self.get_post_img_list(each)
             url_list.extend(list(img_list))
         return set(url_list)
