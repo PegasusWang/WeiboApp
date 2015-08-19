@@ -10,9 +10,11 @@ from single_process import single_process
 from ..crawler.girl.girls_tumblr import (
     HotgirlsfcSpider, MzituSpider, LovelyasiansSpider, KormodelsSpider,
     KoreangirlshdSpider, FerchoechoSpider, Girl2chickSpider, SnsdpicsSpider,
+    PassionNipponesSpider,
 )
 
 map_class = {
+    'PassionNipponesSpider': PassionNipponesSpider,
     'HotgirlsfcSpider': HotgirlsfcSpider,
     'MzituSpider': MzituSpider,
     'LovelyasiansSpider': LovelyasiansSpider,

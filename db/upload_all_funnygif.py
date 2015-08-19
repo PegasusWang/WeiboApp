@@ -11,6 +11,7 @@ from single_process import single_process
 from ..crawler.funnygif.jiandan_crawler import JiandanSpider
 from ..crawler.funnygif.funnygif_tumblr import (
     TumblrForgifsSpider, GifakSpider, GifsboomSpider, GifsonSpider,
+    LolgifruSpider, ElmontajistaSpider,
 )
 
 
@@ -26,6 +27,8 @@ class Upload(object):
             'upload_tumblr_gifak': self.upload_tumblr_gifak,
             'upload_tumblr_gifsboom': self.upload_tumblr_gifsboom,
             'upload_tumblr_gifson': self.upload_tumblr_gifson,
+            'upload_tumblr_lolgifru': self.upload_tumblr_lolgifru,
+            'upload_tumblr_elmontajista': self.upload_tumblr_elmontajista,
         }
 
     def upload(self, **args):
@@ -136,7 +139,35 @@ class Upload(object):
                         leancloud_upload.upload_file_by_url(filename, each_url)
                         time.sleep(2)
 
+    def upload_tumblr_lolgifru(self, **kwargs):
+        leancloud_upload = self._upload
+        spider = LolgifruSpider()
+        gif_list = spider.get_gif()
+        for each_url in gif_list:
+            if each_url:
+                print each_url
+                filename = each_url
+                if leancloud_upload.is_img_file(filename) and \
+                    not leancloud_upload.exist_file(filename):
+                        leancloud_upload.upload_file_by_url(filename, each_url)
+                        time.sleep(2)
+
+    def upload_tumblr_elmontajista(self, **kwargs):
+        leancloud_upload = self._upload
+        spider = ElmontajistaSpider()
+        gif_list = spider.get_gif()
+        for each_url in gif_list:
+            if each_url:
+                print each_url
+                filename = each_url
+                if leancloud_upload.is_img_file(filename) and \
+                    not leancloud_upload.exist_file(filename):
+                        leancloud_upload.upload_file_by_url(filename, each_url)
+                        time.sleep(2)
+
 dict_list = [
+    dict(upload_type='tumblr_elmontajista', class_name='Elmontajista'),
+    dict(upload_type='tumblr_lolgifru', class_name='Lolgifru'),
     dict(upload_type='tumblr_forgifs', class_name='TumblrForgifs'),
     dict(upload_type='tumblr_gifak', class_name='TumblrGifak'),
     dict(upload_type='tumblr_gifsboom', class_name='Gifsboom'),
