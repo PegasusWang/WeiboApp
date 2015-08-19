@@ -45,3 +45,16 @@ class GifsonSpider(Spider):
     def get_gif(self, url='http://gifson.net'):
         s = GifsboomSpider()
         return s.get_gif(url)
+
+
+class LolgifruSpider(Spider):
+    def get_gif(self, url='http://lolgif.ru'):
+        s = GifsboomSpider()
+        return s.get_gif(url)
+
+
+class ElmontajistaSpider(Spider):
+    """from 1 to 380 page"""
+    def get_gif(self, url='http://elmontajista.tumblr.com'):
+        s = GifsboomSpider()
+        return s.get_gif(url)

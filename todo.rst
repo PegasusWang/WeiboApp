@@ -50,3 +50,6 @@ today:
 
 today note:
 jiandan同一个ip不能用两个cookies访问
+恢复三个树莓派的三个爬虫，从日志恢复
+恢复本机的cat.py爬虫。
+vps主机安装并记录环境，clone代码跑爬虫。

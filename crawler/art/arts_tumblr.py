@@ -132,31 +132,3 @@ class SnsdpicsSpider(Spider):
     def get_img(self, url='http://snsdpics.com'):    # /page/n
         s = KoreangirlshdSpider()
         return s.get_img(url)
-
-
-class PassionNipponesSpider(Spider):
-    def get_post_img_list(self, url):
-        print 'fetch...passion', url
-        html = fetch_html(url)
-        soup = BeautifulSoup(html, 'lxml')
-        img_tag_list = soup.find_all('img')
-        href_list = [i.get('src') for i in img_tag_list if i]
-        url_list = [i for i in href_list if 'ekladata' in i]
-        return set(url_list)
-
-    def get_img(self, url='http://passion-nippones.tumblr.com'):
-        self.url = url
-        html = self.get_html()
-        soup = BeautifulSoup(html, 'lxml')
-        a_tag_list = soup.find_all('a')
-        href_list = []
-        for each in a_tag_list:
-            href = each.get('href', None)
-            if href and 'eklablog' in href:
-                href_list.append(href)
-        url_list = []
-        for each in set(href_list):
-            time.sleep(2)
-            img_list = self.get_post_img_list(each)
-            url_list.extend(list(img_list))
-        return set(url_list)

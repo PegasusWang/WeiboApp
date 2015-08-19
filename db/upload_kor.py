@@ -105,7 +105,7 @@ class Upload(object):
                             time.sleep(2)
 
     def upload_kormodels(self, **kwargs):
-        beg, end = 10, 197
+        beg, end = 196, 197
         for i in range(beg, end+1):
             time.sleep(2)
             url = 'http://kormodels.tumblr.com/page/%s' % i

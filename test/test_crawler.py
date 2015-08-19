@@ -6,10 +6,11 @@ from crawler.funnygif.jiandan_crawler import JiandanSpider
 from crawler.girl.girls_tumblr import (
     HotgirlsfcSpider, MzituSpider, LovelyasiansSpider,
     KormodelsSpider, KoreangirlshdSpider, FerchoechoSpider,
-    Girl2chickSpider, SnsdpicsSpider,
+    Girl2chickSpider, SnsdpicsSpider, PassionNipponesSpider
 )
 from crawler.funnygif.funnygif_tumblr import (
-    GifsboomSpider, GifsonSpider,
+    GifsboomSpider, GifsonSpider, LolgifruSpider,
+    ElmontajistaSpider,
 )
 from crawler.animal.animals_tumblr import (
     AnimalGifHunterSpider, AlthingscuteSpider, JunkuploadSpider,
@@ -33,6 +34,9 @@ map_spider = {
     'JunkuploadSpider': JunkuploadSpider,
     'CatsdogsblogSpider': CatsdogsblogSpider,
     'AnimalspatronusgifsSpider': AnimalspatronusgifsSpider,
+    'LolgifruSpider': LolgifruSpider,
+    'ElmontajistaSpider': ElmontajistaSpider,
+    'PassionNipponesSpider': PassionNipponesSpider,
 }
 
 
@@ -70,6 +74,9 @@ spider_list_dict = [
     dict(class_name='JunkuploadSpider', method_name='get_img'),
     dict(class_name='CatsdogsblogSpider', method_name='get_img'),
     dict(class_name='AnimalspatronusgifsSpider', method_name='get_img'),
+    dict(class_name='LolgifruSpider', method_name='get_gif'),
+    dict(class_name='ElmontajistaSpider', method_name='get_gif'),
+    dict(class_name='PassionNipponesSpider', method_name='get_img'),
 ]
 
 
@@ -85,7 +92,7 @@ def test_spider(class_name, method_name, url='', cookies=''):
         print i
 
 def test():
-    s = spider_list_dict[15]
+    s = spider_list_dict[18]
     spider = SpiderTest(**s)
     l = spider.test_spider_method(s['method_name'])
     for i in l:

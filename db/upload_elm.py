@@ -8,10 +8,9 @@ import mimetypes
 import time
 from leancloud_api import LeanCloudApi
 from single_process import single_process
-from ..crawler.animal.animals_tumblr import (
-    AnimalGifHunterSpider,  AlthingscuteSpider,
+from ..crawler.funnygif.funnygif_tumblr import (
+    GifsboomSpider, LolgifruSpider, ElmontajistaSpider,
 )
-
 
 class Upload(object):
     def __init__(self, **kwargs):
@@ -19,7 +18,7 @@ class Upload(object):
         self.class_name = kwargs.get('class_name')
         self._upload = LeanCloudApi(self.class_name)
         self.map_method = {
-            'upload_althingscute': self.upload_althingscute,
+            'upload_elmontajista': self.upload_elmontajista,
         }
 
     def upload(self, **args):
@@ -48,15 +47,15 @@ class Upload(object):
         return mimetypes.guess_type(file_abspath)[0]
 
 
-    def upload_althingscute(self, **kwargs):
-        beg, end = 1, 40
+    def upload_elmontajista(self, **kwargs):
+        beg, end = 1, 380
         for i in range(beg, end+1):
             time.sleep(2)
-            url = 'http://althingscute.tumblr.com/page/%s' % i
+            url = 'http://elmontajista.tumblr.com/page/%s' % i
             print url
             leancloud_upload = self._upload
-            spider = AlthingscuteSpider()
-            img_list = spider.get_img(url)
+            spider = ElmontajistaSpider()
+            img_list = spider.get_gif(url)
             for each_url in img_list:
                 if each_url:
                     print each_url
@@ -65,9 +64,10 @@ class Upload(object):
                         not leancloud_upload.exist_file(filename):
                             leancloud_upload.upload_file_by_url(filename, each_url)
                             time.sleep(2)
+
+
 dict_list = [
-    #dict(upload_type='animalgifhunter', class_name='Animalgifhunter'),
-    dict(upload_type='althingscute', class_name='Althingscute'),
+    dict(upload_type='elmontajista', class_name='Elmontajista'),
 ]
 
 
