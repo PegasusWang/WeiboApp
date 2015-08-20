@@ -1,12 +1,10 @@
-*arg可以解包元组，而**arg则可以解包字典
-leancloud用递归查询方式遍历* 所有*数据,递归注意要排序，否则有可能取到重复数据
+leancloud用递归查询方式遍历* 所有*数据,递归注意要(排序)，否则有可能取到重复数据
 
 to learn:
 视频网站link解析
 django 类的写法
 tornado
 scrapy learn
-通过代理(or use vps)
 casperjs
 用nodejs搭建博客http://witcheryne.iteye.com/blog/1169854
 python高级用法，类，oop等。
@@ -17,17 +15,16 @@ python高级用法，类，oop等。
 每次文件名修改后记得检查更改ctrontab的路径，和执行的sh路径，先测试crontab
 每晚检查日志，定期更换cookies。
 注意每次要给新的类名添加ID子增字段。
-每次添加一个crawler后先loop爬，再添加到upload_all里边
+每次添加一个crawler后先loop爬，再添加到对应的upload_all里边
 
 todo：
-tumblr funny 图片, gif, meizi
+tumblr funny 图片, gif, meizi, boy ,art
 weibo app认证
 duowan tuku图片爬虫
 haha_sougou
 zaker funny channel
 android app 百思
 用koding, vps抓google＋
-http://www.mzitu.com/model/page/
 
 
 图片按月分类
@@ -43,13 +40,10 @@ next：
 搜索godaddy优惠券
 
 today:
-搜美国免费代理
-添加一个animal, upload_all_animal
 添加一个boy, upload_all_boy
+添加一个art, upload_all_art
 
 
 today note:
 jiandan同一个ip不能用两个cookies访问
 恢复三个树莓派的三个爬虫，从日志恢复
-恢复本机的cat.py爬虫。
-vps主机安装并记录环境，clone代码跑爬虫。

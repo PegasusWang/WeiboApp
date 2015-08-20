@@ -42,9 +42,11 @@ class LeanCloudApi(object):
         content = file_obj.get('filename').split('.')[0]
         return {'pic': pic, 'content': content}
 
-    def get_imgfile_by_recent_ID(self, nums=50):
+    def get_imgfile_by_recent_ID(self, nums=50, skips=0):
         query = self._query
         query.descending('ID')
+        if skips:
+            query.skip(skips)
         query.limit(nums)
         file_list = query.find()
         file_obj = random.choice(file_list)
