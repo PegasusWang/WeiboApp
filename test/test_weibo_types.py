@@ -39,4 +39,4 @@ def test_all_types():
 
 
 if __name__ == '__main__':
-    test_type('tumblr_gifak')
+    test_type('tumblr_gifsboom')

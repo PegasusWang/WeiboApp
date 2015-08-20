@@ -20,6 +20,10 @@ class WeiboTypes(object):
             'get_gif_file': self.get_gif_file,
             'get_tumblr_forgifs': self.get_tumblr_forgifs,
             'get_tumblr_gifak': self.get_tumblr_gifak,
+            'get_tumblr_catsdogsblog': self.get_tumblr_catsdogsblog,
+            'get_tumblr_gifsboom': self.get_tumblr_gifsboom,
+            'get_tumblr_gifson': self.get_tumblr_gifson,
+
             'get_qiubai_hot': self.get_qiubai_hot,
             'get_qiubai_img': self.get_qiubai_img,
             'get_qiubai_duanzi': self.get_qiubai_duanzi,
@@ -44,6 +48,21 @@ class WeiboTypes(object):
     def get_tumblr_gifak(self):
         upload = leancloud_api.LeanCloudApi('TumblrForgifs')
         d = upload.get_imgfile_by_recent_ID()
+        self.weibo_app.post_img(u'每日gif', d.get('pic'))
+
+    def get_tumblr_catsdogsblog(self):
+        upload = leancloud_api.LeanCloudApi('Catsdogsblog')
+        d = upload.get_imgfile_by_recent_ID(100)
+        self.weibo_app.post_img(u'猫猫狗狗们', d.get('pic'))
+
+    def get_tumblr_gifsboom(self):
+        upload = leancloud_api.LeanCloudApi('Gifsboom')
+        d = upload.get_imgfile_by_recent_ID(100)
+        self.weibo_app.post_img(u'每日gif', d.get('pic'))
+
+    def get_tumblr_gifson(self):
+        upload = leancloud_api.LeanCloudApi('Gifson')
+        d = upload.get_imgfile_by_recent_ID(100)
         self.weibo_app.post_img(u'每日gif', d.get('pic'))
 
     def get_qiubai_hot(self):
@@ -72,3 +91,4 @@ class WeiboTypes(object):
         l = s.get_duanzi(url)
         i = random.choice(l)
         self.weibo_app.post_text(i.get('content'))
+
