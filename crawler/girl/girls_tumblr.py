@@ -160,3 +160,30 @@ class PassionNipponesSpider(Spider):
             img_list = self.get_post_img_list(each)
             url_list.extend(list(img_list))
         return set(url_list)
+
+
+class Sossex1Spider(Spider):
+    def get_img(self, url='http://sossex1.tumblr.com'):
+        img_list = get_media_url_list(url)
+        img_list = [i for i in img_list if i and 'media.tumblr' in i]
+        return set([i for i in img_list if 'avatar' not in i])
+
+
+class HotcosplaychicksSpider(Spider):
+    """from 1 to 966"""
+    def get_img(self, url='http://hotcosplaychicks.tumblr.com'):
+        img_list = get_media_url_list(url)
+        return set([i for i in img_list if i and 'media.tumblr' in i])
+
+
+class ForchiSpider(Spider):
+    def get_img(self, url='http://forchi.tumblr.com'):
+        img_list = get_media_url_list(url)
+        return set([i for i in img_list if i and 'media.tumblr' in i])
+
+
+class ChinabeautiesSpider(Spider):
+    """from 1 to 660"""
+    def get_img(self, url='http://chinabeauties.tumblr.com'):
+        img_list = get_media_url_list(url)
+        return set([i for i in img_list if i and 'media.tumblr' in i])

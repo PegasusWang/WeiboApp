@@ -8,10 +8,12 @@ import mimetypes
 import time
 from leancloud_api import LeanCloudApi
 from single_process import single_process
-from ..crawler.animal.animals_tumblr import (
-    CatsdogsblogSpider,
+from ..crawler.funnygif.funnygif_tumblr import (
+    GifsboomSpider, LolgifruSpider,
 )
-
+from ..crawler.girl.girls_tumblr import (
+    PassionNipponesSpider, Sossex1Spider, HotcosplaychicksSpider,
+)
 
 class Upload(object):
     def __init__(self, **kwargs):
@@ -19,7 +21,7 @@ class Upload(object):
         self.class_name = kwargs.get('class_name')
         self._upload = LeanCloudApi(self.class_name)
         self.map_method = {
-            'upload_catsdogsblog': self.upload_catsdogsblog,
+            'upload_hotcosplaychicks': self.upload_hotcosplaychicks,
         }
 
     def upload(self, **args):
@@ -48,15 +50,14 @@ class Upload(object):
         return mimetypes.guess_type(file_abspath)[0]
 
 
-    def upload_catsdogsblog(self, **kwargs):
-        #beg, end = 1, 4248
-        beg, end = 4250, 4285
+    def upload_hotcosplaychicks(self, **kwargs):
+        beg, end = 1, 966
         for i in range(beg, end+1):
-            time.sleep(2)
-            url = 'http://catsdogsblog.com/page/%s' % i
+            time.sleep(3)
+            url = 'http://hotcosplaychicks.tumblr.com/page/%s' % i
             print url
             leancloud_upload = self._upload
-            spider =  CatsdogsblogSpider()
+            spider = HotcosplaychicksSpider()
             img_list = spider.get_img(url)
             for each_url in img_list:
                 if each_url:
@@ -66,8 +67,10 @@ class Upload(object):
                         not leancloud_upload.exist_file(filename):
                             leancloud_upload.upload_file_by_url(filename, each_url)
                             time.sleep(2)
+
 dict_list = [
-    dict(upload_type='catsdogsblog', class_name='Catsdogsblog'),
+    #dict(upload_type='sossex1', class_name='Sossex1'),
+    dict(upload_type='hotcosplaychicks', class_name='Hotcosplaychicks'),
 ]
 
 
