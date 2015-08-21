@@ -58,7 +58,7 @@ class Upload(object):
             print url
             leancloud_upload = self._upload
             spider = TychoonSpider()
-            img_list = spider.get_img(url)
+            img_list = spider.get_gif(url)
             for each_url in img_list:
                 if each_url:
                     print each_url
@@ -68,7 +68,7 @@ class Upload(object):
                             leancloud_upload.upload_file_by_url(filename, each_url)
                             time.sleep(2)
 dict_list = [
-    dict(upload_type='passion', class_name='PassionNippones'),
+    dict(upload_type='tyc', class_name='Tychoon'),
 ]
 
 
