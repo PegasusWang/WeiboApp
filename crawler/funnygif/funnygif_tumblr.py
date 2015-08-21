@@ -64,3 +64,14 @@ class IcachondeoSpider(Spider):
     def get_gif(self, url='http://icachondeo.com/category/gifsanimados/'):
         s = GifsboomSpider()
         return s.get_gif(url)
+
+
+"""
+class AewaeSpider(Spider):
+http://www.aewae.com/page/100
+"""
+
+class TychoonSpider(Spider):
+    def get_gif(self, url='http://tychoon.tumblr.com/'):
+        s = GifsboomSpider()
+        return s.get_gif(url)
