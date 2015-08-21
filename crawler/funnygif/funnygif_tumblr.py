@@ -66,10 +66,11 @@ class IcachondeoSpider(Spider):
         return s.get_gif(url)
 
 
-"""
 class AewaeSpider(Spider):
-http://www.aewae.com/page/100
-"""
+    def get_gif(self, url='http://www.aewae.com/'):
+        s = GifsboomSpider()
+        return s.get_gif(url)
+
 
 class TychoonSpider(Spider):
     def get_gif(self, url='http://tychoon.tumblr.com/'):
