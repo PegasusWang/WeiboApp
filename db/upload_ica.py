@@ -9,10 +9,10 @@ import time
 from leancloud_api import LeanCloudApi
 from single_process import single_process
 from ..crawler.funnygif.funnygif_tumblr import (
-    GifsboomSpider, LolgifruSpider,
+    GifsboomSpider, LolgifruSpider, IcachondeoSpider,
 )
 from ..crawler.girl.girls_tumblr import (
-    ForchiSpider,
+    PassionNipponesSpider,
 )
 
 class Upload(object):
@@ -21,7 +21,7 @@ class Upload(object):
         self.class_name = kwargs.get('class_name')
         self._upload = LeanCloudApi(self.class_name)
         self.map_method = {
-            'upload_forchi': self.upload_forchi,
+            'upload_ica': self.upload_ica,
         }
 
     def upload(self, **args):
@@ -50,15 +50,15 @@ class Upload(object):
         return mimetypes.guess_type(file_abspath)[0]
 
 
-    def upload_forchi(self, **kwargs):
-        beg, end = 1, 90
+    def upload_ica(self, **kwargs):
+        beg, end = 1, 119
         for i in range(beg, end+1):
             time.sleep(3)
-            url = 'http://forchi.tumblr.com/page/%s' % i
+            url = 'http://icachondeo.com/category/page/%s/' % i
             print url
             leancloud_upload = self._upload
-            spider = ForchiSpider()
-            img_list = spider.get_img(url)
+            spider = IcachondeoSpider()
+            img_list = spider.get_gif(url)
             for each_url in img_list:
                 if each_url:
                     print each_url
@@ -67,9 +67,8 @@ class Upload(object):
                         not leancloud_upload.exist_file(filename):
                             leancloud_upload.upload_file_by_url(filename, each_url)
                             time.sleep(2)
-
 dict_list = [
-    dict(upload_type='forchi', class_name='Forchi'),
+    dict(upload_type='ica', class_name='Icachondeo'),
 ]
 
 
