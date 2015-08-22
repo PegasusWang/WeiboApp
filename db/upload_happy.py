@@ -70,7 +70,7 @@ class Upload(object):
                             time.sleep(2)
 
 dict_list = [
-    dict(upload_type='happylim', class_name='Girls'),
+    dict(upload_type='happylim', class_name='Happylim'),
 ]
 
 
