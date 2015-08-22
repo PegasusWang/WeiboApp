@@ -193,3 +193,15 @@ class BestofasiangirlsSpider(Spider):
     def get_img(self, url='http://bestofasiangirls.tumblr.com/'):
         img_list = get_media_url_list(url)
         return set([i for i in img_list if i and 'media.tumblr' in i])
+
+
+class TattoocnSpider(Spider):
+    def get_img(self, url='http://tattoocn.tumblr.com/'):
+        img_list = get_media_url_list(url)
+        return set([i for i in img_list if i and 'media.tumblr' in i])
+
+
+class HappylimSpider(Spider):
+    def get_img(self, url='http://hello-happylim-blog.tumblr.com/'):
+        img_list = get_media_url_list(url)
+        return set([i for i in img_list if i and 'media.tumblr' in i])
