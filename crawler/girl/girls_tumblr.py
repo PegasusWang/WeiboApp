@@ -187,3 +187,9 @@ class ChinabeautiesSpider(Spider):
     def get_img(self, url='http://chinabeauties.tumblr.com'):
         img_list = get_media_url_list(url)
         return set([i for i in img_list if i and 'media.tumblr' in i])
+
+
+class BestofasiangirlsSpider(Spider):
+    def get_img(self, url='http://bestofasiangirls.tumblr.com/'):
+        img_list = get_media_url_list(url)
+        return set([i for i in img_list if i and 'media.tumblr' in i])
