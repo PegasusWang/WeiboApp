@@ -121,7 +121,7 @@ class KoreangirlshdSpider(Spider):
         url_list = [i.get('src') for i in img_tag_list if i]
         href_list = [i.get('href') for i in a_list if i]
         for each in set(href_list):
-            time.sleep(1)
+            time.sleep(2)
             url_list.extend(list(get_media_url_list(each)))
 
         return set(url_list)
@@ -202,6 +202,33 @@ class TattoocnSpider(Spider):
 
 
 class HappylimSpider(Spider):
+    def get_post_url_list(self, href_list):
+        prefix = 'http://hello-happylim-blog.tumblr.com/post'
+        href_list = [i for i in href_list if i and prefix in i]
+        href_list = [i for i in href_list if 'embed' not in i and
+                     'note' not in i]
+        return href_list
+
+    def get_post_img_list(self, url):
+        """fetch http://kormodels.tumblr.com/post page"""
+        print 'fetch...post', url
+        html = fetch_html(url)
+        soup = BeautifulSoup(html, 'lxml')
+        img_tag_list = soup.find_all('meta', attrs={'property': 'og:image'})
+        url_list = [i.get('content') for i in img_tag_list if i]
+        return set(url_list)
+
     def get_img(self, url='http://hello-happylim-blog.tumblr.com/'):
-        img_list = get_media_url_list(url)
-        return set([i for i in img_list if i and 'media.tumblr' in i])
+        html = fetch_html(url)
+        soup = BeautifulSoup(html, 'lxml')
+        a_tag_list = soup.find_all('a')
+        href_list = []
+        for each in a_tag_list:
+            href_list.append(each.get('href', None))
+        href_list = self.get_post_url_list(href_list)
+
+        img_list = []
+        for each_url in set(href_list):
+            time.sleep(2)
+            img_list.extend(list(self.get_post_img_list(each_url)))
+        return set(img_list)
