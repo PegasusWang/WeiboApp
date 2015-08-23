@@ -4,6 +4,7 @@
 import setup
 import _env
 import config
+import sys
 from weibo_app import WeiboApp
 from weibo_types import WeiboTypes
 
@@ -39,4 +40,7 @@ def test_all_types():
 
 
 if __name__ == '__main__':
-    test_type('tumblr_gifsboom')
+    if sys.argv[1]:
+        test_type(sys.argv[1])
+    else:
+        test_type('tumblr_happylim')

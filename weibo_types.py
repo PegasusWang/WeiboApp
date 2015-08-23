@@ -17,16 +17,36 @@ class WeiboTypes(object):
     def __init__(self, weibo_app):
         self.weibo_app = weibo_app
         self.map_method = {
+            # gif
             'get_gif_file': self.get_gif_file,
             'get_tumblr_forgifs': self.get_tumblr_forgifs,
             'get_tumblr_gifak': self.get_tumblr_gifak,
-            'get_tumblr_catsdogsblog': self.get_tumblr_catsdogsblog,
             'get_tumblr_gifsboom': self.get_tumblr_gifsboom,
             'get_tumblr_gifson': self.get_tumblr_gifson,
+            'get_tumblr_aewae': self.get_tumblr_aewae,
+            'get_tumblr_elmontajista': self.get_tumblr_elmontajista,
+            'get_tumblr_icachondeo': self.get_tumblr_icachondeo,
+            'get_tumblr_tychoon': self.get_tumblr_tychoon,
 
+            # animals
+            'get_tumblr_catsdogsblog': self.get_tumblr_catsdogsblog,
+            'get_tumblr_althingscute': self.get_tumblr_althingscute,
+
+            # qiubai
             'get_qiubai_hot': self.get_qiubai_hot,
             'get_qiubai_img': self.get_qiubai_img,
             'get_qiubai_duanzi': self.get_qiubai_duanzi,
+
+            # girls
+            'get_tumblr_bestofasiangirls': self.get_tumblr_bestofasiangirls,
+            'get_tumblr_chinabeauties': self.get_tumblr_chinabeauties,
+            'get_tumblr_sossex1': self.get_tumblr_sossex1,
+            'get_tumblr_happylim': self.get_tumblr_happylim,
+            'get_tumblr_girl2chick': self.get_tumblr_girl2chick,
+            'get_tumblr_lovelyasians': self.get_tumblr_lovelyasians,
+
+            # boys
+            'get_tumblr_lobbu': self.get_tumblr_lobbu,
         }
 
     def choose(self, type_name):
@@ -50,10 +70,6 @@ class WeiboTypes(object):
         d = upload.get_imgfile_by_recent_ID()
         self.weibo_app.post_img(u'每日gif', d.get('pic'))
 
-    def get_tumblr_catsdogsblog(self):
-        upload = leancloud_api.LeanCloudApi('Catsdogsblog')
-        d = upload.get_imgfile_by_recent_ID(100)
-        self.weibo_app.post_img(u'猫猫狗狗们', d.get('pic'))
 
     def get_tumblr_gifsboom(self):
         upload = leancloud_api.LeanCloudApi('Gifsboom')
@@ -64,6 +80,36 @@ class WeiboTypes(object):
         upload = leancloud_api.LeanCloudApi('Gifson')
         d = upload.get_imgfile_by_recent_ID(100)
         self.weibo_app.post_img(u'每日gif', d.get('pic'))
+
+    def get_tumblr_aewae(self):
+        upload = leancloud_api.LeanCloudApi('Aewae')
+        d = upload.get_imgfile_by_recent_ID(100)
+        self.weibo_app.post_img(u'每日gif', d.get('pic'))
+
+    def get_tumblr_elmontajista(self):
+        upload = leancloud_api.LeanCloudApi('Elmontajista')
+        d = upload.get_imgfile_by_recent_ID(100)
+        self.weibo_app.post_img(u'每日gif', d.get('pic'))
+
+    def get_tumblr_icachondeo(self):
+        upload = leancloud_api.LeanCloudApi('Icachondeo')
+        d = upload.get_imgfile_by_recent_ID(100)
+        self.weibo_app.post_img(u'每日gif', d.get('pic'))
+
+    def get_tumblr_tychoon(self):
+        upload = leancloud_api.LeanCloudApi('Tychoon')
+        d = upload.get_imgfile_by_recent_ID(100)
+        self.weibo_app.post_img(u'每日gif', d.get('pic'))
+
+    def get_tumblr_catsdogsblog(self):
+        upload = leancloud_api.LeanCloudApi('Catsdogsblog')
+        d = upload.get_imgfile_by_recent_ID(100)
+        self.weibo_app.post_img(u'猫猫狗狗们', d.get('pic'))
+
+    def get_tumblr_althingscute(self):
+        upload = leancloud_api.LeanCloudApi('Althingscute')
+        d = upload.get_imgfile_by_recent_ID(100)
+        self.weibo_app.post_img(u'cute things', d.get('pic'))
 
     def get_qiubai_hot(self):
         url = "http://m.qiushibaike.com/hot/page"
@@ -92,3 +138,37 @@ class WeiboTypes(object):
         i = random.choice(l)
         self.weibo_app.post_text(i.get('content'))
 
+    def get_tumblr_bestofasiangirls(self):
+        upload = leancloud_api.LeanCloudApi('Bestofasiangirls')
+        d = upload.get_imgfile_by_recent_ID(100)
+        self.weibo_app.post_img(u'妹子呦', d.get('pic'))
+
+    def get_tumblr_chinabeauties(self):
+        upload = leancloud_api.LeanCloudApi('Chinabeauties')
+        d = upload.get_imgfile_by_recent_ID(100)
+        self.weibo_app.post_img(u'妹子呦', d.get('pic'))
+
+    def get_tumblr_sossex1(self):
+        upload = leancloud_api.LeanCloudApi('Sossex1')
+        d = upload.get_imgfile_by_recent_ID(100)
+        self.weibo_app.post_img(u'妹子呦', d.get('pic'))
+
+    def get_tumblr_happylim(self):
+        upload = leancloud_api.LeanCloudApi('Happylim')
+        d = upload.get_imgfile_by_recent_ID(100)
+        self.weibo_app.post_img(u'妹子呦', d.get('pic'))
+
+    def get_tumblr_girl2chick(self):
+        upload = leancloud_api.LeanCloudApi('Girl2chick')
+        d = upload.get_imgfile_by_recent_ID(100)
+        self.weibo_app.post_img(u'妹子呦', d.get('pic'))
+
+    def get_tumblr_lovelyasians(self):
+        upload = leancloud_api.LeanCloudApi('Lovelyasians')
+        d = upload.get_imgfile_by_recent_ID(100)
+        self.weibo_app.post_img(u'妹子呦', d.get('pic'))
+
+    def get_tumblr_lobbu(self):
+        upload = leancloud_api.LeanCloudApi('Lobbu')
+        d = upload.get_imgfile_by_recent_ID(100)
+        self.weibo_app.post_img(u'小鲜肉', d.get('pic'))
