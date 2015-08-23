@@ -18,8 +18,14 @@ from crawler.animal.animals_tumblr import (
     AnimalGifHunterSpider, AlthingscuteSpider, JunkuploadSpider,
     CatsdogsblogSpider, AnimalspatronusgifsSpider,
 )
-
+from crawler.boy.boys_tumblr import (
+    AllboysboysSpider,
+)
+from crawler.fashion.fashion_tumblr import (
+    KoreanFashionSpider,
+)
 map_spider = {
+    'KoreanFashionSpider': KoreanFashionSpider,
     'HappylimSpider': HappylimSpider,
     'JiandanSpider': JiandanSpider,
     'HotgirlsfcSpider': HotgirlsfcSpider,
@@ -44,6 +50,7 @@ map_spider = {
     'HotcosplaychicksSpider': HotcosplaychicksSpider,
     'ForchiSpider': ForchiSpider,
     'IcachondeoSpider': IcachondeoSpider,
+    'AllboysboysSpider': AllboysboysSpider,
 }
 
 
@@ -64,6 +71,8 @@ class SpiderTest(object):
 
 
 spider_list_dict = [
+    dict(class_name='KoreanFashionSpider', method_name='get_img'),
+    dict(class_name='AllboysboysSpider', method_name='get_img'),
     dict(class_name='HotgirlsfcSpider', method_name='get_img'),
     dict(class_name='JiandanSpider', url='', cookies='757477302=453; bad-click-load=off; nsfw-click-load=off; gif-click-load=off; _gat=1; 757477302=433; _ga=GA1.2.784043191.1438269751; Hm_lvt_fd93b7fb546adcfbcf80c4fc2b54da2c=1438270942,1438270944,1438270947,1438995506; Hm_lpvt_fd93b7fb546adcfbcf80c4fc2b54da2c=1439110556',
          method_name='get_meizi'),
@@ -104,7 +113,7 @@ def test_spider(class_name, method_name, url='', cookies=''):
         print i
 
 def test():
-    s = spider_list_dict[23]
+    s = spider_list_dict[0]
     spider = SpiderTest(**s)
     l = spider.test_spider_method(s['method_name'])
     for i in l:
