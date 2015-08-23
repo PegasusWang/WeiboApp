@@ -38,6 +38,7 @@ class WeiboTypes(object):
             'get_qiubai_duanzi': self.get_qiubai_duanzi,
 
             # girls
+            'get_girls': self.get_girls,
             'get_tumblr_bestofasiangirls': self.get_tumblr_bestofasiangirls,
             'get_tumblr_chinabeauties': self.get_tumblr_chinabeauties,
             'get_tumblr_sossex1': self.get_tumblr_sossex1,
@@ -137,6 +138,11 @@ class WeiboTypes(object):
         l = s.get_duanzi(url)
         i = random.choice(l)
         self.weibo_app.post_text(i.get('content'))
+
+    def get_girls(self):
+        upload = leancloud_api.LeanCloudApi('Girls')
+        d = upload.get_imgfile_by_recent_ID(100)
+        self.weibo_app.post_img(u'妹子呦', d.get('pic'))
 
     def get_tumblr_bestofasiangirls(self):
         upload = leancloud_api.LeanCloudApi('Bestofasiangirls')
