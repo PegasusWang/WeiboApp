@@ -46,4 +46,3 @@ today:
 
 today note:
 jiandan同一个ip不能用两个cookies访问
-恢复三个树莓派的三个爬虫，从日志恢复
