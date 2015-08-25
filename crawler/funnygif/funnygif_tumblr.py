@@ -58,3 +58,21 @@ class ElmontajistaSpider(Spider):
     def get_gif(self, url='http://elmontajista.tumblr.com'):
         s = GifsboomSpider()
         return s.get_gif(url)
+
+
+class IcachondeoSpider(Spider):
+    def get_gif(self, url='http://icachondeo.com/category/gifsanimados/'):
+        s = GifsboomSpider()
+        return s.get_gif(url)
+
+
+class AewaeSpider(Spider):
+    def get_gif(self, url='http://www.aewae.com/'):
+        s = GifsboomSpider()
+        return s.get_gif(url)
+
+
+class TychoonSpider(Spider):
+    def get_gif(self, url='http://tychoon.tumblr.com/'):
+        s = GifsboomSpider()
+        return s.get_gif(url)

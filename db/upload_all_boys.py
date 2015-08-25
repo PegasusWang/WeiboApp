@@ -7,29 +7,13 @@ import mimetypes
 import time
 from leancloud_api import LeanCloudApi
 from single_process import single_process
-from ..crawler.girl.girls_tumblr import (
-    HotgirlsfcSpider, MzituSpider, LovelyasiansSpider, KormodelsSpider,
-    KoreangirlshdSpider, FerchoechoSpider, Girl2chickSpider, SnsdpicsSpider,
-    PassionNipponesSpider, Sossex1Spider, HotcosplaychicksSpider,
-    ForchiSpider, ChinabeautiesSpider, HappylimSpider, BestofasiangirlsSpider,
+from ..crawler.boy.boysls_tumblr import (
+    AllboysboysSpider, LobbuSpider,
 )
 
 map_class = {
-    'BestofasiangirlsSpider': BestofasiangirlsSpider,
-    'HappylimSpider': HappylimSpider,
-    'ChinabeautiesSpider': ChinabeautiesSpider,
-    'ForchiSpider': ForchiSpider,
-    'HotcosplaychicksSpider': HotcosplaychicksSpider,
-    'Sossex1Spider': Sossex1Spider,
-    'PassionNipponesSpider': PassionNipponesSpider,
-    'HotgirlsfcSpider': HotgirlsfcSpider,
-    'MzituSpider': MzituSpider,
-    'LovelyasiansSpider': LovelyasiansSpider,
-    'KormodelsSpider': KormodelsSpider,
-    'KoreangirlshdSpider': KoreangirlshdSpider,
-    'FerchoechoSpider': FerchoechoSpider,
-    'Girl2chickSpider': Girl2chickSpider,
-    'SnsdpicsSpider': SnsdpicsSpider,
+    'AllboysboysSpider': AllboysboysSpider,
+    'LobbuSpider': LobbuSpider,
 }
 
 

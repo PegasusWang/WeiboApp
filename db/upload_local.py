@@ -40,7 +40,9 @@ def upload_all_file(class_name, file_dir):
 
 @single_process
 def main():
-    upload_all_file('ImgFile', config.UPLOAD_DIR)
+    class_name_list = ['ImgFile', 'Girls']
+    for class_name, each_dir in zip(class_name_list, config.UPLOAD_DIR):
+        upload_all_file(class_name, each_dir)
     print time.strftime('%Y-%m-%d %A %X %Z',time.localtime(time.time()))
 
 

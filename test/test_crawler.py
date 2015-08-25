@@ -6,18 +6,28 @@ from crawler.funnygif.jiandan_crawler import JiandanSpider
 from crawler.girl.girls_tumblr import (
     HotgirlsfcSpider, MzituSpider, LovelyasiansSpider,
     KormodelsSpider, KoreangirlshdSpider, FerchoechoSpider,
-    Girl2chickSpider, SnsdpicsSpider, PassionNipponesSpider
+    Girl2chickSpider, SnsdpicsSpider, PassionNipponesSpider,
+    Sossex1Spider, HotcosplaychicksSpider, ForchiSpider,
+    HappylimSpider,
 )
 from crawler.funnygif.funnygif_tumblr import (
     GifsboomSpider, GifsonSpider, LolgifruSpider,
-    ElmontajistaSpider,
+    ElmontajistaSpider, IcachondeoSpider,
 )
 from crawler.animal.animals_tumblr import (
     AnimalGifHunterSpider, AlthingscuteSpider, JunkuploadSpider,
     CatsdogsblogSpider, AnimalspatronusgifsSpider,
 )
-
+from crawler.boy.boys_tumblr import (
+    AllboysboysSpider, LobbuSpider,
+)
+from crawler.fashion.fashion_tumblr import (
+    KoreanFashionSpider,
+)
 map_spider = {
+    'LobbuSpider': LobbuSpider,
+    'KoreanFashionSpider': KoreanFashionSpider,
+    'HappylimSpider': HappylimSpider,
     'JiandanSpider': JiandanSpider,
     'HotgirlsfcSpider': HotgirlsfcSpider,
     'GifsboomSpider': GifsboomSpider,
@@ -37,6 +47,11 @@ map_spider = {
     'LolgifruSpider': LolgifruSpider,
     'ElmontajistaSpider': ElmontajistaSpider,
     'PassionNipponesSpider': PassionNipponesSpider,
+    'Sossex1Spider': Sossex1Spider,
+    'HotcosplaychicksSpider': HotcosplaychicksSpider,
+    'ForchiSpider': ForchiSpider,
+    'IcachondeoSpider': IcachondeoSpider,
+    'AllboysboysSpider': AllboysboysSpider,
 }
 
 
@@ -57,6 +72,9 @@ class SpiderTest(object):
 
 
 spider_list_dict = [
+    dict(class_name='LobbuSpider', method_name='get_img'),
+    dict(class_name='KoreanFashionSpider', method_name='get_img'),
+    dict(class_name='AllboysboysSpider', method_name='get_img'),
     dict(class_name='HotgirlsfcSpider', method_name='get_img'),
     dict(class_name='JiandanSpider', url='', cookies='757477302=453; bad-click-load=off; nsfw-click-load=off; gif-click-load=off; _gat=1; 757477302=433; _ga=GA1.2.784043191.1438269751; Hm_lvt_fd93b7fb546adcfbcf80c4fc2b54da2c=1438270942,1438270944,1438270947,1438995506; Hm_lpvt_fd93b7fb546adcfbcf80c4fc2b54da2c=1439110556',
          method_name='get_meizi'),
@@ -77,6 +95,11 @@ spider_list_dict = [
     dict(class_name='LolgifruSpider', method_name='get_gif'),
     dict(class_name='ElmontajistaSpider', method_name='get_gif'),
     dict(class_name='PassionNipponesSpider', method_name='get_img'),
+    dict(class_name='Sossex1Spider', method_name='get_img'),
+    dict(class_name='HotcosplaychicksSpider', method_name='get_img'),
+    dict(class_name='ForchiSpider', method_name='get_img'),
+    dict(class_name='IcachondeoSpider', method_name='get_gif'),
+    dict(class_name='HappylimSpider', method_name='get_img'),
 ]
 
 
@@ -92,7 +115,7 @@ def test_spider(class_name, method_name, url='', cookies=''):
         print i
 
 def test():
-    s = spider_list_dict[18]
+    s = spider_list_dict[0]
     spider = SpiderTest(**s)
     l = spider.test_spider_method(s['method_name'])
     for i in l:

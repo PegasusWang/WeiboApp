@@ -24,6 +24,8 @@ def fetch_html(url, retries=5):
 
 
 def get_media_url_list(url):
+    if not url:
+        return []
     print 'fetch html...', url
     html = fetch_html(url)
     if not html:

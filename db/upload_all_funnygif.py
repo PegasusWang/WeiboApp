@@ -11,7 +11,8 @@ from single_process import single_process
 from ..crawler.funnygif.jiandan_crawler import JiandanSpider
 from ..crawler.funnygif.funnygif_tumblr import (
     TumblrForgifsSpider, GifakSpider, GifsboomSpider, GifsonSpider,
-    LolgifruSpider, ElmontajistaSpider,
+    LolgifruSpider, ElmontajistaSpider, TychoonSpider,
+    AewaeSpider,
 )
 
 
@@ -29,6 +30,8 @@ class Upload(object):
             'upload_tumblr_gifson': self.upload_tumblr_gifson,
             'upload_tumblr_lolgifru': self.upload_tumblr_lolgifru,
             'upload_tumblr_elmontajista': self.upload_tumblr_elmontajista,
+            'upload_tumblr_tychoon': self.upload_tumblr_tychoon,
+            'upload_tumblr_aewae': self.upload_tumblr_aewae,
         }
 
     def upload(self, **args):
@@ -165,7 +168,35 @@ class Upload(object):
                         leancloud_upload.upload_file_by_url(filename, each_url)
                         time.sleep(2)
 
+    def upload_tumblr_tychoon(self, **kwargs):
+        leancloud_upload = self._upload
+        spider = TychoonSpider()
+        gif_list = spider.get_gif()
+        for each_url in gif_list:
+            if each_url:
+                print each_url
+                filename = each_url
+                if leancloud_upload.is_img_file(filename) and \
+                    not leancloud_upload.exist_file(filename):
+                        leancloud_upload.upload_file_by_url(filename, each_url)
+                        time.sleep(2)
+
+    def upload_tumblr_aewae(self, **kwargs):
+        leancloud_upload = self._upload
+        spider = AewaeSpider()
+        gif_list = spider.get_gif()
+        for each_url in gif_list:
+            if each_url:
+                print each_url
+                filename = each_url
+                if leancloud_upload.is_img_file(filename) and \
+                    not leancloud_upload.exist_file(filename):
+                        leancloud_upload.upload_file_by_url(filename, each_url)
+                        time.sleep(2)
+
 dict_list = [
+    dict(upload_type='tumblr_aewae', class_name='Aewae'),
+    dict(upload_type='tumblr_tychoon', class_name='Tychoon'),
     dict(upload_type='tumblr_elmontajista', class_name='Elmontajista'),
     dict(upload_type='tumblr_lolgifru', class_name='Lolgifru'),
     dict(upload_type='tumblr_forgifs', class_name='TumblrForgifs'),
