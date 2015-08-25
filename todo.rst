@@ -8,6 +8,7 @@ scrapy learn
 casperjs
 用nodejs搭建博客http://witcheryne.iteye.com/blog/1169854
 python高级用法，类，oop等。
+通过调试学习python web框架的工作
 图片加上水印GIL, qiniu图片接口
 
 
@@ -39,11 +40,14 @@ next：
 域名：
 搜索godaddy优惠券
 
-today:
-添加一个boy, upload_all_boy
-添加一个art, upload_all_art
-
-
 today note:
 jiandan同一个ip不能用两个cookies访问
 恢复三个树莓派的三个爬虫，从日志恢复
+http://efedeo.tumblr.com/page/500
+icachondeo
+flickr
+f3pix
+imgur.com
+
+today:
+用flask做成demo。
