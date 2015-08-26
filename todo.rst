@@ -1,4 +1,3 @@
-leancloud用递归查询方式遍历* 所有*数据,递归注意要(排序)，否则有可能取到重复数据
 
 to learn:
 视频网站link解析
@@ -50,4 +49,5 @@ f3pix
 imgur.com
 
 today:
-用flask做成demo。
+用tornado做成demo。
+搞清楚waterfall的调用

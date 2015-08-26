@@ -22,6 +22,18 @@ class LeanCloudApi(object):
         self._class = Object.extend(class_name)
         self._query = Query(self._class)
 
+    def solve_all_class_obj(self, callback, skip_num=0, limit_num=500):
+        """callback is function solve list of class object"""
+        query = self._query
+        query.descending('updatedAt')
+        query.skip(skip_num*limit_num)
+        query.limit(limit_num)
+        obj_list = query.find()
+
+        callback(obj_list)
+        if len(obj_list) >= limit_num:
+            self.solve_all_class_obj(callback, skip_num+1, limit_num)
+
     def get_obj_by_ID(self, obj_ID):
         query = self._query
         query.equal_to('ID', obj_ID)
