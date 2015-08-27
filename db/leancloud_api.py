@@ -22,8 +22,20 @@ class LeanCloudApi(object):
         self._class = Object.extend(class_name)
         self._query = Query(self._class)
 
+    def get_skip_obj_list(self, skip_num=0, limit_num=20):
+        query = self._query
+        query.descending('updatedAt')
+        query.skip(skip_num*limit_num)
+        query.limit(limit_num)
+        try:
+            res = query.find()
+            return res
+        except:
+            traceback.print_exc()
+            return []
+
     def solve_all_class_obj(self, callback, skip_num=0, limit_num=500):
-        """callback is function solve list of class object"""
+        """callback is a function that solve list of class object"""
         query = self._query
         query.descending('updatedAt')
         query.skip(skip_num*limit_num)
@@ -32,6 +44,7 @@ class LeanCloudApi(object):
 
         callback(obj_list)
         if len(obj_list) >= limit_num:
+            time.sleep(1)
             self.solve_all_class_obj(callback, skip_num+1, limit_num)
 
     def get_obj_by_ID(self, obj_ID):
@@ -68,7 +81,7 @@ class LeanCloudApi(object):
         return {'pic': pic, 'content': content}
 
     def exist_file(self, filename):
-        """filename have suffix"""
+        """filename have suffix, judge by filename, maybe other field"""
         query = self._query
         query.equal_to('filename', filename)
         try:    # finded

@@ -50,4 +50,7 @@ imgur.com
 
 today:
 用tornado做成demo。
+用redis缓存查询结果，没有再到leancloud去拿, 实时更新.
 搞清楚waterfall的调用
+利用getall方法处理之前没有添加过ID的类，改成自增的，可以直接处理那些为1的，然后只需要递增这些ID就可以，不用处理所有的文件.
+实验gif图片效果
