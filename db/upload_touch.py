@@ -13,7 +13,7 @@ from ..crawler.funnygif.funnygif_tumblr import (
 )
 from ..crawler.girl.girls_tumblr import (
     PassionNipponesSpider, Sossex1Spider, HotcosplaychicksSpider,
-    TattoocnSpider, HappylimSpider,
+    TattoocnSpider, HappylimSpider, Touch45Spider,
 )
 
 class Upload(object):
@@ -22,7 +22,7 @@ class Upload(object):
         self.class_name = kwargs.get('class_name')
         self._upload = LeanCloudApi(self.class_name)
         self.map_method = {
-            'upload_happylim': self.upload_happylim,
+            'upload_touch': self.upload_touch,
         }
 
     def upload(self, **args):
@@ -51,14 +51,14 @@ class Upload(object):
         return mimetypes.guess_type(file_abspath)[0]
 
 
-    def upload_happylim(self, **kwargs):
-        beg, end = 1, 383
+    def upload_touch(self, **kwargs):
+        beg, end = 1, 700
         for i in range(beg, end+1):
             time.sleep(3)
-            url = 'http://hello-happylim-blog.tumblr.com/page/%s' % i
+            url = 'http://touch45.tumblr.com/page/%s' % i
             print url
             leancloud_upload = self._upload
-            spider = HappylimSpider()
+            spider = Touch45Spider()
             img_list = spider.get_img(url)
             for each_url in img_list:
                 if each_url:
@@ -70,7 +70,7 @@ class Upload(object):
                             time.sleep(2)
 
 dict_list = [
-    dict(upload_type='happylim', class_name='Happylim'),
+    dict(upload_type='touch', class_name='Touch45'),
 ]
 
 
@@ -84,3 +84,4 @@ def main():
 if __name__ == '__main__':
     main()
     print time.strftime('%Y-%m-%d %A %X %Z',time.localtime(time.time()))
+    print 'finish'

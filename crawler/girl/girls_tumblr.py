@@ -234,3 +234,14 @@ class HappylimSpider(Spider):
             time.sleep(2)
             img_list.extend(list(self.get_post_img_list(each_url)))
         return set(img_list)
+
+class HonkawaSpider(Spider):
+    def get_img(self, url='http://honkawa.tumblr.com/'):
+        img_list = get_media_url_list(url)
+        return set([i for i in img_list if 'media.tumblr' in i])
+
+
+class Touch45Spider(Spider):
+    def get_img(self, url='http://touch45.tumblr.com/'):
+        img_list = get_media_url_list(url)
+        return set([i for i in img_list if 'media.tumblr' in i])
