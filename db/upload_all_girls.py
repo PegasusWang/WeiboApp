@@ -12,10 +12,11 @@ from ..crawler.girl.girls_tumblr import (
     KoreangirlshdSpider, FerchoechoSpider, Girl2chickSpider, SnsdpicsSpider,
     PassionNipponesSpider, Sossex1Spider, HotcosplaychicksSpider,
     ForchiSpider, ChinabeautiesSpider, HappylimSpider, BestofasiangirlsSpider,
-    Touch45Spider,
+    Touch45Spider, GigachaossSpider,
 )
 
 map_class = {
+    'GigachaossSpider': GigachaossSpider,
     'Touch45Spider': Touch45Spider,
     'BestofasiangirlsSpider': BestofasiangirlsSpider,
     'HappylimSpider': HappylimSpider,
