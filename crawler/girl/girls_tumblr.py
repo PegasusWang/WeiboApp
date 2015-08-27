@@ -245,3 +245,9 @@ class Touch45Spider(Spider):
     def get_img(self, url='http://touch45.tumblr.com/'):
         img_list = get_media_url_list(url)
         return set([i for i in img_list if 'media.tumblr' in i])
+
+
+class GigachaossSpider(Spider):
+    def get_img(self, url='http://gigachaoss.tumblr.com/'):
+        img_list = get_media_url_list(url)
+        return set([i for i in img_list if 'media.tumblr' in i])
