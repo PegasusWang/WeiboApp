@@ -33,7 +33,6 @@ android app 百思
 
 next：
 搭建mxiong，学习bottle使用方法
-教程从零搭建一个waterflow网站
 
 
 域名：
@@ -49,8 +48,10 @@ f3pix
 imgur.com
 
 today:
-用tornado做成demo。
-用redis缓存查询结果，没有再到leancloud去拿, 实时更新.
-搞清楚waterfall的调用
+购买微博粉丝
+用redis缓存查询结果，没有再到leancloud去拿,
+实时更新.(leancloud好像会缓存相同url的查询) 使用tornado-redis异步获取结果。
 利用getall方法处理之前没有添加过ID的类，改成自增的，可以直接处理那些为1的，然后只需要递增这些ID就可以，不用处理所有的文件.
-实验gif图片效果
+用脚本处理所有图片数据请求七牛接口。数据{加上图片信息}，
+缩放策略。七牛接口可抑制直接拿到缩略图，研究下需不需要添加图片信息到.
+可以看看其他几个接口限定好尺寸。
