@@ -7,7 +7,7 @@ import mimetypes
 import time
 from leancloud_api import LeanCloudApi
 from single_process import single_process
-from ..crawler.boy.boysls_tumblr import (
+from ..crawler.boy.boys_tumblr import (
     AllboysboysSpider, LobbuSpider,
 )
 
