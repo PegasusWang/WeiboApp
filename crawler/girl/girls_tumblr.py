@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 
 from ..crawler import Spider
+from ..tumblr_api import TumblrApi
 from bs4 import BeautifulSoup
 import lxml
+import re
 import requests
 import time
 
@@ -270,13 +272,31 @@ class TokuninaidesuSpider(Spider):
         img_list = get_media_url_list(url)
         return set([i for i in img_list if 'media.tumblr' in i])
 
+
 class SilymarinSpider(Spider):
     def get_img(self, url='http://silymarin.tumblr.com/'):
         img_list = get_media_url_list(url)
         return set([i for i in img_list if 'media.tumblr' in i])
+
 
 class ChioeveSpider(Spider):
     def get_img(self, url='http://chioeve.com/'):
         prefix = 'http://chioeve.com/'
         img_list = get_media_url_list(url)
         return set([prefix+i for i in img_list if 'uploads' in i])
+
+
+class HotGirlsAsiaSpider(Spider):
+    """
+    def get_img(self, url='http://hot-girls-asia.tumblr.com/api/read/json?start=0'):
+        #self.base_url = 'http://hot-girls-asia.tumblr.com/api/read/json?start=0'
+        self.total_post_re = re.compile(r'"posts-total":(\d+),')
+        self.img_re = re.compile(r'photo-url-1280":"(http.*?)",')
+        html = fetch_html(url)
+        imgs = self.img_re.findall(html)
+        imgs = [img.replace('\\', '') for img in imgs if img]
+        return set(imgs)
+    """
+    def get_img(self, url='http://hot-girls-asia.tumblr.com/api/read/json?start=1'):
+        tumblr_api = TumblrApi(url)
+        return tumblr_api.get_img_set()
