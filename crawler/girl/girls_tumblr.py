@@ -274,3 +274,9 @@ class SilymarinSpider(Spider):
     def get_img(self, url='http://silymarin.tumblr.com/'):
         img_list = get_media_url_list(url)
         return set([i for i in img_list if 'media.tumblr' in i])
+
+class ChioeveSpider(Spider):
+    def get_img(self, url='http://chioeve.com/'):
+        prefix = 'http://chioeve.com/'
+        img_list = get_media_url_list(url)
+        return set([prefix+i for i in img_list if 'uploads' in i])
