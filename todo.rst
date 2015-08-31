@@ -57,3 +57,4 @@ today:
 可以看看其他几个接口限定好尺寸。
 http://kormodels.tumblr.com/api/read/json?start=1
 这个接口能直接拿到url和post_total,以后可以直接从这里获取
+呵呵
