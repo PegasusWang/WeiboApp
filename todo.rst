@@ -1,4 +1,3 @@
-
 to learn:
 视频网站link解析
 django 类的写法
@@ -40,15 +39,12 @@ next：
 
 today note:
 jiandan同一个ip不能用两个cookies访问
-恢复三个树莓派的三个爬虫，从日志恢复
-http://efedeo.tumblr.com/page/500
-icachondeo
+待爬http://efedeo.tumblr.com/page/500
 flickr
 f3pix
 imgur.com
 
 today:
-购买微博粉丝
 用redis缓存查询结果，没有再到leancloud去拿,
 实时更新.(leancloud好像会缓存相同url的查询) 使用tornado-redis异步获取结果。
 利用getall方法处理之前没有添加过ID的类，改成自增的，可以直接处理那些为1的，然后只需要递增这些ID就可以，不用处理所有的文件.
@@ -57,4 +53,4 @@ today:
 可以看看其他几个接口限定好尺寸。
 http://kormodels.tumblr.com/api/read/json?start=1
 这个接口能直接拿到url和post_total,以后可以直接从这里获取
-呵呵
+给上传图片添加tag，使用tumblr的接口

@@ -13,7 +13,7 @@ except ImportError:
 class TumblrApi(object):
 
     def __init__(self, url=None):
-        """url = 'http://hot-girls-asia.tumblr.com/api/read/json?start=0' """
+        """eg:url = 'http://hot-girls-asia.tumblr.com/api/read/json?start=0'"""
         self.url = url
 
     def get_html(self, url=None, retries=5):
@@ -56,6 +56,7 @@ class TumblrApi(object):
         return url_list
 
     def get_tags_list(self):
+        """return [ ['tag1','tag2'], ['tag1', tag2']...]"""
         json_data = self.get_json_from_url(self.url)
         o = json.loads(json_data)
         posts = o.get('posts', [])
