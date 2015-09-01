@@ -105,7 +105,8 @@ class LeanCloudApi(object):
                 return ''
         return data
 
-    def upload_file_by_url(self, filename, url):
+    def upload_file_by_url(self, filename, url, tag_list=None):
+        """tag_list is tag of string list"""
         data = LeanCloudApi.fetch_data(url)
         if not data:
             return
@@ -113,6 +114,8 @@ class LeanCloudApi(object):
         img_file = self._class()
         img_file.set('File', f)
         img_file.set('filename', filename)
+        if tag_list:
+            img_file.set('tag_list', tag_list)
         try:
             img_file.save()
             print filename, '----uploaded----'

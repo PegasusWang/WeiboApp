@@ -49,8 +49,18 @@ class TumblrApi(object):
         json_data = self.get_json_from_url(self.url)
         o = json.loads(json_data)
         posts = o.get('posts', [])
-        url_set = set()
+        url_list = []
         for each_post in posts:
             url = each_post.get('photo-url-1280')
-            url_set.add(url)
-        return url_set
+            url_list.append(url)
+        return url_list
+
+    def get_tags_list(self):
+        json_data = self.get_json_from_url(self.url)
+        o = json.loads(json_data)
+        posts = o.get('posts', [])
+        tags_list = []
+        for each_post in posts:
+            tag_str_list = each_post.get('tags', [])
+            tags_list.append(tag_str_list)
+        return tags_list
