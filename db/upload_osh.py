@@ -9,7 +9,7 @@ import time
 from leancloud_api import LeanCloudApi
 from single_process import single_process
 from ..crawler.girl.girls_tumblr import (
-    HotGirlsAsiaSpider,
+    HotGirlsAsiaSpider, OshiriSpider
 )
 
 
@@ -19,7 +19,7 @@ class Upload(object):
         self.class_name = kwargs.get('class_name')
         self._upload = LeanCloudApi(self.class_name)
         self.map_method = {
-            'upload_hot': self.upload_hot,
+            'upload_osh': self.upload_osh,
         }
 
     def upload(self, **args):
@@ -47,14 +47,14 @@ class Upload(object):
     def get_file_mimetype(file_abspath):
         return mimetypes.guess_type(file_abspath)[0]
 
-    def upload_hot(self, **kwargs):
-        beg, end = 1, 186
+    def upload_osh(self, **kwargs):
+        beg, end = 1, 50
         for i in range(beg, end+1):
             time.sleep(3)
-            url = 'http://hot-girls-asia.tumblr.com/api/read/json?start=%s' % i
+            url = 'http://honkawa-oshiri.tumblr.com/page/%s' % i
             print url
             leancloud_upload = self._upload
-            spider = HotGirlsAsiaSpider()
+            spider = OshiriSpider()
             img_list = spider.get_img(url)
             for each_url in img_list:
                 if each_url:
@@ -65,7 +65,7 @@ class Upload(object):
                             leancloud_upload.upload_file_by_url(filename, each_url)
                             time.sleep(3)
 dict_list = [
-    dict(upload_type='hot', class_name='HotGirlsAsia'),
+    dict(upload_type='osh', class_name='Girls'),
 ]
 
 
