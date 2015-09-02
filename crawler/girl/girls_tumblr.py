@@ -306,3 +306,9 @@ class OshiriSpider(Spider):
     def get_img(self, url='http://honkawa-oshiri.tumblr.com/'):
         img_list = get_media_url_list(url)
         return set([i for i in img_list if 'media.tumblr' in i])
+
+
+class VisualangelSpider(Spider):
+    def get_img(self, url='http://visualangel.tumblr.com/'):
+        img_list = get_media_url_list(url)
+        return set([i for i in img_list if 'media.tumblr' in i and '500' in i])
