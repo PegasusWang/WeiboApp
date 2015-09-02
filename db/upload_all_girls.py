@@ -13,9 +13,12 @@ from ..crawler.girl.girls_tumblr import (
     PassionNipponesSpider, Sossex1Spider, HotcosplaychicksSpider,
     ForchiSpider, ChinabeautiesSpider, HappylimSpider, BestofasiangirlsSpider,
     Touch45Spider, GigachaossSpider, JgiriSpider, IdolmaniaxSpider,
+    VisualangelSpider, Blendy99Spider,
 )
 
 map_class = {
+    'Blendy99Spider': Blendy99Spider,
+    'VisualangelSpider': VisualangelSpider,
     'IdolmaniaxSpider': IdolmaniaxSpider,
     'JgiriSpider': JgiriSpider,
     'GigachaossSpider': GigachaossSpider,
