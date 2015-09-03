@@ -13,7 +13,7 @@ from ..crawler.boy.boys_tumblr import (
 )
 from ..crawler.girl.girls_tumblr import (
     HonkawaSpider, TokuninaidesuSpider, SilymarinSpider,
-    AdnisSpider,
+    AdnisSpider, JoanpeperoSpider, AoababofanSpider,
 )
 from ..crawler.fashion.fashion_tumblr import (
     KoreanFashionSpider,
@@ -26,7 +26,7 @@ class Upload(object):
         self.class_name = kwargs.get('class_name')
         self._upload = LeanCloudApi(self.class_name)
         self.map_method = {
-            'upload_adn': self.upload_adn,
+            'upload_aoa': self.upload_aoa,
         }
 
     def upload(self, **args):
@@ -54,14 +54,14 @@ class Upload(object):
     def get_file_mimetype(file_abspath):
         return mimetypes.guess_type(file_abspath)[0]
 
-    def upload_adn(self, **kwargs):
-        beg, end = 1, 640
+    def upload_aoa(self, **kwargs):
+        beg, end = 1, 84
         for i in range(beg, end+1):
             time.sleep(3)
-            url = 'http://adnis.tumblr.com/page/%s' % i
+            url = 'http://aoababofan.tumblr.com/page/%s' % i
             print url
             leancloud_upload = self._upload
-            spider = AdnisSpider()
+            spider = AoababofanSpider()
             img_list = spider.get_img(url)
             for each_url in img_list:
                 if each_url:
@@ -72,7 +72,7 @@ class Upload(object):
                             leancloud_upload.upload_file_by_url(filename, each_url)
                             time.sleep(3)
 dict_list = [
-    dict(upload_type='adn', class_name='Adnis'),
+    dict(upload_type='aoa', class_name='Aoababofan'),
 ]
 
 
@@ -86,4 +86,4 @@ def main():
 if __name__ == '__main__':
     main()
     print time.strftime('%Y-%m-%d %A %X %Z',time.localtime(time.time()))
-    print 'finish tokuninaidesu'
+    print 'finish'
