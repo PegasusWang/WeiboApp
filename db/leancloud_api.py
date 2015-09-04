@@ -37,7 +37,8 @@ class LeanCloudApi(object):
     def solve_all_class_obj(self, callback, skip_num=0, limit_num=500):
         """callback is a function that solve list of class object"""
         query = self._query
-        query.descending('updatedAt')
+        #query.descending('updatedAt')
+        query.descending('ID')
         query.skip(skip_num*limit_num)
         query.limit(limit_num)
         try:
