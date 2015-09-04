@@ -105,12 +105,12 @@ class WeiboTypes(object):
     def get_tumblr_catsdogsblog(self):
         upload = leancloud_api.LeanCloudApi('Catsdogsblog')
         d = upload.get_imgfile_by_recent_ID(100)
-        self.weibo_app.post_img(u'猫猫狗狗们', d.get('pic'))
+        self.weibo_app.post_img(u'汪星人和喵星人', d.get('pic'))
 
     def get_tumblr_althingscute(self):
         upload = leancloud_api.LeanCloudApi('Althingscute')
         d = upload.get_imgfile_by_recent_ID(100)
-        self.weibo_app.post_img(u'cute things', d.get('pic'))
+        self.weibo_app.post_img(u'萌物', d.get('pic'))
 
     def get_qiubai_hot(self):
         url = "http://m.qiushibaike.com/hot/page"
@@ -142,7 +142,7 @@ class WeiboTypes(object):
     def get_girls(self):
         upload = leancloud_api.LeanCloudApi('Girls')
         d = upload.get_imgfile_by_recent_ID(100)
-        self.weibo_app.post_img(u'妹子呦', d.get('pic'))
+        self.weibo_app.post_img(u'深夜福利', d.get('pic'))
 
     def get_tumblr_bestofasiangirls(self):
         upload = leancloud_api.LeanCloudApi('Bestofasiangirls')
