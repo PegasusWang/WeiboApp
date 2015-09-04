@@ -28,10 +28,10 @@ from crawler.fashion.fashion_tumblr import (
     KoreanFashionSpider,
 )
 map_spider = {
+    'AdnisSpider': AdnisSpider,
     'LegloveworldSpider': LegloveworldSpider,
     'AoababofanSpider': AoababofanSpider,
     'JoanpeperoSpider': JoanpeperoSpider,
-    'AdnisSpider': AdnisSpider,
     'Blendy99Spider': Blendy99Spider,
     'VisualangelSpider': VisualangelSpider,
     'OshiriSpider': OshiriSpider,
@@ -86,10 +86,10 @@ class SpiderTest(object):
 
 
 spider_list_dict = [
+    dict(class_name='AdnisSpider', method_name='get_img'),
     dict(class_name='LegloveworldSpider', method_name='get_img'),
     dict(class_name='AoababofanSpider', method_name='get_img'),
     dict(class_name='JoanpeperoSpider', method_name='get_img'),
-    dict(class_name='AdnisSpider', method_name='get_img'),
     dict(class_name='Blendy99Spider', method_name='get_img'),
     dict(class_name='VisualangelSpider', method_name='get_img'),
     dict(class_name='OshiriSpider', method_name='get_img'),
@@ -145,6 +145,7 @@ def test():
     l = spider.test_spider_method(s['method_name'])
     for i in l:
         print i
+    print len(l)
 
 
 if __name__ == '__main__':

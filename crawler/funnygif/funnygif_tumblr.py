@@ -76,3 +76,8 @@ class TychoonSpider(Spider):
     def get_gif(self, url='http://tychoon.tumblr.com/'):
         s = GifsboomSpider()
         return s.get_gif(url)
+
+
+class GaoxiaogifSpider(Spider):
+    pass
+
