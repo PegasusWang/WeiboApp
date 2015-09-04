@@ -321,7 +321,23 @@ class Blendy99Spider(Spider):
 
 
 class AdnisSpider(Spider):
-
     def get_img(self, url='http://adnis.tumblr.com/'):
         img_list = get_media_url_list(url)
         return set([i.replace('250', '1280') for i in img_list if 'media.tumblr' in i])
+
+
+class JoanpeperoSpider(Spider):
+    def get_img(self, url='http://joanpepero.tumblr.com/'):
+        html = fetch_html(url)
+        soup = BeautifulSoup(html, 'lxml')
+        iframe_tag_list = soup.find_all('iframe', class_='photoset')
+        url_list = []
+        for i in iframe_tag_list:
+            url_list.append(i.get('src'))
+        return set(url_list)
+
+
+class AoababofanSpider(Spider):
+    def get_img(self, url='http://aoababofan.tumblr.com/'):
+        img_list = get_media_url_list(url)
+        return set([i for i in img_list if 'media.tumblr' in i])

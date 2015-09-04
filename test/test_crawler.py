@@ -10,7 +10,7 @@ from crawler.girl.girls_tumblr import (
     Sossex1Spider, HotcosplaychicksSpider, ForchiSpider,
     HappylimSpider, Touch45Spider, SilymarinSpider,
     ChioeveSpider, HotGirlsAsiaSpider, OshiriSpider, VisualangelSpider,
-    Blendy99Spider, AdnisSpider,
+    Blendy99Spider, AdnisSpider, JoanpeperoSpider, AoababofanSpider,
 )
 from crawler.funnygif.funnygif_tumblr import (
     GifsboomSpider, GifsonSpider, LolgifruSpider,
@@ -27,6 +27,8 @@ from crawler.fashion.fashion_tumblr import (
     KoreanFashionSpider,
 )
 map_spider = {
+    'AoababofanSpider': AoababofanSpider,
+    'JoanpeperoSpider': JoanpeperoSpider,
     'AdnisSpider': AdnisSpider,
     'Blendy99Spider': Blendy99Spider,
     'VisualangelSpider': VisualangelSpider,
@@ -82,6 +84,8 @@ class SpiderTest(object):
 
 
 spider_list_dict = [
+    dict(class_name='AoababofanSpider', method_name='get_img'),
+    dict(class_name='JoanpeperoSpider', method_name='get_img'),
     dict(class_name='AdnisSpider', method_name='get_img'),
     dict(class_name='Blendy99Spider', method_name='get_img'),
     dict(class_name='VisualangelSpider', method_name='get_img'),
