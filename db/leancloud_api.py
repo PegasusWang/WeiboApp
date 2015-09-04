@@ -40,9 +40,15 @@ class LeanCloudApi(object):
         query.descending('updatedAt')
         query.skip(skip_num*limit_num)
         query.limit(limit_num)
-        obj_list = query.find()
+        try:
+            obj_list = query.find()
+        except:
+            time.sleep(2)
+            obj_list = query.find()
+            traceback.print_exc()
 
         callback(obj_list)
+
         if len(obj_list) >= limit_num:
             time.sleep(1)
             self.solve_all_class_obj(callback, skip_num+1, limit_num)
