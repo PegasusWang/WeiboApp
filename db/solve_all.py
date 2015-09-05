@@ -29,9 +29,15 @@ def callback(res_list):
         else:
             height = img_info.get('height')
             width = img_info.get('width')
-            i.set('height', height)
-            i.set('width', width)
-            i.save()
+            try:
+                i.set('height', height)
+                i.set('width', width)
+                i.save()
+            except:
+                time.sleep(1)
+                i.set('height', height)
+                i.set('width', width)
+                i.save()
             time.sleep(0.3)
             print 'saving img_info of', i.get('ID')
 
