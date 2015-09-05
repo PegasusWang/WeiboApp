@@ -52,7 +52,8 @@ def add_img_info(obj):
 
 def callback(res_list):
     for i in res_list:
-        add_img_info(i)
+        if i:
+            add_img_info(i)
 
 
 def solve(class_name, callback):
@@ -61,7 +62,7 @@ def solve(class_name, callback):
 
 
 def main():
-    class_name = 'AnimalGifHunter'
+    class_name = 'TumblrGifak'
     print class_name
     solve(class_name, callback)
     print class_name

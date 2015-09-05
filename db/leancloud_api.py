@@ -60,7 +60,7 @@ class LeanCloudApi(object):
         """callback is a function that solve list of class object"""
         query = self._query
         #query.descending('updatedAt')
-        query.less_than('ID', 1775)
+        #query.less_than('ID', 1775)
         query.descending('ID')
         query.skip(skip_num*limit_num)
         query.limit(limit_num)
