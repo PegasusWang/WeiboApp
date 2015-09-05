@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import setup
 import _env
 import config
 import sys
+import time
 from weibo_app import WeiboApp
 from weibo_types import WeiboTypes
 
@@ -39,8 +39,12 @@ def test_all_types():
         time.sleep(10)
 
 
+def test():
+    try:
+        type_name = sys.argv[1]
+    except IndexError:
+        type_name = 'tumblr_gifak'
+    test_type(type_name)
+
 if __name__ == '__main__':
-    if sys.argv[1]:
-        test_type(sys.argv[1])
-    else:
-        test_type('tumblr_happylim')
+    test()

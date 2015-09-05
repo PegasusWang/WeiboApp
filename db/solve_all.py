@@ -4,6 +4,7 @@
 import leancloud_api
 import requests
 import time
+import sys
 try:
     import simplejson as json
 except ImportError:
@@ -62,7 +63,10 @@ def solve(class_name, callback):
 
 
 def main():
-    class_name = 'TumblrGifak'
+    try:
+        class_name = sys.argv[1].strip()
+    except IndexError:
+        class_name = 'Catsdogsblog'
     print class_name
     solve(class_name, callback)
     print class_name

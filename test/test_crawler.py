@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import setup
+import _env
 from crawler.funnygif.jiandan_crawler import JiandanSpider
 from crawler.girl.girls_tumblr import (
     HotgirlsfcSpider, MzituSpider, LovelyasiansSpider,
@@ -86,10 +86,10 @@ class SpiderTest(object):
 
 
 spider_list_dict = [
-    dict(class_name='AdnisSpider', method_name='get_img'),
-    dict(class_name='LegloveworldSpider', method_name='get_img'),
-    dict(class_name='AoababofanSpider', method_name='get_img'),
     dict(class_name='JoanpeperoSpider', method_name='get_img'),
+    dict(class_name='LegloveworldSpider', method_name='get_img'),
+    dict(class_name='AdnisSpider', method_name='get_img'),
+    dict(class_name='AoababofanSpider', method_name='get_img'),
     dict(class_name='Blendy99Spider', method_name='get_img'),
     dict(class_name='VisualangelSpider', method_name='get_img'),
     dict(class_name='OshiriSpider', method_name='get_img'),
