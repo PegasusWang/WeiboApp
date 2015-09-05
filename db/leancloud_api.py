@@ -34,10 +34,33 @@ class LeanCloudApi(object):
             traceback.print_exc()
             return []
 
+    def add_img_info(self, obj_id):
+        query = self._query
+        obj = query.get(obj_id)
+        img_url = obj.get('File').url
+        img_info_url = img_url + '?imageInfo'
+        r = LeanCloudApi.fetch_data(img_info_url)
+        if not r:
+            return
+        img_info = r.json()
+        width = img_info.get('width', None)
+        height = img_info.get('height', None)
+
+        try:
+            obj.set('height', height)
+            obj.set('width', width)
+            obj.save()
+        except:
+            time.sleep(1)
+            obj.set('height', height)
+            obj.set('width', width)
+            obj.save()
+
     def solve_all_class_obj(self, callback, skip_num=0, limit_num=500):
         """callback is a function that solve list of class object"""
         query = self._query
         #query.descending('updatedAt')
+        query.less_than('ID', 1775)
         query.descending('ID')
         query.skip(skip_num*limit_num)
         query.limit(limit_num)
@@ -101,7 +124,7 @@ class LeanCloudApi(object):
     @staticmethod
     def fetch_data(url, retries=5):
         try:
-            data = requests.get(url, timeout=5).content
+            data = requests.get(url, timeout=5)
         except:
             if retries > 0:
                 print 'fetch...', retries, url
@@ -109,7 +132,8 @@ class LeanCloudApi(object):
                 return LeanCloudApi.fetch_data(url, retries-1)
             else:
                 print 'fetch failed', url
-                return ''
+                data = None
+                return data
         return data
 
     def upload_file_by_url(self, filename, url, tag_list=None):
@@ -117,6 +141,7 @@ class LeanCloudApi(object):
         data = LeanCloudApi.fetch_data(url)
         if not data:
             return
+        data = data.content
         f = File(filename, StringIO(data))
         img_file = self._class()
         img_file.set('File', f)
@@ -126,9 +151,10 @@ class LeanCloudApi(object):
         try:
             img_file.save()
             print filename, '----uploaded----'
+            self.add_img_info(img_file.id)    # save img_info after save
         except:
             print 'save file failed', url
-            time.sleep(10)
+            time.sleep(5)
             return
 
     def upload_file(self, file_abspath):

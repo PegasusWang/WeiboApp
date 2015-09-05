@@ -10,36 +10,49 @@ except ImportError:
     import json
 
 
-def callback(res_list):
-    for i in res_list:
-        img_url = i.get('File').url
+def fetch_data(url, retries=5):
+    try:
+        data = requests.get(url, timeout=5)
+    except:
+        if retries > 0:
+            print 'fetch...', retries, url
+            time.sleep(3)
+            return fetch_data(url, retries-1)
+        else:
+            print 'fetch failed', url
+            data = None
+            return data
+    return data
+
+
+def add_img_info(obj):
+        img_url = obj.get('File').url
         img_info_url = img_url + '?imageInfo'
+        r = fetch_data(img_info_url)
+
+        if not r:
+            return
+
+        img_info = r.json()
+        width = img_info.get('width', None)
+        height = img_info.get('height', None)
 
         try:
-            r = requests.get(img_info_url)
-            img_info = r.json()
+            obj.set('height', height)
+            obj.set('width', width)
+            print 'saving info', obj.get('ID')
+            obj.save()
         except:
             time.sleep(1)
-            r = requests.get(img_info_url)
-            img_info = r.json()
+            obj.set('height', height)
+            obj.set('width', width)
+            print 'saving info', obj.get('ID')
+            obj.save()
 
-        if img_info.get('error'):
-            print 'get img_info failed', i.get('ID')
-            continue
-        else:
-            height = img_info.get('height')
-            width = img_info.get('width')
-            try:
-                i.set('height', height)
-                i.set('width', width)
-                i.save()
-            except:
-                time.sleep(1)
-                i.set('height', height)
-                i.set('width', width)
-                i.save()
-            time.sleep(0.3)
-            print 'saving img_info of', i.get('ID')
+
+def callback(res_list):
+    for i in res_list:
+        add_img_info(i)
 
 
 def solve(class_name, callback):
@@ -48,8 +61,11 @@ def solve(class_name, callback):
 
 
 def main():
-    solve('Girls', callback)
+    class_name = 'AnimalGifHunter'
+    print class_name
+    solve(class_name, callback)
+    print class_name
 
 if __name__ == '__main__':
     main()
-    print '**********finish****************'
+    print '**********finish********'

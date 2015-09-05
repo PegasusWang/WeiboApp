@@ -12,7 +12,7 @@ def callback(res):
 
 def test():
     l = LeanCloudApi("Girls")
-    l.solve_all_class_obj(callback)
+    l.upload_file_by_url('test', url='http://ac-0pdchyat.clouddn.com/b73dfdfecfeaf84e.gif')
 
 
 if __name__ == '__main__':
