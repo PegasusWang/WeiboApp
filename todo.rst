@@ -47,4 +47,3 @@ f3pix
 imgur.com
 
 today:
-本地的local上传也加上图片请求信息
