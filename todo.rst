@@ -15,6 +15,8 @@ python高级用法，类，oop等。
 每晚检查日志，定期更换cookies。
 注意每次要给新的类名添加ID子增字段。
 每次添加一个crawler后先loop爬，再添加到对应的upload_all里边
+http://kormodels.tumblr.com/api/read/json?start=1
+这个接口能直接拿到url和post_total,以后可以直接从这里获取
 
 todo：
 tumblr funny 图片, gif, meizi, boy ,art
@@ -45,12 +47,4 @@ f3pix
 imgur.com
 
 today:
-用redis缓存查询结果，没有再到leancloud去拿,
-实时更新.(leancloud好像会缓存相同url的查询) 使用tornado-redis异步获取结果。
-利用getall方法处理之前没有添加过ID的类，改成自增的，可以直接处理那些为1的，然后只需要递增这些ID就可以，不用处理所有的文件.
-用脚本处理所有图片数据请求七牛接口。数据{加上图片信息}，
-缩放策略。七牛接口可抑制直接拿到缩略图，研究下需不需要添加图片信息到.
-可以看看其他几个接口限定好尺寸。
-http://kormodels.tumblr.com/api/read/json?start=1
-这个接口能直接拿到url和post_total,以后可以直接从这里获取
-给上传图片添加tag，使用tumblr的接口
+本地的local上传也加上图片请求信息
