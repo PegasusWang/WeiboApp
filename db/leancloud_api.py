@@ -169,6 +169,7 @@ class LeanCloudApi(object):
             tag_list = LeanCloudApi.get_tag_list(filename)
             img_file.set('tag_list', tag_list)
             img_file.save()
+            self.add_img_info(img_file.id)    # save img_info after save
 
     @staticmethod
     def is_img_file(filename):
