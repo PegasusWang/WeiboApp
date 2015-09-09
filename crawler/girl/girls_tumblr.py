@@ -344,6 +344,7 @@ class AoababofanSpider(Spider):
 
 
 class LegloveworldSpider(Spider):
+    """from 1 to 3628"""
     def get_img(self, url='http://legloveworld.tumblr.com/'):
         img_list = get_media_url_list(url)
         return set([i for i in img_list if 'media.tumblr' in i])
@@ -356,18 +357,29 @@ class KawaiilegSpider(Spider):
 
 
 class GanpukudouSpider(Spider):
+    """from 1 to 8000"""
     def get_img(self, url='http://ganpukudou.tumblr.com/'):
         img_list = get_media_url_list(url)
         return set([i.replace('250', '1280') for i in img_list if 'media.tumblr' in i])
 
 
 class HeypantyhoseSpider(Spider):
+    """from 1 to 170"""
     def get_img(self, url='http://heypantyhose.tumblr.com/'):
         img_list = get_media_url_list(url)
         return set([i.replace('400', '1280') for i in img_list if 'media.tumblr' in i])
 
 
 class SexyLadyJapanSpider(Spider):
+    """from 1 to 350"""
     def get_img(self, url='http://sexy-lady-japan.tumblr.com/'):
         img_list = get_media_url_list(url)
         return set([i.replace('400', '1280') for i in img_list if 'media.tumblr' in i])
+
+
+class  SekkusuSpider(Spider):
+    """from 1 to 7800"""
+    def get_img(self, url='http://sekkusu.tumblr.com/'):
+        img_list = get_media_url_list(url)
+        img_list = [i.replace('500', '1280') for i in img_list if 'media.tumblr' in i]
+        return set([i for i in img_list if 'avatar' not in i])
