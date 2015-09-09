@@ -47,3 +47,4 @@ f3pix
 imgur.com
 
 today:
+整理leancloud上所有类的分类和名称

@@ -5,3 +5,4 @@ beautifulsoup4
 single_process
 jieba
 leancloud-sdk
+simplejson
