@@ -54,7 +54,7 @@ class Upload(object):
         return mimetypes.guess_type(file_abspath)[0]
 
     def upload_gan(self, **kwargs):
-        beg, end = 115, 8200
+        beg, end = 122, 8200
         for i in range(beg, end+1):
             time.sleep(3)
             url = 'http://ganpukudou.tumblr.com/page/%s' % i
@@ -62,9 +62,6 @@ class Upload(object):
             leancloud_upload = self._upload
             spider = GanpukudouSpider()
             img_list = spider.get_img(url)
-            if len(img_list) < 3:
-                print 'img_list less 3, return'
-                break
             for each_url in img_list:
                 if each_url:
                     print each_url
