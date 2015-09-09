@@ -12,7 +12,7 @@ from ..crawler.boy.boys_tumblr import (
     AllboysboysSpider,
 )
 from ..crawler.girl.girls_tumblr import (
-    KawaiilegSpider,
+    HeypantyhoseSpider,
 )
 from ..crawler.fashion.fashion_tumblr import (
     KoreanFashionSpider,
@@ -25,7 +25,7 @@ class Upload(object):
         self.class_name = kwargs.get('class_name')
         self._upload = LeanCloudApi(self.class_name)
         self.map_method = {
-            'upload_kaw': self.upload_kaw,
+            'upload_hey': self.upload_hey,
         }
 
     def upload(self, **args):
@@ -53,18 +53,15 @@ class Upload(object):
     def get_file_mimetype(file_abspath):
         return mimetypes.guess_type(file_abspath)[0]
 
-    def upload_kaw(self, **kwargs):
-        beg, end = 1, 10000
+    def upload_hey(self, **kwargs):
+        beg, end = 1, 170
         for i in range(beg, end+1):
             time.sleep(3)
-            url = 'http://kawaiileg.tumblr.com/page/%s' % i
+            url = 'http://heypantyhose.tumblr.com/page/%s' % i
             print url
             leancloud_upload = self._upload
-            spider = KawaiilegSpider()
+            spider = HeypantyhoseSpider()
             img_list = spider.get_img(url)
-            if len(img_list) < 3:
-                print 'less 3'
-                return
             for each_url in img_list:
                 if each_url:
                     print each_url
@@ -74,7 +71,7 @@ class Upload(object):
                             leancloud_upload.upload_file_by_url(filename, each_url)
                             time.sleep(3)
 dict_list = [
-    dict(upload_type='kaw', class_name='Kawaiileg'),
+    dict(upload_type='hey', class_name='Heypantyhose'),
 ]
 
 

@@ -54,7 +54,7 @@ class Upload(object):
         return mimetypes.guess_type(file_abspath)[0]
 
     def upload_gan(self, **kwargs):
-        beg, end = 1, 10000
+        beg, end = 115, 8200
         for i in range(beg, end+1):
             time.sleep(3)
             url = 'http://ganpukudou.tumblr.com/page/%s' % i
