@@ -15,10 +15,16 @@ from ..crawler.girl.girls_tumblr import (
     Touch45Spider, GigachaossSpider, JgiriSpider, IdolmaniaxSpider,
     VisualangelSpider, Blendy99Spider, AdnisSpider, AoababofanSpider,
     SilymarinSpider, LegloveworldSpider, SekkusuSpider, GanpukudouSpider,
-    SexyLadyJapanSpider, KawaiilegSpider,
+    SexyLadyJapanSpider, KawaiilegSpider, MoreangelsSpider, SmallPigSpider,
+    GirlFixSpider, SekkusuSpider, DoumigirlsSpider,
 )
 
 map_class = {
+    'DoumigirlsSpider': DoumigirlsSpider,
+    'SekkusuSpider': SekkusuSpider,
+    'GirlFixSpider': GirlFixSpider,
+    'SmallPigSpider': SmallPigSpider,
+    'MoreangelsSpider': MoreangelsSpider,
     'KawaiilegSpider': KawaiilegSpider,
     'GanpukudouSpider': GanpukudouSpider,
     'SexyLadyJapanSpider': SexyLadyJapanSpider,

@@ -327,6 +327,7 @@ class AdnisSpider(Spider):
 
 
 class JoanpeperoSpider(Spider):
+    """not to add upload_all"""
     def get_img(self, url='http://joanpepero.tumblr.com/'):
         html = fetch_html(url)
         soup = BeautifulSoup(html, 'lxml')
@@ -377,7 +378,7 @@ class SexyLadyJapanSpider(Spider):
         return set([i.replace('400', '1280') for i in img_list if 'media.tumblr' in i])
 
 
-class  SekkusuSpider(Spider):
+class SekkusuSpider(Spider):
     """from 1 to 7800"""
     def get_img(self, url='http://sekkusu.tumblr.com/'):
         img_list = get_media_url_list(url)
@@ -386,6 +387,7 @@ class  SekkusuSpider(Spider):
 
 
 class JacyliuSpider(JoanpeperoSpider):
+    """not to add upload_all"""
     def get_img(self, url='http://jacyliu.tumblr.com/'):
         return super(JacyliuSpider, self).get_img(url)
 
@@ -406,6 +408,13 @@ class SmallPigSpider(Spider):
 
 class MoreangelsSpider(Spider):
     def get_img(self, url='http://moreangels.tumblr.com/'):
+        img_list = get_media_url_list(url)
+        img_list = [i.replace('500', '1280') for i in img_list if 'media.tumblr' in i]
+        return set([i for i in img_list if 'avatar' not in i])
+
+
+class DoumigirlsSpider(Spider):
+    def get_img(self, url='http://www.doumigirls.com/'):
         img_list = get_media_url_list(url)
         img_list = [i.replace('500', '1280') for i in img_list if 'media.tumblr' in i]
         return set([i for i in img_list if 'avatar' not in i])
