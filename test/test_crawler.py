@@ -31,11 +31,11 @@ from crawler.fashion.fashion_tumblr import (
     KoreanFashionSpider,
 )
 map_spider = {
+    'JacyliuSpider': JacyliuSpider,
     'DoumigirlsSpider': DoumigirlsSpider,
     'MoreangelsSpider': MoreangelsSpider,
     'SmallPigSpider': SmallPigSpider,
     'GirlFixSpider': GirlFixSpider,
-    'JacyliuSpider': JacyliuSpider,
     'SekkusuSpider': SekkusuSpider,
     'SexyLadyJapanSpider': SexyLadyJapanSpider,
     'HeypantyhoseSpider': HeypantyhoseSpider,
@@ -99,11 +99,11 @@ class SpiderTest(object):
 
 
 spider_list_dict = [
+    dict(class_name='JacyliuSpider', method_name='get_img'),
     dict(class_name='DoumigirlsSpider', method_name='get_img'),
     dict(class_name='MoreangelsSpider', method_name='get_img'),
     dict(class_name='SmallPigSpider', method_name='get_img'),
     dict(class_name='GirlFixSpider', method_name='get_img'),
-    dict(class_name='JacyliuSpider', method_name='get_img'),
     dict(class_name='SekkusuSpider', method_name='get_img'),
     dict(class_name='SexyLadyJapanSpider', method_name='get_img'),
     dict(class_name='HeypantyhoseSpider', method_name='get_img'),

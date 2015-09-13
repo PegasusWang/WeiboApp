@@ -335,7 +335,10 @@ class JoanpeperoSpider(Spider):
         url_list = []
         for i in iframe_tag_list:
             url_list.append(i.get('src'))
-        return set(url_list)
+        img_url_list = []
+        for each in url_list:
+            img_url_list.extend(get_media_url_list(each))
+        return set(img_url_list)
 
 
 class AoababofanSpider(Spider):
