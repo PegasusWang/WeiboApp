@@ -14,7 +14,8 @@ from crawler.girl.girls_tumblr import (
     LegloveworldSpider, KawaiilegSpider, GanpukudouSpider,
     HeypantyhoseSpider, SexyLadyJapanSpider, SekkusuSpider,
     JacyliuSpider, GirlFixSpider, SmallPigSpider,
-    MoreangelsSpider, DoumigirlsSpider,
+    MoreangelsSpider, DoumigirlsSpider, IdoljpSpider,
+    TokujiroSpider,
 )
 from crawler.funnygif.funnygif_tumblr import (
     GifsboomSpider, GifsonSpider, LolgifruSpider,
@@ -31,6 +32,8 @@ from crawler.fashion.fashion_tumblr import (
     KoreanFashionSpider,
 )
 map_spider = {
+    'TokujiroSpider': TokujiroSpider,
+    'IdoljpSpider': IdoljpSpider,
     'JacyliuSpider': JacyliuSpider,
     'DoumigirlsSpider': DoumigirlsSpider,
     'MoreangelsSpider': MoreangelsSpider,
@@ -99,6 +102,8 @@ class SpiderTest(object):
 
 
 spider_list_dict = [
+    dict(class_name='TokujiroSpider', method_name='get_img'),
+    dict(class_name='IdoljpSpider', method_name='get_img'),
     dict(class_name='JacyliuSpider', method_name='get_img'),
     dict(class_name='DoumigirlsSpider', method_name='get_img'),
     dict(class_name='MoreangelsSpider', method_name='get_img'),
