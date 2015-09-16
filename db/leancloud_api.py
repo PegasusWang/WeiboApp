@@ -22,6 +22,13 @@ class LeanCloudApi(object):
         self._class = Object.extend(class_name)
         self._query = Query(self._class)
 
+    def save_obj(self, obj_dict):
+        c = self._class
+        obj = c()
+        for k, v in obj_dict.iteritems():
+            obj.set(k, v)
+        obj.save()
+
     def get_skip_obj_list(self, skip_num=0, limit_num=20):
         query = self._query
         query.descending('updatedAt')
