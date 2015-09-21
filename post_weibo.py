@@ -53,9 +53,9 @@ def main():
     else:
         types = {'tumblr_chinabeauties': 10, 'tumblr_bestofasiangirls': 10,
                  'tumblr_sossex1': 10, 'tumblr_sossex1': 10,
-                 'tumblr_lobbu': 15, 'tumblr_happylim': 10,
-                 'tumblr_girl2chick': 30, 'tumblr_lovelyasians': 10,
-                 'girls': 10}
+                 'tumblr_lobbu': 10, 'tumblr_happylim': 10,
+                 'tumblr_girl2chick': 10, 'tumblr_lovelyasians': 10,
+                 'girls': 30}
 
     type_list = generate_type_list(types)
     cur_type = random.choice(type_list)
