@@ -19,8 +19,8 @@ class Spider(object):
         d = {}
         l = self.cookies_str.split(';')
         for each in l:
-            k = each.split('=')[0]
-            v = each.split('=')[1]
+            k = each.split('=')[0].strip()
+            v = each.split('=')[1].strip()
             d[k] = v
         return d
 
@@ -58,7 +58,7 @@ class Spider(object):
                                     proxies=proxies, timeout=10).text
             else:
                 html = requests.get(self.url, headers=headers,
-                                    cookies=cookies, timeout=10).text
+                                    timeout=10).text
 
         except:
             if retries > 0:
