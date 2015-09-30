@@ -8,14 +8,8 @@ import mimetypes
 import time
 from leancloud_api import LeanCloudApi
 from single_process import single_process
-from ..crawler.boy.boys_tumblr import (
-    AllboysboysSpider,
-)
 from ..crawler.girl.girls_tumblr import (
-    AdnisSpider,
-)
-from ..crawler.fashion.fashion_tumblr import (
-    KoreanFashionSpider,
+     ThegirlnotnakedSpider,
 )
 
 
@@ -25,7 +19,7 @@ class Upload(object):
         self.class_name = kwargs.get('class_name')
         self._upload = LeanCloudApi(self.class_name)
         self.map_method = {
-            'upload_adn': self.upload_adn,
+            'upload_nake': self.upload_nake,
         }
 
     def upload(self, **args):
@@ -53,18 +47,15 @@ class Upload(object):
     def get_file_mimetype(file_abspath):
         return mimetypes.guess_type(file_abspath)[0]
 
-    def upload_adn(self, **kwargs):
-        beg, end = 784, 10000
+    def upload_nake(self, **kwargs):
+        beg, end = 1, 1250
         for i in range(beg, end+1):
-            time.sleep(2)
-            url = 'http://adnis.tumblr.com/page/%s' % i
+            time.sleep(3)
+            url = 'http://thegirlnotnaked.tumblr.com/page/%s' % i
             print url
             leancloud_upload = self._upload
-            spider = AdnisSpider()
+            spider = ThegirlnotnakedSpider()
             img_list = spider.get_img(url)
-            if len(img_list) < 3:
-                print 'img_list less 3, return'
-                break
             for each_url in img_list:
                 if each_url:
                     print each_url
@@ -73,8 +64,9 @@ class Upload(object):
                         not leancloud_upload.exist_file(filename):
                             leancloud_upload.upload_file_by_url(filename, each_url)
                             time.sleep(3)
+
 dict_list = [
-    dict(upload_type='sil', class_name='Girls'),
+    dict(upload_type='nake', class_name='Thegirlnotnaked'),
 ]
 
 
@@ -88,4 +80,3 @@ def main():
 if __name__ == '__main__':
     main()
     print time.strftime('%Y-%m-%d %A %X %Z',time.localtime(time.time()))
-    print 'finish'

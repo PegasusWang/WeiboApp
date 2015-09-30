@@ -42,6 +42,7 @@ def upload_all_file(class_name, file_dir):
 def main():
     class_name_list = ['ImgFile', 'Girls']
     for class_name, each_dir in zip(class_name_list, config.UPLOAD_DIR):
+        print 'uploading class', class_name
         upload_all_file(class_name, each_dir)
     print time.strftime('%Y-%m-%d %A %X %Z',time.localtime(time.time()))
 

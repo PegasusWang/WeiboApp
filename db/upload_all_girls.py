@@ -17,10 +17,11 @@ from ..crawler.girl.girls_tumblr import (
     SilymarinSpider, LegloveworldSpider, SekkusuSpider, GanpukudouSpider,
     SexyLadyJapanSpider, KawaiilegSpider, MoreangelsSpider, SmallPigSpider,
     GirlFixSpider, SekkusuSpider, DoumigirlsSpider, IdoljpSpider,
-    TokujiroSpider,
+    TokujiroSpider, ThegirlnotnakedSpider,
 )
 
 map_class = {
+    'ThegirlnotnakedSpider': ThegirlnotnakedSpider,
     'TokujiroSpider': TokujiroSpider,
     'IdolmaniaxSpider': IdolmaniaxSpider,
     'DoumigirlsSpider': DoumigirlsSpider,
