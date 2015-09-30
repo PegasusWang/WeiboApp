@@ -11,8 +11,8 @@ def callback(res):
 
 
 def test():
-    l = LeanCloudApi("Girls")
-    l.upload_file_by_url('test', url='http://ac-0pdchyat.clouddn.com/b73dfdfecfeaf84e.gif')
+    l = LeanCloudApi("Test")
+    l.del_by_url('http://ac-0pdchyat.clouddn.com/fe045d1a630e7da1.png')
 
 
 if __name__ == '__main__':
