@@ -4,4 +4,4 @@
 *.swp
 *log
 .DS_Store
-_templates/*
+admin/_templates/*
