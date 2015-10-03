@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>Please Log In</title>
+    </head>
+
+    <body>
+        <form action="/admin/login" method="POST">
+            ${ xsrf_form_html() }
+            Username: <input type="text" name="username"/>
+            Password: <input type="password" name="password"/>
+            <input type="submit" value="Log In"/>
+        </form>
+    </body>
+</html>
+

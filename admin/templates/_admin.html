@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+
+    <%block name="title"/>
+
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="${static_url("css/reset.css")}">
+    <link rel="stylesheet" href="${static_url("css/waterfall.css")}">
+    <link href="${static_url("css/style.css")}" media="screen" rel="stylesheet" type="text/css" />
+    <script src="${static_url("js/prefix-free.js")}"></script>
+
+</head>
+
+<body>
+<div id="header">
+    <nav>
+        <ul class="menu">
+            <li><a href="/"><span class="iconic home"></span> 后台管理界面,地址/admin/class/class_name</a></li>
+        </ul>
+        <div class="clearfix"></div>
+    </nav>
+</div>
+
+<%block name="waterfall"/>
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-1245097-16']);
+_gaq.push(['_trackPageview']);
+_gaq.push(['_trackPageLoadTime']);
+(function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = 'https://ssl.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<%inherit file="_admin.html"/>
+
+<%block name="title">
+    <title>删除界面</title>
+</%block>
+
+<%block name="waterfall">
+    <div id="container"></div>
+
+
+    <script type="text/x-handlebars-template" id="waterfall-tpl">
+    <%text>
+    {{#result}}
+        <div class="item">
+            <img id="{{id}}" src="{{image}}" width="{{width}}" height="{{height}}" />
+            <input type="button" value="删除图片" onclick="deleteImg(this)"/>
+        </div>
+    {{/result}}
+    </%text>
+    </script>
+
+
+    <script src="${static_url("js/libs/jquery/jquery.js")}"></script>
+    <script src="${static_url("js/libs/handlebars/handlebars.js")}"></script>
+    <script src="${static_url("js/libs/jquery.easing.js")}"></script>
+    <script src="${static_url("js/waterfall.js")}"></script>
+
+    <script>
+    function getCookie(name) {
+        var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
+        return r ? r[1] : undefined;
+    }
+
+    function deleteImg(obj) {
+        var node = obj.parentNode;
+        var imgNode = node.getElementsByTagName('img')
+        var imgId = imgNode[0].getAttribute('id');
+        var _xsrf = getCookie("_xsrf");
+
+        $.ajax({
+            url: '/admin/img/solve',// 跳转到 action
+            data: {
+                '_xsrf': _xsrf,
+                'class_name': '${class_name}',
+                'img_id': imgId
+            },
+            type: 'post',
+            cache: false,
+            dataType: 'json',
+            success:function(data) {
+                if(data.msg =="success" ){
+                    //alert("修改成功！"+ data.img_id);
+                } else {
+                    alert("删除失败，请重试"+ data.img_id);
+                }
+             },
+             error : function() {
+                  // view("异常！");
+                  alert("异常！");
+             }
+        });
+    }
+    </script>
+
+    <script>
+    $('#container').waterfall({
+        itemCls: 'item',
+        colWidth: 222,
+        maxCol: 5,
+        gutterWidth: 15,
+        gutterHeight: 15,
+        checkImagesLoaded: false,
+        isAnimated: true,
+        isFadeIn: true,
+        dataType: 'text',
+        animationOptions: {
+        },
+        path: function(page) {
+            return '/api/data.json?page=' + page;
+        },
+        params: {class_name: "${class_name}"}
+    });
+    </script>
+</%block>
+

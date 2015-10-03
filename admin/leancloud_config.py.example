@@ -1,0 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+class LeanCloud:
+    APP_ID = 'pz5iIRfntUbUgF5YcVYfigdK'
+    APP_MASTER_KEY = 'sXWg6rPeqj3woTLNOpeuwGqn'

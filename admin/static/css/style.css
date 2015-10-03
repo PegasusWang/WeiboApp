@@ -1,0 +1,194 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Default Styles
+--------------------------------------------------------------------*/
+
+body {
+	font-family: 'Droid Sans', sans-serif;;
+}
+
+.clearfix {
+	clear: both;
+}
+
+
+.wrap {
+    width: auto;
+}
+
+nav {
+	padding: 0 10px;
+	position: relative;
+}
+
+.menu li {
+	float: left;
+	position: relative;
+}
+
+.menu li a {
+	color: #444;
+	display: block;
+	font-size: 14px;
+	line-height: 20px;
+	padding: 6px 12px;
+	margin: 8px 8px;
+	vertical-align: middle;
+	text-decoration: none;
+}
+
+.menu li a:hover {
+	background: -webkit-gradient(linear, center top, center bottom, from(#ededed), to(#fff));
+	background-image: linear-gradient(#ededed, #fff);
+	border-radius: 12px;
+	box-shadow: inset 0px 0px 1px 1px rgba(0,0,0,0.1);
+	color: #222;
+}
+
+/* Dropdown styles */
+
+.menu ul {
+	position: absolute;
+	left: -9999px;
+	list-style: none;
+	opacity: 0;
+	transition: opacity 1s ease;
+}
+
+.menu ul li {
+	float: none;
+}
+
+.menu ul a {
+	white-space: nowrap;
+}
+
+/* Displays the dropdown on hover and moves back into position */
+.menu li:hover ul {
+	background: rgba(255,255,255,0.7);
+	border-radius: 0 0 6px 6px;
+	box-shadow: inset 0px 2px 4px rgba(0,0,0,0.4);
+	left: 5px;
+	opacity: 1;
+}
+
+/* Persistant Hover State */
+.menu li:hover a {
+	background: -webkit-gradient(linear, center top, center bottom, from(#ccc), to(#ededed));
+	background-image: linear-gradient(#ccc, #ededed);
+	border-radius: 12px;
+	box-shadow: inset 0px 0px 1px 1px rgba(0,0,0,0.1);
+	color: #222;
+}
+
+.menu li:hover ul a {
+	background: none;
+	border-radius: 0;
+	box-shadow: none;
+}
+
+.menu li:hover ul li a:hover {
+	background: -webkit-gradient(linear, center top, center bottom, from(#eee), to(#fff));
+	background-image: linear-gradient(#ededed, #fff);
+	border-radius: 12px;
+	box-shadow: inset 0px 0px 4px 2px rgba(0,0,0,0.3);
+}
+
+.cd-top {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  position: fixed;
+  bottom: 40px;
+  right: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  /* image replacement properties */
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  background: rgba(232, 98, 86, 0.8) url(../img/top.gif) no-repeat center 50%;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+  -moz-transition: opacity .3s 0s, visibility 0s .3s;
+  transition: opacity .3s 0s, visibility 0s .3s;
+}
+.cd-top.cd-is-visible, .cd-top.cd-fade-out, .no-touch .cd-top:hover {
+  -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+  -moz-transition: opacity .3s 0s, visibility 0s 0s;
+  transition: opacity .3s 0s, visibility 0s 0s;
+}
+.cd-top.cd-is-visible {
+  /* the button becomes visible */
+  visibility: visible;
+  opacity: 1;
+}
+.cd-top.cd-fade-out {
+  /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+  opacity: .5;
+}
+.no-touch .cd-top:hover {
+  background-color: #e86256;
+  opacity: 1;
+}
+@media only screen and (min-width: 768px) {
+  .cd-top {
+    right: 20px;
+    bottom: 20px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .cd-top {
+    height: 60px;
+    width: 60px;
+    right: 30px;
+    bottom: 30px;
+  }
+}

@@ -22,6 +22,29 @@ class LeanCloudApi(object):
         self._class = Object.extend(class_name)
         self._query = Query(self._class)
 
+    def set_by_ID(self, ID, to_delete_ID=0):
+        query = self._query
+        query.equal_to('ID', ID)    # todo ,not fount
+        try:
+            o = query.first()
+            o.set('ID', to_delete_ID)
+            o.save()
+            print('set success', ID)
+        except:
+            print('obj not found', ID)
+            return
+
+    def del_by_ID(self, ID):
+        query = self._query
+        query.equal_to('ID', ID)    # todo ,not fount
+        try:
+            o = query.first()
+            o.destroy()
+            print('deleted success', ID)
+        except:
+            print('no obj found', ID)
+            return
+
     def save_obj(self, obj_dict):
         c = self._class
         obj = c()
@@ -31,7 +54,8 @@ class LeanCloudApi(object):
 
     def get_skip_obj_list(self, skip_num=0, limit_num=20):
         query = self._query
-        query.descending('updatedAt')
+        #query.descending('updatedAt')
+        query.descending('ID')
         query.skip(skip_num*limit_num)
         query.limit(limit_num)
         try:
