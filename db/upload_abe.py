@@ -9,7 +9,8 @@ import time
 from leancloud_api import LeanCloudApi
 from single_process import single_process
 from ..crawler.girl.girls_tumblr import (
-    MuttsuriKusoyarouSpider,
+    ABeautifulGSpider,
+
 )
 
 
@@ -19,7 +20,7 @@ class Upload(object):
         self.class_name = kwargs.get('class_name')
         self._upload = LeanCloudApi(self.class_name)
         self.map_method = {
-            'upload_mut': self.upload_mut,
+            'upload_abe': self.upload_abe,
         }
 
     def upload(self, **args):
@@ -47,14 +48,14 @@ class Upload(object):
     def get_file_mimetype(file_abspath):
         return mimetypes.guess_type(file_abspath)[0]
 
-    def upload_mut(self, **kwargs):
-        beg, end = 1, 1200
+    def upload_abe(self, **kwargs):
+        beg, end = 1, 1368
         for i in range(beg, end+1):
             time.sleep(3)
-            url = 'http://muttsuri-kusoyarou.tumblr.com/page/%s' % i
+            url = 'http://a-beautiful-g.tumblr.com/page/%s' % i
             print url
             leancloud_upload = self._upload
-            spider = MuttsuriKusoyarouSpider()
+            spider = ABeautifulGSpider()
             img_list = spider.get_img(url)
             for each_url in img_list:
                 if each_url:
@@ -66,9 +67,8 @@ class Upload(object):
                             time.sleep(3)
 
 dict_list = [
-    dict(upload_type='mut', class_name='MuttsuriKusoyarou'),
+    dict(upload_type='abe', class_name='ABeautifulG'),
 ]
-
 
 @single_process
 def main():
