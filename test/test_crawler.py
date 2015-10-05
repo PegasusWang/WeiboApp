@@ -28,12 +28,13 @@ from crawler.animal.animals_tumblr import (
     CatsdogsblogSpider, AnimalspatronusgifsSpider,
 )
 from crawler.boy.boys_tumblr import (
-    AllboysboysSpider, LobbuSpider,
+    AllboysboysSpider, LobbuSpider, NoonakimSpider,
 )
 from crawler.fashion.fashion_tumblr import (
     KoreanFashionSpider,
 )
 map_spider = {
+    'NoonakimSpider': NoonakimSpider,
     'ABeautifulGSpider': ABeautifulGSpider,
     'MuttsuriKusoyarouSpider': MuttsuriKusoyarouSpider,
     'SexyInStockingsSpider': SexyInStockingsSpider,
@@ -108,6 +109,7 @@ class SpiderTest(object):
 
 
 spider_list_dict = [
+    dict(class_name='NoonakimSpider', method_name='get_img'),
     dict(class_name='ABeautifulGSpider', method_name='get_img'),
     dict(class_name='MuttsuriKusoyarouSpider', method_name='get_img'),
     dict(class_name='SexyInStockingsSpider', method_name='get_img'),

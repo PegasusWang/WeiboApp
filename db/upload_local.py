@@ -49,3 +49,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+    cmd = 'mv /home/wnn/gif/girls/* /home/wnn/gif/old'
+    os.system(cmd)

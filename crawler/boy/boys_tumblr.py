@@ -69,3 +69,11 @@ class LobbuSpider(Spider):
             img_list.extend(l)
         img_list = [i for i in img_list if 'media' in i]
         return img_list
+
+
+class NoonakimSpider(Spider):
+    def get_img(self, url='http://noonakim.tumblr.com/'):
+        img_list = list(get_media_url_list(url))
+        img_list = [i for i in img_list if 'media.tumblr' in i]
+        img_list = [i for i in img_list if 'cover' not in i and 'avatar' not in i]
+        return img_list
