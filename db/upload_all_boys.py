@@ -8,12 +8,13 @@ import time
 from leancloud_api import LeanCloudApi
 from single_process import single_process
 from ..crawler.boy.boys_tumblr import (
-    AllboysboysSpider, LobbuSpider,
+    AllboysboysSpider, LobbuSpider, NoonakimSpider,
 )
 
 map_class = {
     'AllboysboysSpider': AllboysboysSpider,
     'LobbuSpider': LobbuSpider,
+    'NoonakimSpider', NoonakimSpider,
 }
 
 

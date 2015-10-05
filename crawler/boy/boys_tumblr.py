@@ -76,4 +76,4 @@ class NoonakimSpider(Spider):
         img_list = list(get_media_url_list(url))
         img_list = [i for i in img_list if 'media.tumblr' in i]
         img_list = [i for i in img_list if 'cover' not in i and 'avatar' not in i]
-        return img_list
+        return set(img_list)
