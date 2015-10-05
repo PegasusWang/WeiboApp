@@ -7,14 +7,12 @@ import mimetypes
 import time
 from leancloud_api import LeanCloudApi
 from single_process import single_process
-from ..crawler.boy.boys_tumblr import (
-    AllboysboysSpider, LobbuSpider, NoonakimSpider,
+from ..crawler.nature.nature_tumblr import (
+    OfnaturesbeautySpider,
 )
 
 map_class = {
-    'AllboysboysSpider': AllboysboysSpider,
-    'LobbuSpider': LobbuSpider,
-    'NoonakimSpider': NoonakimSpider,
+    'OfnaturesbeautySpider': OfnaturesbeautySpider,
 }
 
 
