@@ -11,7 +11,7 @@ from crawler.qiubai_crawler import QiubaiSpider
 from db import leancloud_api
 from weibo_app import WeiboApp
 
-TXT = u'http://tupian.today "今日图片", 看不完的妹子图'
+TXT = u"""http://tupian.today "今日图片tupian.today", 看不完的妹子图"""
 
 class WeiboTypes(object):
 
