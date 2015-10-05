@@ -55,7 +55,7 @@ def main():
                  'tumblr_sossex1': 10, 'tumblr_sossex1': 10,
                  'tumblr_lobbu': 10, 'tumblr_happylim': 10,
                  'tumblr_girl2chick': 10, 'tumblr_lovelyasians': 10,
-                 'girls': 80}
+                 'girls': 100}
 
     type_list = generate_type_list(types)
     cur_type = random.choice(type_list)

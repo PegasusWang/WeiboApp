@@ -11,6 +11,7 @@ from crawler.qiubai_crawler import QiubaiSpider
 from db import leancloud_api
 from weibo_app import WeiboApp
 
+TXT = u'http://tupian.today "今日图片", 看不完的妹子图'
 
 class WeiboTypes(object):
 
@@ -142,39 +143,39 @@ class WeiboTypes(object):
     def get_girls(self):
         upload = leancloud_api.LeanCloudApi('Girls')
         d = upload.get_imgfile_by_recent_ID(100)
-        self.weibo_app.post_img(u'深夜福利', d.get('pic'))
+        self.weibo_app.post_img(TXT, d.get('pic'))
 
     def get_tumblr_bestofasiangirls(self):
         upload = leancloud_api.LeanCloudApi('Bestofasiangirls')
         d = upload.get_imgfile_by_recent_ID(100)
-        self.weibo_app.post_img(u'妹子呦', d.get('pic'))
+        self.weibo_app.post_img(TXT, d.get('pic'))
 
     def get_tumblr_chinabeauties(self):
         upload = leancloud_api.LeanCloudApi('Chinabeauties')
         d = upload.get_imgfile_by_recent_ID(100)
-        self.weibo_app.post_img(u'妹子呦', d.get('pic'))
+        self.weibo_app.post_img(TXT, d.get('pic'))
 
     def get_tumblr_sossex1(self):
         upload = leancloud_api.LeanCloudApi('Sossex1')
         d = upload.get_imgfile_by_recent_ID(100)
-        self.weibo_app.post_img(u'妹子呦', d.get('pic'))
+        self.weibo_app.post_img(TXT, d.get('pic'))
 
     def get_tumblr_happylim(self):
         upload = leancloud_api.LeanCloudApi('Happylim')
         d = upload.get_imgfile_by_recent_ID(100)
-        self.weibo_app.post_img(u'妹子呦', d.get('pic'))
+        self.weibo_app.post_img(TXT, d.get('pic'))
 
     def get_tumblr_girl2chick(self):
         upload = leancloud_api.LeanCloudApi('Girl2chick')
         d = upload.get_imgfile_by_recent_ID(100)
-        self.weibo_app.post_img(u'妹子呦', d.get('pic'))
+        self.weibo_app.post_img(TXT, d.get('pic'))
 
     def get_tumblr_lovelyasians(self):
         upload = leancloud_api.LeanCloudApi('Lovelyasians')
         d = upload.get_imgfile_by_recent_ID(100)
-        self.weibo_app.post_img(u'妹子呦', d.get('pic'))
+        self.weibo_app.post_img(TXT, d.get('pic'))
 
     def get_tumblr_lobbu(self):
         upload = leancloud_api.LeanCloudApi('Lobbu')
         d = upload.get_imgfile_by_recent_ID(100)
-        self.weibo_app.post_img(u'小鲜肉', d.get('pic'))
+        self.weibo_app.post_img(TXT, d.get('pic'))
