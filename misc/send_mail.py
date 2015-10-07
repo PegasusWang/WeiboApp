@@ -19,7 +19,7 @@ def get_mail_from_redis(num=10):
     key = "QQMAIL"
     mail_list = r.lrange(key, 0, num)
     for i in range(num):
-        r.lpop()
+        r.lpop(key)
     return set(mail_list)
 
 
