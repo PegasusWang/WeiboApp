@@ -24,7 +24,6 @@ def get_mail_from_redis(num=10):
 
 
 send_to_mail_list = list(get_mail_from_redis(10))
-send_to_mail_list.append('291374108@qq.com')
 
 
 mailInfo = {

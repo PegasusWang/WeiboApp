@@ -9,7 +9,7 @@ def init():
     r = StrictRedis('127.0.0.1', 6379)
     key = 'QQMAIL'
     mail_list = []
-    with open('qq.txt', 'r') as f:
+    with open('qqmail.txt', 'r') as f:
         for line in f:
             mail_list.append(line.strip())
 
@@ -21,3 +21,4 @@ def init():
 
 if __name__ == '__main__':
     init()
+    print('init done')
