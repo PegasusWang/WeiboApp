@@ -184,11 +184,7 @@ class LeanCloudApi(object):
             print filename, '----uploaded----'
             self.add_img_info(img_file.id)    # save img_info after save
         except:
-            print 'save file failed, retry', url
-            time.sleep(1)
-            img_file.save()
-            print filename, '----uploaded----'
-            self.add_img_info(img_file.id)    # save img_info after save
+            'save failed'
             return
 
     def upload_file(self, file_abspath):
