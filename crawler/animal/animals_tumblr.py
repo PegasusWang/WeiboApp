@@ -93,3 +93,11 @@ class AwwwwCuteSpider(Spider):
         url_list = [i for i in url_list if 'media.tumblr' in i]
         url_list = [i for i in url_list if 'avatar' not in i]
         return set(url_list)
+
+
+class CatOverloadSpider(Spider):
+    def get_img(self, url='http://cat-overload.tumblr.com'):
+        url_list = list(get_media_url_list(url))
+        url_list = [i for i in url_list if 'media.tumblr' in i]
+        url_list = [i for i in url_list if 'avatar' not in i]
+        return set(url_list)
