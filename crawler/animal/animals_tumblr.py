@@ -101,3 +101,27 @@ class CatOverloadSpider(Spider):
         url_list = [i for i in url_list if 'media.tumblr' in i]
         url_list = [i for i in url_list if 'avatar' not in i]
         return set(url_list)
+
+
+class FunnyDogsSpider(Spider):
+    def get_img(self, url='http://funnydogs.xyz/page/1'):
+        url_list = list(get_media_url_list(url))
+        url_list = [i for i in url_list if 'media.tumblr' in i]
+        url_list = [i for i in url_list if 'avatar' not in i]
+        return set(url_list)
+
+
+class DogsandpupsdailySpider(Spider):
+    def get_img(self, url='http://dogsandpupsdaily.tumblr.com'):
+        url_list = list(get_media_url_list(url))
+        url_list = [i for i in url_list if 'media.tumblr' in i]
+        url_list = [i for i in url_list if 'avatar' not in i]
+        return set(url_list)
+
+
+class LovecorgisSpider(Spider):
+    def get_img(self, url='http://lovecorgis.tumblr.com/'):
+        url_list = list(get_media_url_list(url))
+        url_list = [i for i in url_list if 'media.tumblr' in i]
+        url_list = [i for i in url_list if 'avatar' not in i]
+        return set(url_list)
