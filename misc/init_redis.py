@@ -11,7 +11,7 @@ def init():
     mail_list = []
     with open('qq.txt', 'r') as f:
         for line in f:
-            f.append(line.strip())
+            mail_list.append(line.strip())
 
     random.shuffle(mail_list)
 
