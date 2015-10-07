@@ -14,7 +14,7 @@ from ..crawler.girl.girls_tumblr import (
     ForchiSpider, ChinabeautiesSpider, HappylimSpider, BestofasiangirlsSpider,
     Touch45Spider, GigachaossSpider, JgiriSpider, IdolmaniaxSpider,
     VisualangelSpider, Blendy99Spider, AdnisSpider, AoababofanSpider,
-    SilymarinSpider, LegloveworldSpider, SekkusuSpider, GanpukudouSpider,
+    SilymarinSpider, LegloveworldSpider, GanpukudouSpider,
     SexyLadyJapanSpider, KawaiilegSpider, MoreangelsSpider, SmallPigSpider,
     GirlFixSpider, SekkusuSpider, DoumigirlsSpider, IdoljpSpider,
     TokujiroSpider, ThegirlnotnakedSpider, SexyInStockingsSpider,
@@ -27,9 +27,8 @@ map_class = {
     'SexyInStockingsSpider': SexyInStockingsSpider,
     'ThegirlnotnakedSpider': ThegirlnotnakedSpider,
     'TokujiroSpider': TokujiroSpider,
-    'IdolmaniaxSpider': IdolmaniaxSpider,
+    'IdoljpSpider': IdoljpSpider,
     'DoumigirlsSpider': DoumigirlsSpider,
-    'SekkusuSpider': SekkusuSpider,
     'GirlFixSpider': GirlFixSpider,
     'SmallPigSpider': SmallPigSpider,
     'MoreangelsSpider': MoreangelsSpider,
@@ -82,10 +81,11 @@ class Upload(object):
                 filename = each_url
                 if 'avatar' in filename:
                     continue
-                if leancloud_upload.is_img_file(filename) and \
-                    not leancloud_upload.exist_file(filename):
-                        leancloud_upload.upload_file_by_url(filename, each_url)
-                        time.sleep(2)
+                if leancloud_upload.exist_file(filename):
+                    continue
+                if leancloud_upload.is_img_file(filename):
+                    leancloud_upload.upload_file_by_url(filename, each_url)
+                    time.sleep(2)
 
     @staticmethod
     def get_filename(file_abspath):

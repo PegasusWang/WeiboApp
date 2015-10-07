@@ -31,10 +31,11 @@ class Upload(object):
             if each_url:
                 print each_url
                 filename = each_url
-                if leancloud_upload.is_img_file(filename) and \
-                    not leancloud_upload.exist_file(filename):
-                        leancloud_upload.upload_file_by_url(filename, each_url)
-                        time.sleep(2)
+                if leancloud_upload.exist_file(filename):
+                    continue
+                if leancloud_upload.is_img_file(filename):
+                    leancloud_upload.upload_file_by_url(filename, each_url)
+                    time.sleep(2)
 
     @staticmethod
     def get_filename(file_abspath):
