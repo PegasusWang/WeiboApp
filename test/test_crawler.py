@@ -26,6 +26,7 @@ from crawler.funnygif.funnygif_tumblr import (
 from crawler.animal.animals_tumblr import (
     AnimalGifHunterSpider, AlthingscuteSpider, JunkuploadSpider,
     CatsdogsblogSpider, AnimalspatronusgifsSpider, AwwwwCuteSpider,
+    CatOverloadSpider, FunnyDogsSpider,
 )
 from crawler.boy.boys_tumblr import (
     AllboysboysSpider, LobbuSpider, NoonakimSpider,
@@ -38,6 +39,8 @@ from crawler.nature.nature_tumblr import (
 
 )
 map_spider = {
+    'FunnyDogsSpider': FunnyDogsSpider,
+    'CatOverloadSpider': CatOverloadSpider,
     'OfnaturesbeautySpider': OfnaturesbeautySpider,
     'AwwwwCuteSpider': AwwwwCuteSpider,
     'NoonakimSpider': NoonakimSpider,
@@ -62,20 +65,9 @@ class SpiderTest(object):
 
 
 spider_list_dict = [
-    dict(class_name='OfnaturesbeautySpider', method_name='get_img'),
+    dict(class_name='FunnyDogsSpider', method_name='get_img'),
     dict(class_name='NoonakimSpider', method_name='get_img'),
     dict(class_name='ABeautifulGSpider', method_name='get_img'),
-    dict(class_name='MuttsuriKusoyarouSpider', method_name='get_img'),
-    dict(class_name='SexyInStockingsSpider', method_name='get_img'),
-    dict(class_name='ThegirlnotnakedSpider', method_name='get_img'),
-    dict(class_name='TokujiroSpider', method_name='get_img'),
-    dict(class_name='IdoljpSpider', method_name='get_img'),
-    dict(class_name='JacyliuSpider', method_name='get_img'),
-    dict(class_name='DoumigirlsSpider', method_name='get_img'),
-    dict(class_name='MoreangelsSpider', method_name='get_img'),
-    dict(class_name='SmallPigSpider', method_name='get_img'),
-    dict(class_name='GirlFixSpider', method_name='get_img'),
-    dict(class_name='SekkusuSpider', method_name='get_img'),
     dict(class_name='SexyLadyJapanSpider', method_name='get_img'),
     dict(class_name='HeypantyhoseSpider', method_name='get_img'),
     dict(class_name='GanpukudouSpider', method_name='get_img'),

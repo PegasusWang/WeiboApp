@@ -11,8 +11,8 @@ def callback(res):
 
 
 def test():
-    l = LeanCloudApi("Test")
-    l.del_by_url('http://ac-0pdchyat.clouddn.com/fe045d1a630e7da1.png')
+    l = LeanCloudApi("CatOverload")
+    print(l.exist_file('http://40.media.tumblr.com/90793aa5507e1b28b89ee033bb7ca6f1/tumblr_nvqn3kD1fl1up2ssxo1_250.png'))
 
 
 if __name__ == '__main__':

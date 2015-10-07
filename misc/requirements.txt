@@ -1,0 +1,4 @@
+requests
+beautifulsoup4
+tornado
+redis

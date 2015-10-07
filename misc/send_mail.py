@@ -6,13 +6,25 @@ from smtplib import SMTP_SSL
 from email.header import Header
 from email.mime.text import MIMEText
 from config import MailConfig
+from redis import StrictRedis
 
 """
 注意需要邮箱pop3开启，设置独立密码，下边的password也是独立密码，
 非登录密码
 """
 
-send_to_mail_list = ['291374108@qq.com']
+
+def get_mail_from_redis(num=10):
+    r = StrictRedis('127.0.0.1', 6379)
+    key = "QQMAIL"
+    mail_list = r.lrange(key, 0, num)
+    for i in range(num):
+        r.lpop()
+    return set(mail_list)
+
+
+send_to_mail_list = list(get_mail_from_redis(10))
+send_to_mail_list.append('291374108@qq.com')
 
 
 mailInfo = {
@@ -29,6 +41,10 @@ mailInfo = {
 
 
 def send_mail():
+    if len(send_to_mail_list) < 5:
+        print('less 5')
+        return
+
     smtp = SMTP_SSL(mailInfo["hostname"])
     smtp.set_debuglevel(1)
     smtp.ehlo(mailInfo["hostname"])
