@@ -74,7 +74,6 @@ dict_list = [
 ]
 
 
-@single_process
 def main():
     for each in dict_list:
         u = Upload(**each)
@@ -83,4 +82,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
     print time.strftime('%Y-%m-%d %A %X %Z',time.localtime(time.time()))
